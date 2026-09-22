@@ -1,6 +1,6 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/stv-logo/logo/main/sports.png" group-title="Phá Làng TV", ⚽ Kênh Trực Tiếp Phá Làng (Đang phát)
+#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/stv-logo/logo/main/sports.png" group-title="Phá Làng TV", ⚽ Phá Làng TV Live (Kênh Chính)
 #EXTVLCOPT:http-referrer=https://phalang.live/
 https://phalang.live/
 
