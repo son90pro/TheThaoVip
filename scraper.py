@@ -1,130 +1,138 @@
-import asyncio
 import json
 import re
-from playwright.async_api import async_playwright
+from bs4 import BeautifulSoup
+import requests
 
 TARGET_URL = "https://cakhiazag.tv/"
-DEFAULT_LOGO = "https://raw.githubusercontent.com/stv-logo/logo/main/sports.png"
+DEFAULT_LOGO = (
+    "https://raw.githubusercontent.com/stv-logo/logo/main/sports.png"
+)
 
-async def run():
-    matches_data = []
+headers = {
+    "User-Agent": (
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) "
+        "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148"
+        " Safari/604.1"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Referer": "https://cakhiazag.tv/",
+}
 
-    try:
-        async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=True)
-            context = await browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+
+def clean_text(text):
+  if not text:
+    return ""
+  return re.sub(r"\s+", " ", text).strip()
+
+
+def scrape_cakhia():
+  matches = []
+  print("1. Đang kết nối tới Cà Khịa TV...")
+
+  try:
+    session = requests.Session()
+    res = session.get(TARGET_URL, headers=headers, timeout=15)
+
+    if res.status_code == 200:
+      html = res.text
+      soup = BeautifulSoup(html, "html.parser")
+
+      # CÁCH 1: Trích xuất trực tiếp từ dữ liệu JSON __NEXT_DATA__
+      next_data = soup.find("script", id="__NEXT_DATA__")
+      if next_data and next_data.string:
+        try:
+          data = json.loads(next_data.string)
+          page_props = data.get("props", {}).get("pageProps", {})
+          raw_list = (
+              page_props.get("matches", [])
+              or page_props.get("dataMatches", [])
+              or page_props.get("listMatches", [])
+          )
+
+          for item in raw_list:
+            home = item.get("home_name") or item.get("homeTeam", {}).get("name")
+            away = item.get("away_name") or item.get("awayTeam", {}).get("name")
+            time_str = item.get("time") or item.get("match_time", "")
+            date_str = item.get("date") or item.get("match_date", "")
+            blv = item.get("commentator") or item.get("blv", "")
+            logo = (
+                item.get("home_flag")
+                or item.get("thumbnail")
+                or item.get("homeTeam", {}).get("logo")
+                or DEFAULT_LOGO
             )
-            page = await context.new_page()
+            slug = item.get("slug") or item.get("id")
 
-            print("1. Đang truy cập Cà Khịa TV...")
-            try:
-                await page.goto(TARGET_URL, wait_until="domcontentloaded", timeout=30000)
-                await page.wait_for_timeout(3500)
-            except Exception as e:
-                print(f"Cảnh báo truy cập trang chủ: {e}")
+            # Đường dẫn luồng stream m3u8 nếu có trong JSON
+            stream_url = item.get("stream_url") or item.get("hls")
+            if not stream_url and slug:
+              stream_url = f"https://cakhiazag.tv/truc-tiep/{slug}"
 
-            # 1. Bóc tách JSON __NEXT_DATA__
-            next_data_el = await page.query_selector("script#__NEXT_DATA__")
-            if next_data_el:
-                try:
-                    content = await next_data_el.inner_text()
-                    data = json.loads(content)
-                    page_props = data.get("props", {}).get("pageProps", {})
-                    raw_matches = page_props.get("matches", []) or page_props.get("dataMatches", [])
+            if home and away:
+              time_part = f"{time_str} {date_str}".strip()
+              blv_part = f" ({blv.upper()})" if blv else ""
+              title = f"{time_part} ⚽ {home} vs {away}{blv_part}".strip()
+              matches.append(
+                  {"title": title, "logo": logo, "url": stream_url}
+              )
+        except Exception as e:
+          print(f"Lỗi đọc JSON Next.js: {e}")
 
-                    for m in raw_matches:
-                        home = m.get("home_name") or m.get("homeTeam", {}).get("name", "")
-                        away = m.get("away_name") or m.get("awayTeam", {}).get("name", "")
-                        time_str = m.get("time") or m.get("match_time", "")
-                        date_str = m.get("date") or m.get("match_date", "")
-                        commentator = m.get("commentator") or m.get("blv", "")
-                        logo = m.get("home_flag") or m.get("thumbnail") or DEFAULT_LOGO
-                        slug = m.get("slug") or m.get("id")
+      # CÁCH 2: Quét thẻ HTML trận đấu nếu JSON rỗng
+      if not matches:
+        cards = soup.find_all("a", href=re.compile(r"/truc-tiep/"))
+        seen_urls = set()
 
-                        if home and away:
-                            time_part = f"{time_str} {date_str}".strip()
-                            blv_part = f" ({commentator.upper()})" if commentator else ""
-                            formatted_title = f"{time_part} ⚽ {home} vs {away}{blv_part}".strip()
-                            
-                            match_url = f"https://cakhiazag.tv/truc-tiep/{slug}" if slug else TARGET_URL
-                            matches_data.append({
-                                "title": formatted_title,
-                                "url": match_url,
-                                "logo": logo
-                            })
-                except Exception as err:
-                    print(f"Lỗi đọc JSON: {err}")
+        for card in cards:
+          href = card.get("href", "")
+          if href in seen_urls:
+            continue
+          seen_urls.add(href)
 
-            # 2. Quét HTML thẻ A nếu không tìm thấy dữ liệu JSON
-            if not matches_data:
-                links = await page.query_selector_all("a[href*='/truc-tiep/']")
-                seen = set()
-                for link in links:
-                    href = await link.get_attribute("href")
-                    if href and href not in seen:
-                        seen.add(href)
-                        full_url = f"https://cakhiazag.tv{href if href.startswith('/') else '/' + href}"
-                        text = await link.inner_text()
-                        clean_text = " ".join([l.strip() for l in text.split("\n") if l.strip()])
-                        if not clean_text or len(clean_text) < 4:
-                            slug = href.split("/")[-1].replace("-", " ").title()
-                            clean_text = f"⚽ {slug}"
-                        matches_data.append({
-                            "title": clean_text,
-                            "url": full_url,
-                            "logo": DEFAULT_LOGO
-                        })
+          full_url = (
+              f"https://cakhiazag.tv{href}" if href.startswith("/") else href
+          )
+          raw_text = card.get_text(separator=" ")
+          clean_name = clean_text(raw_text)
 
-            print(f"2. Tìm thấy {len(matches_data)} trận. Đang bắt luồng .m3u8...")
+          img = card.find("img")
+          logo_url = (
+              img.get("src") if img and img.get("src") else DEFAULT_LOGO
+          )
 
-            final_playlist = []
-            for item in matches_data[:10]:
-                m3u8_url = None
+          if clean_name and len(clean_name) > 3:
+            matches.append(
+                {"title": clean_name, "logo": logo_url, "url": full_url}
+            )
 
-                def handle_request(req):
-                    nonlocal m3u8_url
-                    if ".m3u8" in req.url and "blob:" not in req.url:
-                        m3u8_url = req.url
+  except Exception as e:
+    print(f"Lỗi truy cập mạng: {e}")
 
-                page.on("request", handle_request)
-                try:
-                    await page.goto(item["url"], wait_until="commit", timeout=12000)
-                    await page.wait_for_timeout(3000)
-                except Exception:
-                    pass
-                page.remove_listener("request", handle_request)
+  return matches
 
-                if m3u8_url:
-                    final_playlist.append({
-                        "title": item["title"],
-                        "logo": item["logo"],
-                        "stream": m3u8_url
-                    })
 
-            await browser.close()
+def build_m3u(matches):
+  m3u = "#EXTM3U\n\n"
+  if matches:
+    for item in matches:
+      m3u += f'#EXTINF:-1 tvg-logo="{item["logo"]}" group-title="Cà Khịa TV" , 🟢 {item["title"]} [FHD]\n'
+      m3u += f"#EXTVLCOPT:http-referrer=https://cakhiazag.tv/\n"
+      m3u += f'{item["url"]}\n\n'
+  else:
+    m3u += f'#EXTINF:-1 tvg-logo="{DEFAULT_LOGO}" group-title="Cà Khịa TV" , 🟢 Cà Khịa TV Trang Chính [FHD]\n'
+    m3u += f"#EXTVLCOPT:http-referrer=https://cakhiazag.tv/\n"
+    m3u += f"{TARGET_URL}\n\n"
+  return m3u
 
-    except Exception as global_err:
-        print(f"Lỗi hệ thống: {global_err}")
-        final_playlist = []
-
-    # Tạo nội dung file playlist.m3u
-    m3u_content = "#EXTM3U\n\n"
-    if 'final_playlist' in locals() and final_playlist:
-        for item in final_playlist:
-            m3u_content += f'#EXTINF:-1 tvg-logo="{item["logo"]}" group-title="Cà Khịa TV" , 🟢 {item["title"]} [FHD]\n'
-            m3u_content += f'#EXTVLCOPT:http-referrer=https://cakhiazag.tv/\n'
-            m3u_content += f'{item["stream"]}\n\n'
-    else:
-        m3u_content += f'#EXTINF:-1 tvg-logo="{DEFAULT_LOGO}" group-title="Cà Khịa TV" , 🟢 Cà Khịa TV Trang Chính [FHD]\n'
-        m3u_content += f'#EXTVLCOPT:http-referrer=https://cakhiazag.tv/\n'
-        m3u_content += f'{TARGET_URL}\n\n'
-
-    with open("playlist.m3u", "w", encoding="utf-8") as f:
-        f.write(m3u_content)
-
-    print("✅ Đã hoàn tất ghi file playlist.m3u.")
 
 if __name__ == "__main__":
-    asyncio.run(run())
+  match_list = scrape_cakhia()
+  print(f"2. Bóc tách thành công {len(match_list)} trận đấu!")
+  m3u_text = build_m3u(match_list)
+
+  with open("playlist.m3u", "w", encoding="utf-8") as f:
+    f.write(m3u_text)
+
+  print("✅ Đã tạo file 'playlist.m3u' thành công!")
     
