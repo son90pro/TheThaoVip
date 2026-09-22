@@ -11,21 +11,34 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    services:
+      flaresolverr:
+        image: ghcr.io/flaresolverr/flaresolverr:latest
+        ports:
+          - 8191:8191
+        env:
+          LOG_LEVEL: info
+
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+
       - name: Install dependencies
-        run: pip install requests
-      - name: Run Scraper
+        run: pip install requests beautifulsoup4
+
+      - name: Run Scraper via FlareSolverr
         run: python bot.py
+
       - name: Commit and Push
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add playlist.m3u
-          git commit -m "Auto update playlist" || exit 0
+          git commit -m "Auto update playlist via FlareSolverr" || exit 0
           git push
           
