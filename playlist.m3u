@@ -1,6 +1,3 @@
 #EXTM3U
-
-#EXTINF:-1 tvg-logo="https://raw.githubusercontent.com/stv-logo/logo/main/sports.png" group-title="Cà Khịa TV" , 🟢 Cà Khịa TV Trang Chính [FHD]
-#EXTVLCOPT:http-referrer=https://cakhiazag.tv/
-https://cakhiazag.tv/
+#EXT-X-SESSION-DATA:DATA-ID="com.xbmc.m3u"
 
