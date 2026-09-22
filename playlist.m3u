@@ -1,5 +1,6 @@
 #EXTM3U
 
-#EXTINF:-1 group-title="⚽ Trực Tiếp Phá Làng", Không tìm thấy luồng .m3u8 đang phát
-https://phalang.live/
+#EXTINF:-1 group-title="⚽ Trực Tiếp Phá Làng", Trận đấu 1
+#EXTVLCOPT:http-referrer=https://phalang.live/
+https://pull.digitalcdn.net/live/919c83b079644b369738bcfb41214cc2/index.m3u8
 
