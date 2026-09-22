@@ -1,3 +1,8 @@
 #EXTM3U
 #EXT-X-SESSION-DATA:DATA-ID="com.xbmc.m3u"
 
+#EXTINF:-1 group-title="Gà Vàng TV", Kenh Truc Tiep 1
+#EXTVLCOPT:http-referrer=https://gavang33.me/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+https://colatv88xi.cc/video2/output.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
+
