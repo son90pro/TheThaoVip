@@ -2,6 +2,32 @@ import asyncio
 from playwright.async_api import async_playwright
 import re
 
+async def scrape_match(context, match_info):
+    url, title = match_info
+    page = await context.new_page()
+    captured_stream = None
+
+    def handle_request(request):
+        nonlocal captured_stream
+        req_url = request.url
+        if ".m3u8" in req_url and "blob:" not in req_url:
+            captured_stream = req_url
+
+    page.on("request", handle_request)
+
+    try:
+        # Giảm timeout xuống 8s để chạy thật nhanh
+        await page.goto(url, wait_until="commit", timeout=8000)
+        await page.wait_for_timeout(3000)
+    except Exception:
+        pass
+    finally:
+        await page.close()
+
+    if captured_stream:
+        return {"title": title, "stream": captured_stream}
+    return None
+
 async def run():
     matches_data = []
 
@@ -13,80 +39,64 @@ async def run():
         page = await context.new_page()
 
         try:
-            print("1. Mở trang Phá Làng TV...")
-            await page.goto("https://phalang.live/", wait_until="domcontentloaded", timeout=30000)
+            print("1. Đang truy cập trang chủ Phá Làng TV...")
+            await page.goto("https://phalang.live/", wait_until="domcontentloaded", timeout=20000)
             await page.wait_for_timeout(3000)
 
-            # Cuộn trang xuống để load toàn bộ danh sách trận đấu
-            for _ in range(3):
-                await page.evaluate("window.scrollBy(0, 1000)")
-                await page.wait_for_timeout(1000)
-
-            # Lấy danh sách tất cả các thẻ trận đấu
-            cards = await page.query_selector_all("a")
+            # Lấy tất cả các đường link trên trang
+            elements = await page.query_selector_all("a, div[href]")
+            match_list = []
             seen_urls = set()
-            match_urls = []
-            
-            for card in cards:
-                href = await card.get_attribute("href")
-                if href and ("phalang.live" in href or href.startswith("/")) and href != "/" and "phalang.live/" not in href:
+
+            for el in elements:
+                href = await el.get_attribute("href")
+                if not href:
+                    href = await el.get_attribute("data-href")
+
+                if href and href != "/" and not href.startswith("#") and "javascript" not in href:
                     full_url = href if href.startswith("http") else f"https://phalang.live{href}"
                     
-                    # Lọc trùng URL
-                    if full_url not in seen_urls:
+                    if full_url not in seen_urls and "phalang.live" in full_url:
                         seen_urls.add(full_url)
-                        text_content = await card.inner_text()
-                        
-                        # Làm sạch chuỗi hiển thị
+                        text_content = await el.inner_text()
                         clean_text = " ".join(text_content.split())
                         clean_text = re.sub(r'^[0-9\s]+', '', clean_text)
                         
-                        if clean_text and len(clean_text) > 3:
-                            match_urls.append((full_url, clean_text))
+                        # Loại bỏ các link trang chủ, điều khoản...
+                        if len(clean_text) > 4 and not any(x in clean_text.lower() for x in ["trang chủ", "lịch thi đấu", "bảng xếp hạng", "tin tức"]):
+                            match_list.append((full_url, clean_text))
 
-            print(f"2. Tìm thấy tổng cộng {len(match_urls)} trận đấu riêng biệt. Đang cào link stream...")
+            print(f"2. Bóc tách được {len(match_list)} trận đấu. Đang tiến hành quét luồng stream song song...")
 
-            # Truy cập LẦN LƯỢT TẤT CẢ các trận (không giới hạn số lượng)
-            for url, title in match_urls:
-                captured_stream = None
+            # Chạy quét tối đa 5 trận cùng lúc để tránh bị nghẽn
+            semaphore = asyncio.Semaphore(5)
+            
+            async def worker(match_info):
+                async with semaphore:
+                    return await scrape_match(context, match_info)
 
-                def handle_request(request):
-                    nonlocal captured_stream
-                    req_url = request.url
-                    if ".m3u8" in req_url and "blob:" not in req_url:
-                        captured_stream = req_url
+            tasks = [worker(m) for m in match_list]
+            results = await asyncio.gather(*tasks)
 
-                page.on("request", handle_request)
-
-                try:
-                    await page.goto(url, wait_until="domcontentloaded", timeout=10000)
-                    await page.wait_for_timeout(2500)
-                except Exception:
-                    pass
-
-                if captured_stream:
-                    matches_data.append({
-                        "title": title,
-                        "stream": captured_stream
-                    })
-                
-                # Gỡ bỏ listener để tránh chồng chéo sự kiện
-                page.remove_listener("request", handle_request)
+            for res in results:
+                if res:
+                    matches_data.append(res)
 
         except Exception as e:
-            print(f"Lỗi: {e}")
+            print(f"Lỗi hệ thống: {e}")
         finally:
             await browser.close()
 
-    # Xuất file M3U đầy đủ
+    # Định dạng M3U xuất ra
     m3u_content = "#EXTM3U\n\n"
-    default_logo = "https://i.imgur.com/v8R2PzA.png"
+    # Link logo quả bóng đá chuẩn (không bị lỗi như link cũ)
+    default_logo = "https://raw.githubusercontent.com/stv-logo/logo/main/sports.png"
 
     if matches_data:
         for item in matches_data:
             title = item['title']
-            
             logo = default_logo
+            
             if "Việt Nam" in title or "Vietnam" in title:
                 logo = "https://flagcdn.com/w320/vn.png"
             elif "Hàn Quốc" in title or "Korea" in title:
@@ -107,6 +117,6 @@ async def run():
     with open("playlist.m3u", "w", encoding="utf-8") as f:
         f.write(m3u_content)
 
-    print(f"Hoàn tất! Đã xuất thành công {len(matches_data)} trận đấu vào playlist.m3u")
+    print(f"Hoàn thành! Xuất thành công {len(matches_data)} trận vào file playlist.m3u")
 
 asyncio.run(run())
