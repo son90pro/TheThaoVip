@@ -3,7 +3,7 @@ from playwright.async_api import async_playwright
 import re
 
 async def run():
-    m3u8_links = set()
+    matches_data = []
 
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
@@ -12,54 +12,72 @@ async def run():
         )
         page = await context.new_page()
 
-        # Hàm bắt link stream .m3u8 từ luồng mạng
-        def handle_request(request):
-            url = request.url
-            if ".m3u8" in url and "blob:" not in url:
-                m3u8_links.add(url)
-
-        page.on("request", handle_request)
-
         try:
-            print("1. Đang truy cập Trang chủ Phá Làng...")
+            print("1. Mở trang Phá Làng TV...")
             await page.goto("https://phalang.live/", wait_until="domcontentloaded", timeout=30000)
-            await page.wait_for_timeout(3000)
+            await page.wait_for_timeout(4000)
 
-            # Lấy tất cả các đường link trận đấu đang diễn ra trên trang chủ
-            anchors = await page.eval_on_selector_all("a", "elements => elements.map(e => e.href)")
-            match_links = [link for link in set(anchors) if "phalang.live" in link and link != "https://phalang.live/"]
+            # Lấy danh sách tất cả các thẻ trận đấu trên giao diện
+            cards = await page.query_selector_all("a")
+            match_urls = []
+            
+            for card in cards:
+                href = await card.get_attribute("href")
+                if href and ("phalang.live" in href or href.startswith("/")) and href != "/" and "phalang.live/" not in href:
+                    full_url = href if href.startswith("http") else f"https://phalang.live{href}"
+                    # Lấy text thông tin trận đấu (giờ, tên đội, BLV)
+                    text_content = await card.inner_text()
+                    text_content = " ".join(text_content.split())
+                    if text_content and len(text_content) > 5:
+                        match_urls.append((full_url, text_content))
 
-            print(f"2. Tìm thấy {len(match_links)} trang trận đấu. Đang tiến hành soi link stream...")
+            print(f"2. Tìm thấy {len(match_urls)} trận đấu. Bắt đầu trích xuất luồng stream...")
 
-            # Mở tối đa 5 trận đầu tiên để bắt link
-            for match_url in match_links[:5]:
+            # Truy cập từng trang trận đấu để lấy link stream .m3u8
+            for url, title in match_urls[:8]:
+                captured_stream = None
+
+                def handle_request(request):
+                    nonlocal captured_stream
+                    req_url = request.url
+                    if ".m3u8" in req_url and "blob:" not in req_url:
+                        captured_stream = req_url
+
+                page.on("request", handle_request)
+
                 try:
-                    print(f"-> Mở trang: {match_url}")
-                    await page.goto(match_url, wait_until="domcontentloaded", timeout=15000)
-                    await page.wait_for_timeout(4000) # Đợi player load luồng
-                except Exception as err:
-                    print(f"Bỏ qua trang {match_url}: {err}")
+                    await page.goto(url, wait_until="domcontentloaded", timeout=12000)
+                    await page.wait_for_timeout(3500)
+                except Exception:
+                    pass
+
+                if captured_stream:
+                    matches_data.append({
+                        "title": title,
+                        "stream": captured_stream
+                    })
 
         except Exception as e:
-            print(f"Lỗi tổng quan: {e}")
+            print(f"Lỗi: {e}")
         finally:
             await browser.close()
 
-    # Xuất dữ liệu ra M3U
+    # Tạo định dạng M3U chuẩn hiển thị đầy đủ tên trận đấu
     m3u_content = "#EXTM3U\n\n"
-    if m3u8_links:
-        for idx, link in enumerate(m3u8_links, 1):
-            m3u_content += f'#EXTINF:-1 group-title="⚽ Trực Tiếp Phá Làng", Trận đấu {idx}\n'
+    if matches_data:
+        for item in matches_data:
+            clean_title = item['title'].replace("\n", " - ")
+            m3u_content += f'#EXTINF:-1 group-title="Phá Làng TV", ⚽ {clean_title}\n'
             m3u_content += f'#EXTVLCOPT:http-referrer=https://phalang.live/\n'
-            m3u_content += f'{link}\n\n'
+            m3u_content += f'{item["stream"]}\n\n'
     else:
-        m3u_content += '#EXTINF:-1 group-title="⚽ Trực Tiếp Phá Làng", Server Dự Phòng (Đang nạp luồng)\n'
+        m3u_content += '#EXTINF:-1 group-title="Phá Làng TV", 🟢 Dang cap nhat danh sach tran dau...\n'
         m3u_content += '#EXTVLCOPT:http-referrer=https://phalang.live/\n'
         m3u_content += 'https://phalang.live/\n\n'
 
     with open("playlist.m3u", "w", encoding="utf-8") as f:
         f.write(m3u_content)
 
-    print(f"Xong! Đã trích xuất được {len(m3u8_links)} link stream.")
+    print(f"Hoàn tất! Đã bóc tách thành công {len(matches_data)} trận đấu đầy đủ tên.")
 
 asyncio.run(run())
