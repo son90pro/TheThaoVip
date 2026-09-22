@@ -14,161 +14,102 @@ headers = {
         " like Gecko) Chrome/128.0.0.0 Safari/537.36"
     ),
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "vi-VN,vi;q=0.9,en-US;q=0.8,en;q=0.7",
     "Referer": "https://cakhiazag.tv/",
 }
 
 
-def find_matches_in_json(data):
-  """Tự động truy vết mảng danh sách trận đấu ở bất kỳ cấp độ nào trong JSON."""
-  if isinstance(data, dict):
-    for key in ["matches", "dataMatches", "listMatches", "data", "list"]:
-      if key in data and isinstance(data[key], list) and len(data[key]) > 0:
-        first = data[key][0]
-        if isinstance(first, dict) and any(
-            k in first
-            for k in [
-                "home_name",
-                "homeTeam",
-                "home",
-                "slug",
-                "match_time",
-                "title",
-            ]
-        ):
-          return data[key]
-    for v in data.values():
-      res = find_matches_in_json(v)
-      if res:
-        return res
-  elif isinstance(data, list):
-    for item in data:
-      res = find_matches_in_json(item)
-      if res:
-        return res
-  return []
+def clean_slug_to_title(slug):
+  """Chuyển đổi đường dẫn slug (vd: man-utd-vs-arsenal-123) thành tên trận đấu sạch."""
+  # Bỏ chuỗi id số ở cuối slug
+  slug_clean = re.sub(r"-\d+$", "", slug)
+  parts = slug_clean.split("-")
+  words = [p.capitalize() for p in parts if p]
+  title = " ".join(words)
+  # Chuẩn hóa chữ 'Vs' thành 'vs'
+  return re.sub(r"\bVs\b", "vs", title)
 
 
 def scrape_cakhia():
-  matches_list = []
+  matches = []
   print("1. Đang tải trang Cà Khịa TV...")
 
   try:
     res = requests.get(TARGET_URL, headers=headers, timeout=15)
     if res.status_code == 200:
       html = res.text
+      soup = BeautifulSoup(html, "html.parser")
 
-      # 1. Bóc tách dữ liệu chuẩn từ Next.js JSON state
-      next_data_match = re.search(
-          r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.DOTALL
-      )
-      if next_data_match:
+      # 1. Thử trích xuất dữ liệu JSON chuẩn từ __NEXT_DATA__
+      next_data = soup.find("script", id="__NEXT_DATA__")
+      if next_data and next_data.string:
         try:
-          json_data = json.loads(next_data_match.group(1))
-          raw_matches = find_matches_in_json(json_data)
+          data = json.loads(next_data.string)
+          page_props = data.get("props", {}).get("pageProps", {})
+          raw_list = (
+              page_props.get("matches", [])
+              or page_props.get("dataMatches", [])
+              or []
+          )
 
-          for item in raw_matches:
+          for item in raw_list:
             if not isinstance(item, dict):
               continue
-
-            home = (
-                item.get("home_name")
-                or item.get("home_team_name")
-                or (
-                    item.get("homeTeam", {}).get("name")
-                    if isinstance(item.get("homeTeam"), dict)
-                    else ""
-                )
-                or item.get("home")
-            )
-            away = (
-                item.get("away_name")
-                or item.get("away_team_name")
-                or (
-                    item.get("awayTeam", {}).get("name")
-                    if isinstance(item.get("awayTeam"), dict)
-                    else ""
-                )
-                or item.get("away")
-            )
-
-            time_str = item.get("time") or item.get("match_time") or ""
-            date_str = item.get("date") or item.get("match_date") or ""
-            blv = (
-                item.get("commentator")
-                or item.get("blv")
-                or item.get("commentator_name")
-                or ""
-            )
-
-            logo = (
-                item.get("home_flag")
-                or item.get("home_logo")
-                or item.get("thumbnail")
-                or (
-                    item.get("homeTeam", {}).get("logo")
-                    if isinstance(item.get("homeTeam"), dict)
-                    else ""
-                )
-                or DEFAULT_LOGO
-            )
-
-            slug = item.get("slug") or item.get("id") or item.get("match_id")
-            stream_url = (
-                item.get("stream_url") or item.get("hls") or item.get("link")
-            )
-
-            if not stream_url and slug:
-              stream_url = f"https://cakhiazag.tv/truc-tiep/{slug}"
-
+            home = item.get("home_name") or item.get("homeTeam", {}).get("name")
+            away = item.get("away_name") or item.get("awayTeam", {}).get("name")
             if home and away:
-              time_part = f"{time_str} {date_str}".strip()
-              if not time_part:
-                time_part = "LIVE"
+              time_str = item.get("time") or item.get("match_time") or ""
+              blv = item.get("commentator") or item.get("blv") or ""
+              slug = item.get("slug") or item.get("id") or ""
+
               blv_part = f" ({blv.upper()})" if blv else ""
-              title = f"{time_part} ⚽ {home} vs {away}{blv_part}".strip()
-              matches_list.append(
-                  {"title": title, "logo": logo, "url": stream_url}
+              time_part = f"{time_str} " if time_str else ""
+              title = f"{time_part}⚽ {home} vs {away}{blv_part}".strip()
+              url = (
+                  f"https://cakhiazag.tv/truc-tiep/{slug}"
+                  if slug
+                  else TARGET_URL
+              )
+              matches.append(
+                  {"title": title, "logo": DEFAULT_LOGO, "url": url}
               )
         except Exception as e:
-          print(f"Lỗi đọc JSON: {e}")
+          print(f"Lỗi JSON: {e}")
 
-      # 2. Phương án dự phòng phân tích HTML thẻ link
-      if not matches_list:
-        soup = BeautifulSoup(html, "html.parser")
-        seen_urls = set()
+      # 2. Bóc tách từ HTML với bộ lọc chống nhiễu BLV
+      if not matches:
+        seen_slugs = set()
+        for a_tag in soup.find_all("a", href=re.compile(r"/truc-tiep/")):
+          href = a_tag.get("href", "")
+          slug = href.split("/")[-1].strip()
 
-        for card in soup.find_all("a", href=re.compile(r"/truc-tiep/")):
-          href = card.get("href", "")
-          if href in seen_urls:
+          # LỌC NGHIÊM NGẶT: Bắt buộc phải chứa "-vs-" trong link mới là TRẬN ĐẤU.
+          # Loại bỏ tất cả link BLV lẻ như /truc-tiep/fabio
+          if not slug or "-vs-" not in slug.lower() or slug in seen_slugs:
             continue
 
+          seen_slugs.add(slug)
+          clean_title = clean_slug_to_title(slug)
           full_url = (
               f"https://cakhiazag.tv{href}" if href.startswith("/") else href
           )
-          slug_raw = href.split("/")[-1].replace("-", " ").title()
 
-          # Bỏ qua đường dẫn quá ngắn hoặc không phải trận đấu
-          if not slug_raw or len(slug_raw) < 4:
-            continue
-
-          img = card.find("img")
+          img = a_tag.find("img")
           logo_url = (
               img.get("src")
               if (img and img.get("src") and img.get("src").startswith("http"))
               else DEFAULT_LOGO
           )
 
-          title_str = f"⚽ {slug_raw}"
-          seen_urls.add(href)
-          matches_list.append(
-              {"title": title_str, "logo": logo_url, "url": full_url}
-          )
+          matches.append({
+              "title": f"⚽ {clean_title}",
+              "logo": logo_url,
+              "url": full_url,
+          })
 
   except Exception as e:
     print(f"Lỗi kết nối: {e}")
 
-  return matches_list
+  return matches
 
 
 def build_m3u(matches):
@@ -193,5 +134,5 @@ if __name__ == "__main__":
   with open("playlist.m3u", "w", encoding="utf-8") as f:
     f.write(m3u_text)
 
-  print("✅ Đã ghi file playlist.m3u thành công!")
+  print("✅ Đã tạo file playlist.m3u thành công!")
     
