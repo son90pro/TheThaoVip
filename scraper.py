@@ -1,6 +1,5 @@
 import time
 import re
-import json
 from playwright.sync_api import sync_playwright
 
 BASE_URL = "https://gavang33.me"
@@ -29,7 +28,6 @@ def run_scraper():
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
             page.wait_for_timeout(4000)
 
-            # Quét các khung chứa trận đấu chính (loại bỏ các nút icon BLV lẻ)
             cards = page.query_selector_all(".match-item, .item-match, .card-match, .match-card, div[class*='match']")
             if not cards:
                 cards = page.query_selector_all("a[href*='/truc-tiep/'], a[href*='/match/']")
@@ -43,11 +41,12 @@ def run_scraper():
                     if not card_text:
                         continue
 
-                    # 1. Trích xuất thời gian (Giờ & Ngày)
+                    # 1. Trích xuất đầy đủ Giờ & Ngày đá
                     time_match = re.search(r'(\d{1,2}:\d{2})', card_text)
                     date_match = re.search(r'(\d{1,2}/\d{1,2})', card_text)
                     m_time = time_match.group(1) if time_match else ""
                     m_date = date_match.group(1) if date_match else ""
+                    
                     time_str = f"{m_time} {m_date}".strip() if (m_time or m_date) else "LIVE"
 
                     # 2. Trích xuất Logo
@@ -59,25 +58,30 @@ def run_scraper():
                             logo_url = src if src.startswith("http") else f"{BASE_URL}{src}"
                             break
 
-                    # 3. Trích xuất Tên 2 đội bóng (BẮT BỘC)
+                    # 3. Trích xuất Tên 2 đội bóng (xử lý chuẩn không lặp tên)
                     home_away = ""
-                    # Tìm theo cấu trúc chữ 'vs' hoặc dấu '-'
                     vs_match = re.search(r'([A-Za-zÀ-ỹ0-9\s\.\-]+)\s+(?:vs|-)\s+([A-Za-zÀ-ỹ0-9\s\.\-]+)', card_text, re.IGNORECASE)
                     if vs_match:
                         t1 = clean_text(vs_match.group(1)).split('\n')[-1]
                         t2 = clean_text(vs_match.group(2)).split('\n')[0]
                         if len(t1) > 2 and len(t2) > 2:
-                            home_away = f"{t1} vs {t2}"
+                            if t1.lower() == t2.lower():
+                                home_away = t1
+                            else:
+                                home_away = f"{t1} vs {t2}"
 
-                    # Nếu không tìm thấy chữ 'vs', thử tìm danh sách dòng chữ tên đội
                     if not home_away:
                         team_elems = card.query_selector_all("[class*='team'], [class*='name']")
                         teams = [clean_text(e.inner_text()) for e in team_elems if clean_text(e.inner_text())]
                         teams = [t for t in teams if not re.match(r'^\d{1,2}:\d{2}$', t) and t.lower() not in ["live", "trực tiếp", "hls", "flv"]]
                         if len(teams) >= 2:
-                            home_away = f"{teams[0]} vs {teams[1]}"
+                            if teams[0].lower() == teams[1].lower():
+                                home_away = teams[0]
+                            else:
+                                home_away = f"{teams[0]} vs {teams[1]}"
+                        elif len(teams) == 1:
+                            home_away = teams[0]
 
-                    # Bỏ qua nếu không phải thẻ trận đấu thực sự (không có tên 2 đội bóng)
                     if not home_away:
                         continue
 
@@ -85,7 +89,11 @@ def run_scraper():
                     blv_match = re.search(r'(Gà\s+[A-Za-zÀ-ỹ0-9]+|BLV\s+[A-Za-zÀ-ỹ0-9]+)', card_text, re.IGNORECASE)
                     blv_str = f" ({blv_match.group(1)})" if blv_match else ""
 
-                    full_title = f"{time_str} ⚽ {home_away}{blv_str} [hls]"
+                    # 5. Đuôi định dạng luồng
+                    quality_tag = " [hls]"
+
+                    # Tiêu đề ĐẦY ĐỦ THÔNG TIN ĐỂ HIỂN THỊ 3 DÒNG
+                    full_title = f"{time_str} ⚽ {home_away}{blv_str}{quality_tag}"
 
                     match_list.append({
                         "title": full_title,
@@ -96,16 +104,16 @@ def run_scraper():
                 except Exception:
                     continue
 
-            # Lọc trùng lặp trận đấu
+            # Lọc trùng lặp trận
             unique_matches = {}
             for m in match_list:
                 if m['title'] not in unique_matches:
                     unique_matches[m['title']] = m
 
             final_matches = list(unique_matches.values())
-            print(f"[*] Lọc thành công {len(final_matches)} trận đấu chuẩn.")
+            print(f"[*] Đã lọc {len(final_matches)} trận đấu đầy đủ thông tin.")
 
-            # Trích xuất link luồng m3u8
+            # Trích xuất link stream m3u8
             captured_m3u8 = []
             def handle_request(request):
                 if ".m3u8" in request.url and "blob:" not in request.url:
@@ -135,7 +143,7 @@ def run_scraper():
         f.write("#EXTM3U\n\n")
 
         if not final_matches:
-            f.write(f'#EXTINF:-1 tvg-logo="{BASE_URL}/favicon.ico" group-title="{GROUP_NAME}",Chưa có trận đấu nào đang phát\n')
+            f.write(f'#EXTINF:-1 tvg-logo="{BASE_URL}/favicon.ico" group-title="{GROUP_NAME}",Chưa có trận đấu nào\n')
             f.write("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4\n")
         else:
             for item in final_matches:
@@ -147,3 +155,4 @@ def run_scraper():
 
 if __name__ == "__main__":
     run_scraper()
+    
