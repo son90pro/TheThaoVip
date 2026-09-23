@@ -3,8 +3,8 @@ name: Auto Scrape M3U Playlist
 on:
   workflow_dispatch: # Giữ nút bấm chạy thủ công khi cần
   schedule:
-    # Tự động chạy mỗi 3 tiếng 1 lần
-    - cron: '0 */3 * * *'
+    # Tự động chạy mỗi 2 tiếng 1 lần
+    - cron: '0 */2 * * *'
 
 jobs:
   scrape:
