@@ -1,40 +1,35 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/56de534cf589f6d0ca09630db803ba00.png" group-title="Gà Vàng 33 TV",12:30 23/09 ⚽ Iran U23 vs North Korea U23 (Gà Siêu Tốc
+#EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/90ca524b1b1c17911b1bf8e425c8d96d.png" group-title="Gà Vàng 33 TV",15:00 23/09 ⚽ Kashima Antlers vs Ventforet Kofu (Gà Siêu Péo
 Japanese Emperor) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.me/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://gavang33.me/truc-tiep/iran-u23-vs-north-korea-u23-luc-1230-ngay-23-09-2026-23xmvkh65g1gqg8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/56de534cf589f6d0ca09630db803ba00.png" group-title="Gà Vàng 33 TV",12:30 23/09 ⚽ Iran U23 vs North Korea U23 (Gà Siêu Tốc) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.me/
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://gavang33.me/truc-tiep/iran-u23-vs-north-korea-u23-luc-1230-ngay-23-09-2026-23xmvkh65g1gqg8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
-
-#EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/90ca524b1b1c17911b1bf8e425c8d96d.png" group-title="Gà Vàng 33 TV",15:00 23/09 ⚽ Kashima Antlers vs Ventforet Kofu (Gà Siêu Péo) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://gavang33.me/truc-tiep/kashima-antlers-vs-ventforet-kofu-luc-1500-ngay-23-09-2026-965mkyhkpwn6r1g|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
 
-#EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/91008a96b5de8c75376d17057f89890e.png" group-title="Gà Vàng 33 TV",15:00 23/09 ⚽ Gamba Osaka vs Tokushima Vortis (Gà Siêu Ngố + Gà Siêu Gáy) [hls]
+#EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/90ca524b1b1c17911b1bf8e425c8d96d.png" group-title="Gà Vàng 33 TV",15:00 23/09 ⚽ Kashima Antlers vs Ventforet Kofu (Gà Siêu Péo) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://gavang33.me/truc-tiep/gamba-osaka-vs-tokushima-vortis-luc-1500-ngay-23-09-2026-318q66hxl1kzqo9|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
+https://live2.zktsva.app/live/303098.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
+
+#EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/91008a96b5de8c75376d17057f89890e.png" group-title="Gà Vàng 33 TV",15:00 23/09 ⚽ Gamba Osaka vs Tokushima Vortis (Gà Siêu Ngố) [hls]
+#EXTVLCOPT:http-referrer=https://gavang33.me/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+https://live2.zktsva.app/live/301238.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
 
 #EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/d85cce27ab583e5b3cead155f02b098a.png" group-title="Gà Vàng 33 TV",15:00 23/09 ⚽ Vissel Kobe vs Sagan Tosu (Gà Siêu Gáy) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://gavang33.me/truc-tiep/vissel-kobe-vs-sagan-tosu-luc-1500-ngay-23-09-2026-l5ergph4gdpvr8k|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
+https://live2.zktsva.app/live/294335.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
 
 #EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/d272859d78eb8ca7a14753f4293fbf45.png" group-title="Gà Vàng 33 TV",15:00 23/09 ⚽ Kashiwa Reysol vs FC Imabari (Gà Siêu Son) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://gavang33.me/truc-tiep/kashiwa-reysol-vs-fc-imabari-luc-1500-ngay-23-09-2026-l7oqdehg7x1lr51|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
+https://live2.zktsva.app/live/306290.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
 
 #EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/7d6fa50ea67cde7d66612a8189897ba5.png" group-title="Gà Vàng 33 TV",15:00 23/09 ⚽ Kyoto Sanga vs Fujieda MYFC (Gà Ô Long) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
-https://gavang33.me/truc-tiep/kyoto-sanga-vs-fujieda-myfc-luc-1500-ngay-23-09-2026-pxwrxlhydnv3ryk|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
+https://live2.zktsva.app/live/432017.m3u8|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
 
 #EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/5dfaca0603ff4aa80e96d85cd8cbd755.png" group-title="Gà Vàng 33 TV",17:30 23/09 ⚽ Japan U23 vs Thailand U23 (Gà Siêu Nhí) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
@@ -50,4 +45,9 @@ https://gavang33.me/truc-tiep/kyrgyzstan-u23-vs-hong-kong-u23-luc-1730-ngay-23-0
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
 https://gavang33.me/truc-tiep/thimphu-city-vs-transport-united-fc-luc-1900-ngay-23-09-2026-y39mp1h6xglvmoj|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
+
+#EXTINF:-1 tvg-logo="https://img.gvapi.cc/football/team/d63ba4378c5b4c55baa283ef654399ad.png" group-title="Gà Vàng 33 TV",21:30 23/09 ⚽ Iraq vs Oman (Gà Siêu Ngố) [hls]
+#EXTVLCOPT:http-referrer=https://gavang33.me/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+https://gavang33.me/truc-tiep/iraq-vs-oman-luc-2130-ngay-23-09-2026-6ypq3nhv2nj9md7|Referer=https://gavang33.me/&User-Agent=Mozilla/5.0
 
