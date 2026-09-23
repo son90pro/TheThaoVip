@@ -19,7 +19,6 @@ FILTER_KEYWORDS = [
 
 def get_m3u8_for_match(context, match_url):
     page = context.new_page()
-    # Tối ưu tốc độ: Chặn tải hình ảnh, CSS để bắt link nhanh nhất
     page.route("**/*.{png,jpg,jpeg,svg,css,woff,woff2}", lambda route: route.abort())
     
     m3u8_found = []
@@ -32,14 +31,13 @@ def get_m3u8_for_match(context, match_url):
     page.on("request", handle_request)
 
     try:
-        page.goto(match_url, timeout=15000, wait_until="domcontentloaded")
-        # Đợi tối đa 4 giây để Player JS kích hoạt & tạo request m3u8
-        for _ in range(8):
+        page.goto(match_url, timeout=12000, wait_until="domcontentloaded")
+        for _ in range(6):
             if m3u8_found:
                 break
             time.sleep(0.5)
-    except Exception as e:
-        print(f"Lỗi tải trang {match_url}: {e}")
+    except Exception:
+        pass
     finally:
         page.close()
 
@@ -63,7 +61,6 @@ def run_scraper():
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
             page.wait_for_timeout(3000)
 
-            # Bóc tách danh sách trận đấu
             raw_matches = page.evaluate('''() => {
                 const matches = [];
                 const cards = Array.from(document.querySelectorAll('.match-item, .item-match, .card-match, .match-card, div[class*="match"]'));
@@ -136,7 +133,7 @@ def run_scraper():
                         continue
                     if re.search(r'^(gà|blv)\s+', l_lower):
                         continue
-                    if len(line) >= 2 and re.search(r'[A-Za-zÀ-ỹ]', line):
+                    if len(line) >= 2 and re.search(r'[A-Za-zÀ-ỹ0-9]', line):
                         valid_lines.append(line)
 
                 teams_str = ""
@@ -149,15 +146,13 @@ def run_scraper():
 
                 if not teams_str:
                     if len(valid_lines) >= 2:
-                        if valid_lines[0].lower() != valid_lines[1].lower():
-                            teams_str = f"{valid_lines[0]} vs {valid_lines[1]}"
-                        else:
-                            teams_str = valid_lines[0]
+                        teams_str = f"{valid_lines[0]} vs {valid_lines[1]}"
                     elif len(valid_lines) == 1:
                         teams_str = valid_lines[0]
-
-                if not teams_str:
-                    continue
+                    else:
+                        # Dự phòng cuối cùng: lấy từ tiêu đề dòng trống
+                        raw_clean = " ".join(lines[:2])
+                        teams_str = raw_clean if raw_clean else "Trận đấu Trực Tiếp"
 
                 blv_suffix = f" ({blv_name})" if blv_name else ""
                 full_title = f"{time_str} ⚽ {teams_str}{blv_suffix}"
@@ -175,48 +170,38 @@ def run_scraper():
                     unique_dict[key] = p_item
 
             final_matches = list(unique_dict.values())
-            print(f"[*] Tìm thấy {len(final_matches)} trận. Đang tiến hành lấy luồng m3u8...")
+            print(f"[*] Tìm thấy tổng cộng {len(final_matches)} trận đấu.")
 
             page.close()
 
-            # BẮT BẮT BUỘC LINK .M3U8 THẬT BẰNG PLAYWRIGHT
+            # Bóc tách luồng m3u8 cho các trận đang phát
             for idx, match in enumerate(final_matches):
-                print(f"[{idx+1}/{len(final_matches)}] Bóc tách: {match['title']}")
+                print(f"[{idx+1}/{len(final_matches)}] Kiểm tra luồng: {match['title']}")
                 m3u8_url = get_m3u8_for_match(context, match['url'])
                 match['m3u8_url'] = m3u8_url
-                if m3u8_url:
-                    print(f"    => Đã tìm thấy M3U8: {m3u8_url[:50]}...")
-                else:
-                    print(f"    => Trận đấu chưa phát sóng.")
 
         except Exception as e:
             print(f"Lỗi hệ thống: {e}")
         finally:
             browser.close()
 
-    # Tạo file playlist.m3u
+    # Xuất tất cả trận đấu vào file playlist.m3u
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n\n")
 
-        valid_count = 0
         for item in final_matches:
-            if not item.get('m3u8_url'):
-                continue
-            
             logo_attr = f'tvg-logo="{item["logo"]}"' if item["logo"] else ''
             
-            # Gửi link .m3u8 THẬT đã lấy được sang cho Cloudflare Worker Proxy
-            proxy_url = f"https://{WORKER_DOMAIN}/proxy?url={quote(item['m3u8_url'], safe='')}"
+            # Nếu đã có m3u8 thì đi qua /proxy, nếu chưa có thì đi qua /live
+            if item.get('m3u8_url'):
+                stream_url = f"https://{WORKER_DOMAIN}/proxy?url={quote(item['m3u8_url'], safe='')}"
+            else:
+                stream_url = f"https://{WORKER_DOMAIN}/live?url={quote(item['url'], safe='')}"
             
             f.write(f'#EXTINF:-1 {logo_attr} group-title="{GROUP_NAME}",{item["title"]}\n')
-            f.write(f'{proxy_url}\n\n')
-            valid_count += 1
+            f.write(f'{stream_url}\n\n')
 
-        if valid_count == 0:
-            f.write(f'#EXTINF:-1 tvg-logo="{BASE_URL}/favicon.ico" group-title="{GROUP_NAME}",Chưa có trận nào đang phát\n')
-            f.write("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4\n")
-
-    print(f"[*] Đã xuất thành công {valid_count} trận đấu vào file {OUTPUT_FILE}")
+    print(f"[*] Đã xuất toàn bộ {len(final_matches)} trận đấu vào file {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     run_scraper()
