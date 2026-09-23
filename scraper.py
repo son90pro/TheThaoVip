@@ -6,11 +6,8 @@ BASE_URL = "https://gavang33.me"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "Gà Vàng 33 TV"
 
-def clean_text(text):
-    return re.sub(r'\s+', ' ', text or '').strip()
-
 def run_scraper():
-    match_list = []
+    final_playlist = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -28,92 +25,119 @@ def run_scraper():
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
             page.wait_for_timeout(4000)
 
-            cards = page.query_selector_all(".match-item, .item-match, .card-match, .match-card, div[class*='match']")
-            if not cards:
-                cards = page.query_selector_all("a[href*='/truc-tiep/'], a[href*='/match/']")
-
-            for card in cards:
-                try:
-                    href = card.get_attribute("href") or ""
-                    full_url = href if href.startswith("http") else f"{BASE_URL}{href}" if href else ""
-
-                    card_text = card.inner_text().strip()
-                    if not card_text:
-                        continue
-
-                    # 1. Trích xuất đầy đủ Giờ & Ngày đá
-                    time_match = re.search(r'(\d{1,2}:\d{2})', card_text)
-                    date_match = re.search(r'(\d{1,2}/\d{1,2})', card_text)
-                    m_time = time_match.group(1) if time_match else ""
-                    m_date = date_match.group(1) if date_match else ""
+            # Dùng JavaScript tìm chính xác Khung Trận Đấu cha (tránh quét nhầm nút lẻ)
+            raw_matches = page.evaluate('''() => {
+                const matches = [];
+                const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]'));
+                
+                links.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (!href) return;
                     
-                    time_str = f"{m_time} {m_date}".strip() if (m_time or m_date) else "LIVE"
+                    // Truy ngược tìm khung chứa toàn bộ trận đấu
+                    let container = link.closest('.match-item, .item-match, .card-match, .match-card, .item, .card');
+                    if (!container) {
+                        container = link.parentElement ? (link.parentElement.parentElement ? link.parentElement.parentElement.parentElement : link.parentElement) : link;
+                    }
+                    if (!container) return;
+                    
+                    const fullText = container.innerText || '';
+                    
+                    // Lấy logo
+                    let logo = '';
+                    const img = container.querySelector('img');
+                    if (img) {
+                        logo = img.getAttribute('src') || img.getAttribute('data-src') || '';
+                    }
+                    
+                    // Lấy tên BLV từ link hoặc thẻ
+                    let blv = link.innerText || link.getAttribute('title') || '';
+                    
+                    matches.push({
+                        url: href.startsWith('http') ? href : window.location.origin + href,
+                        fullText: fullText,
+                        linkText: blv,
+                        logo: logo.startsWith('http') ? logo : (logo ? window.location.origin + logo : '')
+                    });
+                });
+                
+                return matches;
+            }''')
 
-                    # 2. Trích xuất Logo
-                    imgs = card.query_selector_all("img")
-                    logo_url = ""
-                    for img in imgs:
-                        src = img.get_attribute("src") or img.get_attribute("data-src") or ""
-                        if src and "favicon" not in src and "avatar" not in src:
-                            logo_url = src if src.startswith("http") else f"{BASE_URL}{src}"
-                            break
-
-                    # 3. Trích xuất Tên 2 đội bóng (xử lý chuẩn không lặp tên)
-                    home_away = ""
-                    vs_match = re.search(r'([A-Za-zÀ-ỹ0-9\s\.\-]+)\s+(?:vs|-)\s+([A-Za-zÀ-ỹ0-9\s\.\-]+)', card_text, re.IGNORECASE)
-                    if vs_match:
-                        t1 = clean_text(vs_match.group(1)).split('\n')[-1]
-                        t2 = clean_text(vs_match.group(2)).split('\n')[0]
-                        if len(t1) > 2 and len(t2) > 2:
-                            if t1.lower() == t2.lower():
-                                home_away = t1
-                            else:
-                                home_away = f"{t1} vs {t2}"
-
-                    if not home_away:
-                        team_elems = card.query_selector_all("[class*='team'], [class*='name']")
-                        teams = [clean_text(e.inner_text()) for e in team_elems if clean_text(e.inner_text())]
-                        teams = [t for t in teams if not re.match(r'^\d{1,2}:\d{2}$', t) and t.lower() not in ["live", "trực tiếp", "hls", "flv"]]
-                        if len(teams) >= 2:
-                            if teams[0].lower() == teams[1].lower():
-                                home_away = teams[0]
-                            else:
-                                home_away = f"{teams[0]} vs {teams[1]}"
-                        elif len(teams) == 1:
-                            home_away = teams[0]
-
-                    if not home_away:
-                        continue
-
-                    # 4. Trích xuất tên BLV
-                    blv_match = re.search(r'(Gà\s+[A-Za-zÀ-ỹ0-9]+|BLV\s+[A-Za-zÀ-ỹ0-9]+)', card_text, re.IGNORECASE)
-                    blv_str = f" ({blv_match.group(1)})" if blv_match else ""
-
-                    # 5. Đuôi định dạng luồng
-                    quality_tag = " [hls]"
-
-                    # Tiêu đề ĐẦY ĐỦ THÔNG TIN ĐỂ HIỂN THỊ 3 DÒNG
-                    full_title = f"{time_str} ⚽ {home_away}{blv_str}{quality_tag}"
-
-                    match_list.append({
-                        "title": full_title,
-                        "logo": logo_url,
-                        "url": full_url
-                    })
-
-                except Exception:
+            # Xử lý bóc tách dữ liệu chuẩn
+            parsed_items = []
+            for item in raw_matches:
+                text = item['fullText']
+                if not text:
                     continue
 
-            # Lọc trùng lặp trận
-            unique_matches = {}
-            for m in match_list:
-                if m['title'] not in unique_matches:
-                    unique_matches[m['title']] = m
+                # 1. Trích xuất Thời gian (Giờ & Ngày)
+                time_match = re.search(r'(\d{1,2}:\d{2})', text)
+                date_match = re.search(r'(\d{1,2}/\d{1,2})', text)
+                m_time = time_match.group(1) if time_match else "LIVE"
+                m_date = date_match.group(1) if date_match else ""
+                time_str = f"{m_time} {m_date}".strip()
 
-            final_matches = list(unique_matches.values())
-            print(f"[*] Đã lọc {len(final_matches)} trận đấu đầy đủ thông tin.")
+                # 2. Trích xuất Tên 2 đội bóng (BẮT BỘC ĐỦ ĐỘI NHÀ VS ĐỘI KHÁCH)
+                lines = [l.strip() for l in text.split('\n') if l.strip()]
+                clean_lines = []
+                for l in lines:
+                    l_lower = l.lower()
+                    if re.match(r'^\d{1,2}:\d{2}$', l) or re.match(r'^\d{1,2}/\d{1,2}$', l):
+                        continue
+                    if l_lower in ["live", "trực tiếp", "hls", "flv", "xem ngay", "sắp diễn ra"]:
+                        continue
+                    if re.search(r'^(gà|blv)\s+', l_lower):
+                        continue
+                    clean_lines.append(l)
 
-            # Trích xuất link stream m3u8
+                teams_str = ""
+                vs_match = re.search(r'(.+?)\s+(?:vs|-)\s+(.+)', text, re.IGNORECASE)
+                if vs_match:
+                    t1 = vs_match.group(1).split('\n')[-1].strip()
+                    t2 = vs_match.group(2).split('\n')[0].strip()
+                    if t1.lower() != t2.lower():
+                        teams_str = f"{t1} vs {t2}"
+                    else:
+                        teams_str = t1
+                elif len(clean_lines) >= 2:
+                    if clean_lines[0].lower() != clean_lines[1].lower():
+                        teams_str = f"{clean_lines[0]} vs {clean_lines[1]}"
+                    else:
+                        teams_str = clean_lines[0]
+
+                # Nếu vẫn không lấy đủ tên trận bóng thì bỏ qua (lọc rác)
+                if not teams_str or len(teams_str) < 3:
+                    continue
+
+                # 3. Trích xuất tên BLV
+                blv_name = ""
+                blv_match = re.search(r'(Gà\s+[A-Za-zÀ-ỹ0-9]+|BLV\s+[A-Za-zÀ-ỹ0-9]+)', item['linkText'] + " " + text, re.IGNORECASE)
+                if blv_match:
+                    blv_name = blv_match.group(1).strip()
+
+                blv_suffix = f" ({blv_name})" if blv_name else ""
+
+                # Tiêu đề ĐẦY ĐỦ THÔNG TIN để ngắt thành 3 dòng đẹp mắt trên IPTV
+                full_title = f"{time_str} ⚽ {teams_str}{blv_suffix} [hls]"
+
+                parsed_items.append({
+                    "title": full_title,
+                    "logo": item['logo'],
+                    "url": item['url']
+                })
+
+            # Lọc trùng lặp kênh
+            unique_dict = {}
+            for p_item in parsed_items:
+                key = f"{p_item['url']}_{p_item['title']}"
+                if key not in unique_dict:
+                    unique_dict[key] = p_item
+
+            final_matches = list(unique_dict.values())
+            print(f"[*] Bóc tách thành công {len(final_matches)} luồng trận đấu chuẩn.")
+
+            # Trích xuất link m3u8
             captured_m3u8 = []
             def handle_request(request):
                 if ".m3u8" in request.url and "blob:" not in request.url:
@@ -123,15 +147,12 @@ def run_scraper():
 
             for item in final_matches:
                 captured_m3u8.clear()
-                if item['url']:
-                    try:
-                        page.goto(item['url'], timeout=20000, wait_until="domcontentloaded")
-                        page.wait_for_timeout(2500)
-                        item['stream'] = captured_m3u8[0] if captured_m3u8 else item['url']
-                    except:
-                        item['stream'] = item['url']
-                else:
-                    item['stream'] = BASE_URL
+                try:
+                    page.goto(item['url'], timeout=20000, wait_until="domcontentloaded")
+                    page.wait_for_timeout(2500)
+                    item['stream'] = captured_m3u8[0] if captured_m3u8 else item['url']
+                except:
+                    item['stream'] = item['url']
 
         except Exception as e:
             print(f"Lỗi hệ thống: {e}")
