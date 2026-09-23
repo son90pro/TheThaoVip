@@ -1,6 +1,10 @@
 import time
 import re
+from urllib.parse import quote
 from playwright.sync_api import sync_playwright
+
+# ⚠️ BẮT BUỘC: Thay domain Cloudflare Worker thật của anh Sơn vào đây (Không kèm https://)
+WORKER_DOMAIN = "chuoi-chien-iptv.sonnguyen90pro.workers.dev"
 
 BASE_URL = "https://gavang33.me"
 OUTPUT_FILE = "playlist.m3u"
@@ -14,7 +18,7 @@ FILTER_KEYWORDS = [
 ]
 
 def run_scraper():
-    final_playlist = []
+    final_matches = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -93,7 +97,7 @@ def run_scraper():
                     raw_blv = re.split(r'(?:hls|flv|live|trực tiếp|\d{1,2}:\d{2})', raw_blv, flags=re.IGNORECASE)[0].strip()
                     blv_name = raw_blv
 
-                # 3. LÀM SẠCH CHUỖI GIỜ/NGÀY TRƯỚC KHI TRÍCH XUẤT TÊN ĐỘI (Loại bỏ lỗi bắt nhầm "12" hoặc "15")
+                # 3. LÀM SẠCH CHUỖI GIỜ/NGÀY TRƯỚC KHI TRÍCH XUẤT TÊN ĐỘI
                 clean_text_no_time = re.sub(r'\d{1,2}:\d{2}', '', text)
                 clean_text_no_time = re.sub(r'\d{1,2}/\d{1,2}', '', clean_text_no_time)
 
@@ -148,27 +152,12 @@ def run_scraper():
             final_matches = list(unique_dict.values())
             print(f"[*] Bóc tách thành công {len(final_matches)} luồng trận đấu chuẩn.")
 
-            captured_m3u8 = []
-            def handle_request(request):
-                if ".m3u8" in request.url and "blob:" not in request.url:
-                    captured_m3u8.append(request.url)
-
-            page.on("request", handle_request)
-
-            for item in final_matches:
-                captured_m3u8.clear()
-                try:
-                    page.goto(item['url'], timeout=20000, wait_until="domcontentloaded")
-                    page.wait_for_timeout(2500)
-                    item['stream'] = captured_m3u8[0] if captured_m3u8 else item['url']
-                except:
-                    item['stream'] = item['url']
-
         except Exception as e:
             print(f"Lỗi hệ thống: {e}")
         finally:
             browser.close()
 
+    # Tạo file M3U chuẩn tuyệt đối cho TiviMate
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n\n")
 
@@ -178,10 +167,12 @@ def run_scraper():
         else:
             for item in final_matches:
                 logo_attr = f'tvg-logo="{item["logo"]}"' if item["logo"] else ''
+                
+                # BẮT BUỘC: Đi qua Cloudflare Worker để Worker tự giải mã m3u8 và proxy phân đoạn .ts
+                proxy_url = f"https://{WORKER_DOMAIN}/live?url={quote(item['url'], safe='')}"
+                
                 f.write(f'#EXTINF:-1 {logo_attr} group-title="{GROUP_NAME}",{item["title"]}\n')
-                f.write(f'#EXTVLCOPT:http-referrer={BASE_URL}/\n')
-                f.write(f'#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)\n')
-                f.write(f'{item["stream"]}|Referer={BASE_URL}/&User-Agent=Mozilla/5.0\n\n')
+                f.write(f'{proxy_url}\n\n')
 
 if __name__ == "__main__":
     run_scraper()
