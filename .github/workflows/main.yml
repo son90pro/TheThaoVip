@@ -1,39 +1,37 @@
 name: Auto Scrape M3U Playlist
 
 on:
+  workflow_dispatch: # Giữ nút bấm chạy thủ công khi cần
   schedule:
-    # Chạy tự động mỗi 2 tiếng 1 lần (giờ UTC)
-    - cron: '0 */2 * * *'
-  workflow_dispatch: # Cho phép bấm nút chạy thủ công bất cứ lúc nào trên GitHub
+    # Tự động chạy mỗi 3 tiếng 1 lần
+    - cron: '0 */3 * * *'
 
 jobs:
-  scrape-job:
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Cài đặt Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install playwright
-        playwright install chromium
-        playwright install-deps
+      - name: Cài đặt thư viện Playwright
+        run: |
+          python -m pip install --upgrade pip
+          pip install playwright
+          playwright install chromium
 
-    - name: Run Scraper Script
-      run: python scraper.py
+      - name: Chạy file scraper.py
+        run: python scraper.py
 
-    - name: Commit and Push updated playlist
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add playlist.m3u
-        git commit -m "Auto update playlist.m3u [skip ci]" || exit 0
-        git push
-        
+      - name: Lưu và Đăng file playlist.m3u lên GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add playlist.m3u
+          git commit -m "Auto update playlist [skip ci]" || exit 0
+          git push
+          
