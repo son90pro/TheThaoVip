@@ -25,7 +25,7 @@ def run_scraper():
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
             page.wait_for_timeout(4000)
 
-            # Dùng JavaScript tìm chính xác Khung Trận Đấu cha (tránh quét nhầm nút lẻ)
+            # Lấy thông tin trận đấu bằng JS
             raw_matches = page.evaluate('''() => {
                 const matches = [];
                 const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]'));
@@ -34,7 +34,6 @@ def run_scraper():
                     const href = link.getAttribute('href');
                     if (!href) return;
                     
-                    // Truy ngược tìm khung chứa toàn bộ trận đấu
                     let container = link.closest('.match-item, .item-match, .card-match, .match-card, .item, .card');
                     if (!container) {
                         container = link.parentElement ? (link.parentElement.parentElement ? link.parentElement.parentElement.parentElement : link.parentElement) : link;
@@ -42,21 +41,15 @@ def run_scraper():
                     if (!container) return;
                     
                     const fullText = container.innerText || '';
-                    
-                    // Lấy logo
                     let logo = '';
                     const img = container.querySelector('img');
                     if (img) {
                         logo = img.getAttribute('src') || img.getAttribute('data-src') || '';
                     }
                     
-                    // Lấy tên BLV từ link hoặc thẻ
-                    let blv = link.innerText || link.getAttribute('title') || '';
-                    
                     matches.push({
                         url: href.startsWith('http') ? href : window.location.origin + href,
                         fullText: fullText,
-                        linkText: blv,
                         logo: logo.startsWith('http') ? logo : (logo ? window.location.origin + logo : '')
                     });
                 });
@@ -64,7 +57,6 @@ def run_scraper():
                 return matches;
             }''')
 
-            # Xử lý bóc tách dữ liệu chuẩn
             parsed_items = []
             for item in raw_matches:
                 text = item['fullText']
@@ -78,47 +70,49 @@ def run_scraper():
                 m_date = date_match.group(1) if date_match else ""
                 time_str = f"{m_time} {m_date}".strip()
 
-                # 2. Trích xuất Tên 2 đội bóng (BẮT BỘC ĐỦ ĐỘI NHÀ VS ĐỘI KHÁCH)
+                # 2. Trích xuất ĐẦY ĐỦ tên BLV (không bị cắt chữ)
+                blv_name = ""
+                blv_match = re.search(r'((?:Gà|BLV)\s+[A-Za-zÀ-ỹ0-9\s\+]+)', text, re.IGNORECASE)
+                if blv_match:
+                    raw_blv = blv_match.group(1).strip()
+                    # Cắt bỏ phần dư thừa phía sau tên BLV
+                    raw_blv = re.split(r'(?:hls|flv|live|trực tiếp|\d{1,2}:\d{2})', raw_blv, flags=re.IGNORECASE)[0].strip()
+                    blv_name = raw_blv
+
+                # 3. Lọc bỏ toàn bộ các dòng chứa Thời gian, Ngày tháng, BLV để lấy Tên 2 Đội
                 lines = [l.strip() for l in text.split('\n') if l.strip()]
                 clean_lines = []
                 for l in lines:
                     l_lower = l.lower()
-                    if re.match(r'^\d{1,2}:\d{2}$', l) or re.match(r'^\d{1,2}/\d{1,2}$', l):
+                    # Loại bỏ các dòng chứa số giờ/ngày
+                    if re.search(r'\d{1,2}:\d{2}', l) or re.search(r'\d{1,2}/\d{1,2}', l):
                         continue
-                    if l_lower in ["live", "trực tiếp", "hls", "flv", "xem ngay", "sắp diễn ra"]:
+                    # Loại bỏ từ khóa trạng thái
+                    if any(k in l_lower for k in ["live", "trực tiếp", "hls", "flv", "xem ngay", "sắp diễn ra"]):
+                        continue
+                    # Loại bỏ dòng tên BLV
+                    if blv_name and l_lower in blv_name.lower():
                         continue
                     if re.search(r'^(gà|blv)\s+', l_lower):
                         continue
+                    
                     clean_lines.append(l)
 
                 teams_str = ""
-                vs_match = re.search(r'(.+?)\s+(?:vs|-)\s+(.+)', text, re.IGNORECASE)
-                if vs_match:
-                    t1 = vs_match.group(1).split('\n')[-1].strip()
-                    t2 = vs_match.group(2).split('\n')[0].strip()
-                    if t1.lower() != t2.lower():
-                        teams_str = f"{t1} vs {t2}"
-                    else:
-                        teams_str = t1
-                elif len(clean_lines) >= 2:
+                if len(clean_lines) >= 2:
                     if clean_lines[0].lower() != clean_lines[1].lower():
                         teams_str = f"{clean_lines[0]} vs {clean_lines[1]}"
                     else:
                         teams_str = clean_lines[0]
+                elif len(clean_lines) == 1:
+                    teams_str = clean_lines[0]
 
-                # Nếu vẫn không lấy đủ tên trận bóng thì bỏ qua (lọc rác)
-                if not teams_str or len(teams_str) < 3:
+                if not teams_str:
                     continue
-
-                # 3. Trích xuất tên BLV
-                blv_name = ""
-                blv_match = re.search(r'(Gà\s+[A-Za-zÀ-ỹ0-9]+|BLV\s+[A-Za-zÀ-ỹ0-9]+)', item['linkText'] + " " + text, re.IGNORECASE)
-                if blv_match:
-                    blv_name = blv_match.group(1).strip()
 
                 blv_suffix = f" ({blv_name})" if blv_name else ""
 
-                # Tiêu đề ĐẦY ĐỦ THÔNG TIN để ngắt thành 3 dòng đẹp mắt trên IPTV
+                # Tiêu đề hoàn chỉnh đầy đủ thông tin
                 full_title = f"{time_str} ⚽ {teams_str}{blv_suffix} [hls]"
 
                 parsed_items.append({
@@ -127,7 +121,7 @@ def run_scraper():
                     "url": item['url']
                 })
 
-            # Lọc trùng lặp kênh
+            # Lọc trùng lặp
             unique_dict = {}
             for p_item in parsed_items:
                 key = f"{p_item['url']}_{p_item['title']}"
