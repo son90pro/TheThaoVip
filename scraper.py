@@ -6,6 +6,17 @@ BASE_URL = "https://gavang33.me"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "Gà Vàng 33 TV"
 
+# Danh sách từ khóa giải đấu (Lọc bỏ để không bị nhận nhầm thành tên đội bóng)
+TOURNAMENT_KEYWORDS = [
+    "cup", "cúp", "league", "championship", "asian games", "emperor's cup", 
+    "v-league", "premier", "champions", "euro", "copa", "afc", "oca", "fifa", 
+    "uefa", "serie", "liga", "bundesliga", "k-league", "j-league", "lfp", "giải"
+]
+
+def is_tournament_name(text):
+    t_lower = text.lower()
+    return any(kw in t_lower for kw in TOURNAMENT_KEYWORDS)
+
 def run_scraper():
     final_playlist = []
 
@@ -25,35 +36,44 @@ def run_scraper():
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
             page.wait_for_timeout(4000)
 
-            # Lấy thông tin trận đấu bằng JS
+            # Bóc tách DOM bằng JavaScript
             raw_matches = page.evaluate('''() => {
                 const matches = [];
-                const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]'));
+                const cards = Array.from(document.querySelectorAll('.match-item, .item-match, .card-match, .match-card, div[class*="match"]'));
                 
-                links.forEach(link => {
+                const targets = cards.length > 0 ? cards : Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"]')).map(a => a.closest('.card, .item, div') || a);
+
+                targets.forEach(card => {
+                    const link = card.querySelector('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]') || (card.tagName === 'A' ? card : null);
+                    if (!link) return;
                     const href = link.getAttribute('href');
                     if (!href) return;
-                    
-                    let container = link.closest('.match-item, .item-match, .card-match, .match-card, .item, .card');
-                    if (!container) {
-                        container = link.parentElement ? (link.parentElement.parentElement ? link.parentElement.parentElement.parentElement : link.parentElement) : link;
-                    }
-                    if (!container) return;
-                    
-                    const fullText = container.innerText || '';
+
+                    // Lấy logo thực tế của đội bóng (bỏ qua icon quả bóng mặc định)
+                    const imgs = Array.from(card.querySelectorAll('img'));
                     let logo = '';
-                    const img = container.querySelector('img');
-                    if (img) {
-                        logo = img.getAttribute('src') || img.getAttribute('data-src') || '';
+                    for (let img of imgs) {
+                        let src = img.getAttribute('src') || img.getAttribute('data-src') || '';
+                        let srcLower = src.toLowerCase();
+                        if (src && !srcLower.includes('ball') && !srcLower.includes('icon') && !srcLower.includes('favicon') && !srcLower.includes('avatar') && !srcLower.includes('default')) {
+                            logo = src.startsWith('http') ? src : window.location.origin + src;
+                            break;
+                        }
                     }
-                    
+                    if (!logo && imgs.length > 0) {
+                        let src = imgs[0].getAttribute('src') || imgs[0].getAttribute('data-src') || '';
+                        if (src) logo = src.startsWith('http') ? src : window.location.origin + src;
+                    }
+
+                    const text = card.innerText || '';
                     matches.push({
                         url: href.startsWith('http') ? href : window.location.origin + href,
-                        fullText: fullText,
-                        logo: logo.startsWith('http') ? logo : (logo ? window.location.origin + logo : '')
+                        fullText: text,
+                        logo: logo,
+                        linkText: link.innerText || ''
                     });
                 });
-                
+
                 return matches;
             }''')
 
@@ -63,56 +83,61 @@ def run_scraper():
                 if not text:
                     continue
 
-                # 1. Trích xuất Thời gian (Giờ & Ngày)
+                # 1. Trích xuất thời gian (Giờ & Ngày)
                 time_match = re.search(r'(\d{1,2}:\d{2})', text)
                 date_match = re.search(r'(\d{1,2}/\d{1,2})', text)
                 m_time = time_match.group(1) if time_match else "LIVE"
                 m_date = date_match.group(1) if date_match else ""
                 time_str = f"{m_time} {m_date}".strip()
 
-                # 2. Trích xuất ĐẦY ĐỦ tên BLV (không bị cắt chữ)
+                # 2. Trích xuất Tên BLV đầy đủ
                 blv_name = ""
                 blv_match = re.search(r'((?:Gà|BLV)\s+[A-Za-zÀ-ỹ0-9\s\+]+)', text, re.IGNORECASE)
                 if blv_match:
                     raw_blv = blv_match.group(1).strip()
-                    # Cắt bỏ phần dư thừa phía sau tên BLV
                     raw_blv = re.split(r'(?:hls|flv|live|trực tiếp|\d{1,2}:\d{2})', raw_blv, flags=re.IGNORECASE)[0].strip()
                     blv_name = raw_blv
 
-                # 3. Lọc bỏ toàn bộ các dòng chứa Thời gian, Ngày tháng, BLV để lấy Tên 2 Đội
+                # 3. Trích xuất Tên 2 Đội bóng (Lọc sạch tên giải đấu, thời gian, BLV)
                 lines = [l.strip() for l in text.split('\n') if l.strip()]
                 clean_lines = []
                 for l in lines:
                     l_lower = l.lower()
-                    # Loại bỏ các dòng chứa số giờ/ngày
                     if re.search(r'\d{1,2}:\d{2}', l) or re.search(r'\d{1,2}/\d{1,2}', l):
                         continue
-                    # Loại bỏ từ khóa trạng thái
                     if any(k in l_lower for k in ["live", "trực tiếp", "hls", "flv", "xem ngay", "sắp diễn ra"]):
                         continue
-                    # Loại bỏ dòng tên BLV
                     if blv_name and l_lower in blv_name.lower():
                         continue
                     if re.search(r'^(gà|blv)\s+', l_lower):
+                        continue
+                    # Bỏ qua dòng tên giải đấu
+                    if is_tournament_name(l):
                         continue
                     
                     clean_lines.append(l)
 
                 teams_str = ""
-                if len(clean_lines) >= 2:
-                    if clean_lines[0].lower() != clean_lines[1].lower():
-                        teams_str = f"{clean_lines[0]} vs {clean_lines[1]}"
-                    else:
+                vs_match = re.search(r'([A-Za-zÀ-ỹ0-9\s\.\-]+)\s+(?:vs|-)\s+([A-Za-zÀ-ỹ0-9\s\.\-]+)', text, re.IGNORECASE)
+                if vs_match:
+                    t1 = vs_match.group(1).split('\n')[-1].strip()
+                    t2 = vs_match.group(2).split('\n')[0].strip()
+                    if not is_tournament_name(t1) and not is_tournament_name(t2) and t1.lower() != t2.lower():
+                        teams_str = f"{t1} vs {t2}"
+
+                if not teams_str:
+                    if len(clean_lines) >= 2:
+                        if clean_lines[0].lower() != clean_lines[1].lower():
+                            teams_str = f"{clean_lines[0]} vs {clean_lines[1]}"
+                        else:
+                            teams_str = clean_lines[0]
+                    elif len(clean_lines) == 1:
                         teams_str = clean_lines[0]
-                elif len(clean_lines) == 1:
-                    teams_str = clean_lines[0]
 
                 if not teams_str:
                     continue
 
                 blv_suffix = f" ({blv_name})" if blv_name else ""
-
-                # Tiêu đề hoàn chỉnh đầy đủ thông tin
                 full_title = f"{time_str} ⚽ {teams_str}{blv_suffix} [hls]"
 
                 parsed_items.append({
@@ -131,7 +156,7 @@ def run_scraper():
             final_matches = list(unique_dict.values())
             print(f"[*] Bóc tách thành công {len(final_matches)} luồng trận đấu chuẩn.")
 
-            # Trích xuất link m3u8
+            # Trích xuất link stream m3u8
             captured_m3u8 = []
             def handle_request(request):
                 if ".m3u8" in request.url and "blob:" not in request.url:
@@ -170,4 +195,3 @@ def run_scraper():
 
 if __name__ == "__main__":
     run_scraper()
-    
