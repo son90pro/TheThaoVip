@@ -3,7 +3,7 @@ import re
 from urllib.parse import quote
 from playwright.sync_api import sync_playwright
 
-# ⚠️ BẮT BUỘC: Thay domain Cloudflare Worker của anh Sơn vào đây (Không kèm https://)
+# ⚠️ BẮT BUỘC: Thay domain Cloudflare Worker thật của anh Sơn vào đây (Không kèm https://)
 WORKER_DOMAIN = "chuoi-chien-iptv.sonnguyen90pro.workers.dev"
 
 BASE_URL = "https://gavang33.me"
@@ -170,7 +170,7 @@ def run_scraper():
                     unique_dict[key] = p_item
 
             final_matches = list(unique_dict.values())
-            print(f"[*] Tìm thấy tổng cộng {len(final_matches)} trận đấu.")
+            print(f"[*] Tìm thấy tổng cộng {len(final_matches)} luồng trận đấu.")
 
             page.close()
 
