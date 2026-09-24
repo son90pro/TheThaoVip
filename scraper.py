@@ -41,7 +41,7 @@ def parse_teams_from_url(url: str) -> str:
         
         team1_slug, team2_slug = parts[0], parts[1]
         
-        # Lọc bỏ tên BLV dính ở đầu team 1 (VD: ga-sieu-gay-japan -> japan)
+        # Lọc bỏ tên BLV dính ở đầu team 1
         team1_slug = re.sub(r'^(?:blv-)?ga-(?:sieu-)?[a-z0-9]+-', '', team1_slug, flags=re.IGNORECASE)
         
         # Lọc bỏ chuỗi Luc... Ngay... dính ở đuôi team 2
@@ -117,39 +117,48 @@ def run_scraper():
 
             raw_matches = page.evaluate('''() => {
                 const matches = [];
-                const cards = Array.from(document.querySelectorAll('.match-item, .item-match, .card-match, .match-card, div[class*="match"]'));
-                const targets = cards.length > 0 ? cards : Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"]')).map(a => a.closest('.card, .item, div') || a);
+                const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]'));
+                const seenUrls = new Set();
 
-                targets.forEach(card => {
-                    const links = Array.from(card.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]'));
-                    if (links.length === 0) return;
+                links.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (!href) return;
 
-                    links.forEach(link => {
-                        const href = link.getAttribute('href');
-                        if (!href) return;
+                    const fullUrl = href.startsWith('http') ? href : window.location.origin + href;
+                    if (seenUrls.has(fullUrl)) return;
+                    seenUrls.add(fullUrl);
 
-                        let logo = '';
-                        const teamImgs = Array.from(card.querySelectorAll('[class*="team"] img, [class*="club"] img, .logo img'));
-                        if (teamImgs.length > 0) {
-                            let src = teamImgs[0].getAttribute('src') || teamImgs[0].getAttribute('data-src') || '';
-                            if (src) logo = src.startsWith('http') ? src : window.location.origin + src;
+                    // Thu hẹp phạm vi card chỉ vừa đủ chứa 1 trận duy nhất
+                    let card = link;
+                    let parent = link.parentElement;
+                    while (parent && parent.tagName !== 'BODY') {
+                        if (parent.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]').length === 1) {
+                            card = parent;
+                            parent = parent.parentElement;
+                        } else {
+                            break;
                         }
-                        if (!logo) {
-                            const allImgs = Array.from(card.querySelectorAll('img'));
-                            for (let img of allImgs) {
-                                let src = img.getAttribute('src') || img.getAttribute('data-src') || '';
-                                if (src && !src.includes('avatar') && !src.includes('favicon')) {
-                                    logo = src.startsWith('http') ? src : window.location.origin + src;
-                                    break;
-                                }
+                    }
+
+                    const fullText = card ? card.innerText || '' : link.innerText || '';
+
+                    // Tìm logo duy nhất của đúng card này
+                    let logo = '';
+                    if (card) {
+                        const imgs = Array.from(card.querySelectorAll('img'));
+                        for (let img of imgs) {
+                            let src = img.getAttribute('src') || img.getAttribute('data-src') || '';
+                            if (src && !src.includes('avatar') && !src.includes('favicon') && !src.includes('logo-')) {
+                                logo = src.startsWith('http') ? src : window.location.origin + src;
+                                break;
                             }
                         }
+                    }
 
-                        matches.push({
-                            url: href.startsWith('http') ? href : window.location.origin + href,
-                            fullText: card.innerText || '',
-                            logo: logo
-                        });
+                    matches.push({
+                        url: fullUrl,
+                        fullText: fullText,
+                        logo: logo
                     });
                 });
 
@@ -210,17 +219,16 @@ def run_scraper():
                 if not teams_str or re.search(r'^(gà|blv)\b', teams_str, re.IGNORECASE):
                     teams_str = "Trận đấu Trực Tiếp"
 
-                # 4. Xác định luồng [hls] hoặc [flv] dựa trên URL
+                # 4. Xác định luồng [hls] hoặc [flv]
                 stream_type = "[flv]" if "flv" in url.lower() or "stream2" in url.lower() else "[hls]"
 
-                # 5. Ghép tên BLV chuẩn mẫu: (Gà Siêu Bệu)
+                # 5. Ghép tên BLV
                 blv_suffix = ""
                 if clean_blv:
                     if not clean_blv.lower().startswith('gà'):
                         clean_blv = f"Gà {clean_blv}"
                     blv_suffix = f" ({clean_blv.title()})"
 
-                # Ghép tiêu đề đúng 100% mẫu ảnh: 08:40 24/09 ⚽ Seattle Sounders vs Real Salt Lake (Gà Siêu Bệu) [hls]
                 full_title = f"{time_str} ⚽ {teams_str}{blv_suffix} {stream_type}".strip()
 
                 parsed_items.append({
@@ -229,14 +237,14 @@ def run_scraper():
                     "url": item['url']
                 })
 
-            # Lọc trùng lặp theo đúng URL
+            # Lọc trùng theo đúng URL độc lập
             unique_dict = {}
             for p_item in parsed_items:
                 if p_item['url'] not in unique_dict:
                     unique_dict[p_item['url']] = p_item
 
             final_matches = list(unique_dict.values())
-            print(f"[*] Tìm thấy {len(final_matches)} luồng trận đấu.")
+            print(f"[*] Tìm thấy {len(final_matches)} luồng trận đấu độc lập.")
 
             page.close()
 
