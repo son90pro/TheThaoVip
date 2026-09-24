@@ -9,7 +9,7 @@ BASE_URL = "https://gavang33.me"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "Gà Vàng 33 TV"
 
-# Danh sách cờ quốc gia đầy đủ
+# Bảng tra cứu cờ quốc gia chuẩn hóa
 LOGOS = {
     # Châu Âu
     "netherlands": "https://flagcdn.com/w320/nl.png", "hà lan": "https://flagcdn.com/w320/nl.png",
@@ -57,7 +57,7 @@ def clean_word(w: str) -> str:
 
 def parse_teams_from_url(url: str) -> str:
     try:
-        match = re.search(r'/(?:truc-tiep|match|live)/([^/?#]+)', url)
+        match = re.search(r'/(?:truc-tiep|match|live|room|xem)/([^/?#]+)', url)
         if not match:
             return ""
         slug = match.group(1)
@@ -93,25 +93,45 @@ def get_match_details(context, match_url):
             m3u8_found.append(url)
             
     page.on("request", handle_request)
-    match_info = {"time_str": "", "m3u8_url": ""}
+    match_info = {"time_str": "", "m3u8_url": "", "is_live": False}
 
     try:
-        page.goto(match_url, timeout=8000, wait_until="domcontentloaded")
+        page.goto(match_url, timeout=10000, wait_until="domcontentloaded")
         
+        # Click kích hoạt trình phát video
         try:
-            page.click('.play-btn, .btn-play, #player, iframe, video', timeout=1000)
+            page.click('.play-btn, .btn-play, #player, iframe, video, .player-wrapper', timeout=1500)
         except Exception:
             pass
 
-        for _ in range(5):
+        for _ in range(8):
             if m3u8_found:
                 break
-            time.sleep(0.5)
+            time.sleep(0.4)
+
+        # Trích xuất m3u8 từ iframe nếu network chưa chộp kịp
+        if not m3u8_found:
+            for frame in page.frames:
+                try:
+                    content = frame.content()
+                    urls = re.findall(r'https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*', content)
+                    for u in urls:
+                        if "blob:" not in u and u not in m3u8_found:
+                            m3u8_found.append(u)
+                except Exception:
+                    pass
 
         match_info["m3u8_url"] = m3u8_found[0] if m3u8_found else ""
 
+        # Quét thời gian & kiểm tra trạng thái Đang diễn ra
         details = page.evaluate('''() => {
             let tStr = "";
+            let liveState = false;
+            const fullBody = document.body.innerText || '';
+            if (/(hiệp|phút|đang diễn ra|trực tiếp|live)/i.test(fullBody)) {
+                liveState = true;
+            }
+
             const timeEls = Array.from(document.querySelectorAll('span, div, p, time, b'));
             for (let el of timeEls) {
                 const text = el.innerText ? el.innerText.trim() : '';
@@ -120,11 +140,12 @@ def get_match_details(context, match_url):
                     break;
                 }
             }
-            return { timeStr: tStr };
+            return { timeStr: tStr, liveState: liveState };
         }''')
 
         if details['timeStr']:
             match_info["time_str"] = details['timeStr']
+        match_info["is_live"] = details['liveState'] or bool(match_info["m3u8_url"])
 
     except Exception:
         pass
@@ -153,11 +174,15 @@ def run_scraper():
         try:
             print(f"[*] Đang tải trang Gà Vàng 33 TV: {BASE_URL}")
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
-            time.sleep(2)
+            
+            # Cuộn trang để đảm bảo nạp đầy đủ các thẻ trận đấu Đang diễn ra & Sắp diễn ra
+            for _ in range(3):
+                page.evaluate("window.scrollBy(0, 800)")
+                time.sleep(0.5)
 
             raw_matches = page.evaluate('''() => {
                 const matches = [];
-                const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]'));
+                const links = Array.from(document.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"], a[href*="/xem/"], a[href*="/room/"]'));
                 const seenUrls = new Set();
 
                 links.forEach(link => {
@@ -171,7 +196,7 @@ def run_scraper():
                     let card = link;
                     let parent = link.parentElement;
                     while (parent && parent.tagName !== 'BODY') {
-                        if (parent.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]').length === 1) {
+                        if (parent.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"], a[href*="/xem/"], a[href*="/room/"]').length === 1) {
                             card = parent;
                             parent = parent.parentElement;
                         } else {
@@ -191,7 +216,7 @@ def run_scraper():
             }''')
             page.close()
 
-            print(f"[*] Đã cào được {len(raw_matches)} trận đấu. Đang quét chi tiết...")
+            print(f"[*] Quét được {len(raw_matches)} link trận đấu. Đang phân tích luồng phát...")
 
             parsed_items = []
             for item in raw_matches:
@@ -220,16 +245,18 @@ def run_scraper():
 
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
 
-                # 3. Tên trận & Logo Cờ Chuẩn
+                # 3. Tên trận & Cờ
                 teams_str = parse_teams_from_url(url)
                 if not teams_str:
                     teams_str = "Trận đấu Trực Tiếp"
 
                 logo = get_team_logo_url(teams_str)
                 stream_type = "[flv]" if "flv" in url.lower() or "stream2" in url.lower() else "[hls]"
-
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
-                status_icon = "🟢 " if details['m3u8_url'] or any(k in text.lower() for k in ["hiệp", "phút", "live", "đang diễn ra"]) else "🟡 "
+
+                # Xác định Icon Trạng Thái
+                is_currently_live = details['is_live'] or any(k in text.lower() for k in ["hiệp", "phút", "đang đá", "live"])
+                status_icon = "🟢 " if is_currently_live else "🟡 "
 
                 full_title = f"{status_icon}{time_str} ⚽ {teams_str}{blv_suffix} {stream_type}".strip()
 
@@ -237,13 +264,17 @@ def run_scraper():
                     "title": full_title,
                     "logo": logo,
                     "url": url,
-                    "m3u8_url": details['m3u8_url']
+                    "m3u8_url": details['m3u8_url'],
+                    "is_live": is_currently_live
                 })
 
-            # Lọc trùng link & Đánh dấu Server
+            # Lọc trùng lặp & Xếp trận Đang diễn ra (🟢) lên đầu danh sách
             seen_urls = set()
             title_tracker = {}
             final_matches = []
+
+            # Ưu tiên đưa các trận LIVE lên trên
+            parsed_items.sort(key=lambda x: x['is_live'], reverse=True)
 
             for p_item in parsed_items:
                 if p_item['url'] in seen_urls:
@@ -264,14 +295,14 @@ def run_scraper():
         finally:
             browser.close()
 
-    # Ghi file Playlist M3U Đầy Đủ
+    # Ghi file M3U Playlist
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n\n")
 
         for item in final_matches:
             logo_attr = f'tvg-logo="{item["logo"]}"' if item["logo"] else ''
             
-            # Ưu tiên link proxy trực tiếp nếu cào được m3u8, nếu chưa tới giờ đá sẽ quay về route /live
+            # Trận có luồng m3u8 dùng /proxy trực tiếp để TiviMate phát mượt 100%
             if item.get('m3u8_url'):
                 stream_url = f"https://{WORKER_DOMAIN}/proxy?url={quote(item['m3u8_url'], safe='')}"
             else:
@@ -282,7 +313,7 @@ def run_scraper():
             f.write(f'#EXTHTTP:{{"urls":["(.*)"],"headers":{{"Referer":"{BASE_URL}/"}}}}\n')
             f.write(f'{stream_url}\n\n')
 
-    print(f"[*] Đã xuất thành công ĐẦY ĐỦ {len(final_matches)} trận đấu vào file {OUTPUT_FILE}")
+    print(f"[*] Đã hoàn tất xuất {len(final_matches)} trận đấu (Trận Đang diễn ra 🟢 xếp lên đầu) vào file {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     run_scraper()
