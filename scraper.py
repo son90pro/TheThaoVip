@@ -15,45 +15,8 @@ FILTER_KEYWORDS = [
     "xem ngay", "sắp diễn ra", "phút", "categoría", "primera", "hiệp 1", "hiệp 2"
 ]
 
-def extract_match_time(text: str) -> str:
-    """Trích xuất chính xác ngày giờ 08:40 24/09"""
-    if not text:
-        return "LIVE"
-        
-    # 1. Tìm dạng HH:MM DD/MM hoặc HH:MM
-    time_match = re.search(r'\b(\d{1,2}[:h]\d{2})\b', text, re.I)
-    date_match = re.search(r'\b(\d{1,2}/\d{1,2})\b', text, re.I)
-    
-    if time_match:
-        m_time = time_match.group(1).replace('h', ':')
-        m_date = date_match.group(1) if date_match else ""
-        return f"{m_time} {m_date}".strip()
-        
-    # 2. Bắt dạng Luc HHMM Ngay DD MM (Luc 0840 Ngay 24 09)
-    luc_match = re.search(r'\b(?:luc|lúc)\s*(\d{2})(\d{2})\s*(?:ngay|ngày)?\s*(\d{1,2})\s*(\d{1,2})?\b', text, re.I)
-    if luc_match:
-        hh, mm = luc_match.group(1), luc_match.group(2)
-        dd, m_m = luc_match.group(3), luc_match.group(4)
-        m_time = f"{int(hh):02d}:{mm}"
-        m_date = f"{int(dd):02d}/{int(m_m):02d}" if m_m else ""
-        return f"{m_time} {m_date}".strip()
-
-    return "LIVE"
-
-def clean_time_and_date_trash(text: str) -> str:
-    """Lọc sạch các chuỗi ngày giờ lặp rác đằng sau tên trận"""
-    if not text:
-        return ""
-    cleaned = re.sub(r'\b(?:luc|lúc)?\s*\d{3,4}\s*(?:ngay|ngày)?\s*\d{1,2}\s*[/_\s]?\s*\d{1,2}\s*[/_\s]?\s*(?:\d{2,4})?\b', '', text, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\b(?:luc|lúc)\s*\d{3,4}\b', '', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\b(?:ngay|ngày)\s*\d{1,2}\s*[/_\s]?\s*\d{1,2}\s*[/_\s]?\s*(?:\d{2,4})?\b', '', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\b\d{1,2}[:h]\d{2}\b', '', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\b\d{1,2}/\d{1,2}(?:/\d{2,4})?\b', '', cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r'\s+', ' ', cleaned).strip()
-    return cleaned
-
 def parse_teams_from_url(url: str) -> str:
-    """Trích xuất tên 2 đội bóng từ URL slug"""
+    """Trích xuất tên 2 đội từ URL slug"""
     try:
         match = re.search(r'/(?:truc-tiep|match|live)/([^/?#]+)', url)
         if not match:
@@ -66,10 +29,7 @@ def parse_teams_from_url(url: str) -> str:
         
         team1_slug, team2_slug = parts[0], parts[1]
         
-        # Lọc tên BLV dính ở team 1
         team1_slug = re.sub(r'^(?:blv-)?ga-(?:sieu-)?[a-z0-9]+-', '', team1_slug, flags=re.IGNORECASE)
-        
-        # Lọc Luc... Ngay... dính ở team 2
         team2_slug = re.sub(r'-luc-\d+.*$', '', team2_slug, flags=re.IGNORECASE)
         team2_slug = re.sub(r'-ngay-\d+.*$', '', team2_slug, flags=re.IGNORECASE)
         team2_slug = re.sub(r'-[a-z0-9]{8,35}$', '', team2_slug, flags=re.IGNORECASE)
@@ -84,9 +44,6 @@ def parse_teams_from_url(url: str) -> str:
 
         t1 = " ".join([clean_word(w) for w in team1_slug.split('-')])
         t2 = " ".join([clean_word(w) for w in team2_slug.split('-')])
-        
-        t1 = clean_time_and_date_trash(t1)
-        t2 = clean_time_and_date_trash(t2)
         
         if t1 and t2 and len(t1) > 1 and len(t2) > 1:
             return f"{t1} vs {t2}"
@@ -166,14 +123,13 @@ def run_scraper():
 
                     const fullText = card ? card.innerText || '' : link.innerText || '';
 
-                    // Lọc logo: Bỏ hẳn ảnh Avatar BLV (chứa avatar, blv, ga-sieu) để lấy Logo Đội bóng/Quốc kỳ
+                    // Lấy bất kỳ hình ảnh nào có sẵn trong card (ưu tiên ảnh BLV hoặc logo nếu có)
                     let logo = '';
                     if (card) {
                         const imgs = Array.from(card.querySelectorAll('img'));
                         for (let img of imgs) {
                             let src = img.getAttribute('src') || img.getAttribute('data-src') || img.getAttribute('srcset') || '';
-                            const lowSrc = src.toLowerCase();
-                            if (src && !lowSrc.includes('favicon') && !lowSrc.includes('avatar') && !lowSrc.includes('blv') && !lowSrc.includes('ga-sieu') && !lowSrc.includes('logo-gavang')) {
+                            if (src && !src.includes('favicon')) {
                                 logo = src.startsWith('http') ? src : window.location.origin + src;
                                 break;
                             }
@@ -197,8 +153,23 @@ def run_scraper():
                 if not text:
                     continue
 
-                # 1. Trích xuất Ngày Giờ CHUẨN TRƯỚC
-                time_str = extract_match_time(text)
+                # 1. Trích xuất thời gian chính xác từ text
+                time_match = re.search(r'\b(\d{1,2}[:h]\d{2})\b', text, re.I)
+                date_match = re.search(r'\b(\d{1,2}/\d{1,2})\b', text, re.I)
+                if time_match:
+                    m_time = time_match.group(1).replace('h', ':')
+                    m_date = date_match.group(1) if date_match else ""
+                    time_str = f"{m_time} {m_date}".strip()
+                else:
+                    luc_match = re.search(r'\b(?:luc|lúc)\s*(\d{2})(\d{2})\s*(?:ngay|ngày)?\s*(\d{1,2})\s*(\d{1,2})?\b', text, re.I)
+                    if luc_match:
+                        hh, mm = luc_match.group(1), luc_match.group(2)
+                        dd, m_m = luc_match.group(3), luc_match.group(4)
+                        m_time = f"{int(hh):02d}:{mm}"
+                        m_date = f"{int(dd):02d}/{int(m_m):02d}" if m_m else ""
+                        time_str = f"{m_time} {m_date}".strip()
+                    else:
+                        time_str = "LIVE"
 
                 # 2. Trích xuất tên BLV
                 blv_name = ""
@@ -213,8 +184,7 @@ def run_scraper():
                 # 3. Trích xuất Tên 2 Đội
                 teams_str = parse_teams_from_url(url)
                 if not teams_str:
-                    clean_text = clean_time_and_date_trash(text)
-                    lines = [l.strip() for l in clean_text.split('\n') if l.strip()]
+                    lines = [l.strip() for l in text.split('\n') if l.strip()]
                     valid_lines = []
                     for line in lines:
                         l_lower = line.lower()
@@ -224,26 +194,24 @@ def run_scraper():
                         if len(line) >= 2 and re.search(r'[A-Za-zÀ-ỹ0-9]', line):
                             valid_lines.append(line)
 
-                    vs_match = re.search(r'([A-Za-zÀ-ỹ0-9\s\.\-]+)\s+(?:vs|-)\s+([A-Za-zÀ-ỹ0-9\s\.\-]+)', clean_text, re.IGNORECASE)
+                    vs_match = re.search(r'([A-Za-zÀ-ỹ0-9\s\.\-]+)\s+(?:vs|-)\s+([A-Za-zÀ-ỹ0-9\s\.\-]+)', text, re.IGNORECASE)
                     if vs_match:
                         t1 = vs_match.group(1).split('\n')[-1].strip()
                         t2 = vs_match.group(2).split('\n')[0].strip()
                         if len(t1) >= 2 and len(t2) >= 2 and not t1.isdigit() and not t2.isdigit():
-                            if not any(kw in t1.lower() for kw in FILTER_KEYWORDS) and not any(kw in t2.lower() for kw in FILTER_KEYWORDS):
-                                teams_str = f"{t1} vs {t2}"
+                            teams_str = f"{t1} vs {t2}"
 
                     if not teams_str:
                         if len(valid_lines) >= 2: teams_str = f"{valid_lines[0]} vs {valid_lines[1]}"
                         elif len(valid_lines) == 1: teams_str = valid_lines[0]
 
-                teams_str = clean_time_and_date_trash(teams_str)
                 if not teams_str or re.search(r'^(gà|blv)\b', teams_str, re.IGNORECASE):
                     teams_str = "Trận đấu Trực Tiếp"
 
-                # 4. Luồng stream [flv] hay [hls]
+                # 4. Luồng stream [flv] hoặc [hls]
                 stream_type = "[flv]" if "flv" in url.lower() or "stream2" in url.lower() else "[hls]"
 
-                # 5. Ghép tên BLV dạng (Gà Siêu Bệu)
+                # 5. Tên BLV in hoa/thường chuẩn mẫu
                 blv_suffix = ""
                 if clean_blv:
                     if not clean_blv.lower().startswith('gà'):
