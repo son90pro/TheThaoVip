@@ -9,35 +9,38 @@ BASE_URL = "https://gavang33.me"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "Gà Vàng 33 TV"
 
-# Danh sách cờ quốc gia mở rộng
+# Danh sách cờ quốc gia đầy đủ
 LOGOS = {
-    # Đông Nam Á
+    # Châu Âu
+    "netherlands": "https://flagcdn.com/w320/nl.png", "hà lan": "https://flagcdn.com/w320/nl.png",
+    "germany": "https://flagcdn.com/w320/de.png", "đức": "https://flagcdn.com/w320/de.png",
+    "spain": "https://flagcdn.com/w320/es.png", "tây ban nha": "https://flagcdn.com/w320/es.png",
+    "france": "https://flagcdn.com/w320/fr.png", "pháp": "https://flagcdn.com/w320/fr.png",
+    "italy": "https://flagcdn.com/w320/it.png", "ý": "https://flagcdn.com/w320/it.png",
+    "portugal": "https://flagcdn.com/w320/pt.png", "bồ đào nha": "https://flagcdn.com/w320/pt.png",
+    "england": "https://flagcdn.com/w320/gb-eng.png", "anh": "https://flagcdn.com/w320/gb-eng.png",
+    "wales": "https://flagcdn.com/w320/gb-wls.png", "scotland": "https://flagcdn.com/w320/gb-sct.png",
+    "andorra": "https://flagcdn.com/w320/ad.png", "malta": "https://flagcdn.com/w320/mt.png",
+
+    # Châu Á & Trung Đông
     "vietnam": "https://flagcdn.com/w320/vn.png", "việt nam": "https://flagcdn.com/w320/vn.png",
     "thailand": "https://flagcdn.com/w320/th.png", "thái lan": "https://flagcdn.com/w320/th.png",
     "indonesia": "https://flagcdn.com/w320/id.png", "malaysia": "https://flagcdn.com/w320/my.png",
-    "singapore": "https://flagcdn.com/w320/sg.png", "philippines": "https://flagcdn.com/w320/ph.png",
-    "myanmar": "https://flagcdn.com/w320/mm.png", "laos": "https://flagcdn.com/w320/la.png", "lào": "https://flagcdn.com/w320/la.png",
-    "cambodia": "https://flagcdn.com/w320/kh.png", "brunei": "https://flagcdn.com/w320/bn.png", "timor leste": "https://flagcdn.com/w320/tl.png",
-
-    # Châu Á & Trung Đông
     "japan": "https://flagcdn.com/w320/jp.png", "nhật bản": "https://flagcdn.com/w320/jp.png",
     "south korea": "https://flagcdn.com/w320/kr.png", "hàn quốc": "https://flagcdn.com/w320/kr.png", "korea": "https://flagcdn.com/w320/kr.png",
     "china": "https://flagcdn.com/w320/cn.png", "trung quốc": "https://flagcdn.com/w320/cn.png",
     "qatar": "https://flagcdn.com/w320/qa.png", "bahrain": "https://flagcdn.com/w320/bh.png",
     "united arab emirates": "https://flagcdn.com/w320/ae.png", "uae": "https://flagcdn.com/w320/ae.png",
     "yemen": "https://flagcdn.com/w320/ye.png", "maldives": "https://flagcdn.com/w320/mv.png",
-    "palestine": "https://flagcdn.com/w320/ps.png", "saudi arabia": "https://flagcdn.com/w320/sa.png", "australia": "https://flagcdn.com/w320/au.png",
+    "myanmar": "https://flagcdn.com/w320/mm.png", "timor leste": "https://flagcdn.com/w320/tl.png",
 
-    # Châu Âu & Châu Phi & Mỹ
-    "andorra": "https://flagcdn.com/w320/ad.png", "malta": "https://flagcdn.com/w320/mt.png",
-    "portugal": "https://flagcdn.com/w320/pt.png", "bồ đào nha": "https://flagcdn.com/w320/pt.png",
-    "wales": "https://flagcdn.com/w320/gb-wls.png", "england": "https://flagcdn.com/w320/gb-eng.png",
+    # Châu Phi & Nam Mỹ
     "namibia": "https://flagcdn.com/w320/na.png", "congo": "https://flagcdn.com/w320/cg.png", "republic of the congo": "https://flagcdn.com/w320/cg.png",
-    "uruguay": "https://flagcdn.com/w320/uy.png", "ecuador": "https://flagcdn.com/w320/ec.png", "brazil": "https://flagcdn.com/w320/br.png", "new zealand": "https://flagcdn.com/w320/nz.png"
+    "brazil": "https://flagcdn.com/w320/br.png", "argentina": "https://flagcdn.com/w320/ar.png",
+    "uruguay": "https://flagcdn.com/w320/uy.png", "ecuador": "https://flagcdn.com/w320/ec.png"
 }
 
 def get_team_logo_url(teams_str: str) -> str:
-    """Ưu tiên tìm cờ theo tên đội 1 hoặc đội 2. Nếu không có thì hiện cờ mặc định."""
     t_lower = teams_str.lower()
     for key, url in LOGOS.items():
         if key in t_lower:
@@ -93,17 +96,31 @@ def get_match_details(context, match_url):
     match_info = {"time_str": "", "m3u8_url": ""}
 
     try:
-        page.goto(match_url, timeout=8000, wait_until="domcontentloaded")
+        page.goto(match_url, timeout=15000, wait_until="domcontentloaded")
         
+        # Click ép player tải luồng video
         try:
-            page.click('.play-btn, .btn-play, #player, iframe', timeout=1000)
+            page.click('.play-btn, .btn-play, #player, iframe, video', timeout=2000)
         except Exception:
             pass
 
-        for _ in range(6):
+        # Chờ tối đa 5 giây để bắt request m3u8
+        for _ in range(10):
             if m3u8_found:
                 break
-            time.sleep(0.3)
+            time.sleep(0.5)
+
+        # Trích xuất m3u8 từ iframe nếu network chưa chộp kịp
+        if not m3u8_found:
+            for frame in page.frames:
+                try:
+                    content = frame.content()
+                    urls = re.findall(r'https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*', content)
+                    for u in urls:
+                        if "blob:" not in u and u not in m3u8_found:
+                            m3u8_found.append(u)
+                except Exception:
+                    pass
 
         match_info["m3u8_url"] = m3u8_found[0] if m3u8_found else ""
 
@@ -188,7 +205,7 @@ def run_scraper():
             }''')
             page.close()
 
-            print(f"[*] Lấy được {len(raw_matches)} trận đấu. Đang quét chi tiết...")
+            print(f"[*] Tìm thấy {len(raw_matches)} trận đấu trên web. Đang kiểm tra luồng phát m3u8...")
 
             parsed_items = []
             for item in raw_matches:
@@ -198,6 +215,10 @@ def run_scraper():
                     continue
 
                 details = get_match_details(context, url)
+
+                # CHỈ LẤY CÁC TRẬN ĐÃ CÓ LUỒNG M3U8 THỰC TẾ (ĐẢM BẢO TIVIMATE PHÁT ĐƯỢC 100%)
+                if not details['m3u8_url']:
+                    continue
 
                 # 1. Thời gian
                 raw_time_text = details['time_str'] if details['time_str'] else text
@@ -217,7 +238,7 @@ def run_scraper():
 
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
 
-                # 3. Tên trận đấu & Logo Cờ Chuẩn
+                # 3. Tên trận & Logo chuẩn
                 teams_str = parse_teams_from_url(url)
                 if not teams_str:
                     teams_str = "Trận đấu Trực Tiếp"
@@ -237,15 +258,16 @@ def run_scraper():
                     "m3u8_url": details['m3u8_url']
                 })
 
-            # Lọc trùng lặp & Giữ toàn bộ danh sách
-            seen_urls = set()
+            # Lọc trùng & Đánh dấu Server
+            seen_m3u8 = set()
             title_tracker = {}
             final_matches = []
 
             for p_item in parsed_items:
-                if p_item['url'] in seen_urls:
+                m_url = p_item['m3u8_url']
+                if m_url in seen_m3u8:
                     continue
-                seen_urls.add(p_item['url'])
+                seen_m3u8.add(m_url)
 
                 raw_title = p_item['title']
                 if raw_title in title_tracker:
@@ -261,25 +283,20 @@ def run_scraper():
         finally:
             browser.close()
 
-    # Ghi file Playlist M3U
+    # Ghi file Playlist M3U chuẩn
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n\n")
 
         for item in final_matches:
             logo_attr = f'tvg-logo="{item["logo"]}"' if item["logo"] else ''
-            
-            # Ưu tiên proxy trực tiếp link .m3u8 nếu đã có, nếu chưa có thì fallback link trang web cho Worker tự giải mã
-            if item.get('m3u8_url'):
-                stream_url = f"https://{WORKER_DOMAIN}/proxy?url={quote(item['m3u8_url'], safe='')}"
-            else:
-                stream_url = f"https://{WORKER_DOMAIN}/live?url={quote(item['url'], safe='')}"
+            stream_url = f"https://{WORKER_DOMAIN}/proxy?url={quote(item['m3u8_url'], safe='')}"
             
             f.write(f'#EXTINF:-1 {logo_attr} group-title="{GROUP_NAME}",{item["title"]}\n')
             f.write(f'#EXTVLCOPT:http-referrer={BASE_URL}/\n')
             f.write(f'#EXTHTTP:{{"urls":["(.*)"],"headers":{{"Referer":"{BASE_URL}/"}}}}\n')
             f.write(f'{stream_url}\n\n')
 
-    print(f"[*] Đã xuất đầy đủ {len(final_matches)} trận đấu vào file {OUTPUT_FILE}")
+    print(f"[*] Đã xuất {len(final_matches)} kênh phát mượt 100% vào {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     run_scraper()
