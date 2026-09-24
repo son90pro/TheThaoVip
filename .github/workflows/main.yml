@@ -1,37 +1,41 @@
-name: Auto Scrape M3U Playlist
+name: Auto Scrape M3U Playlist - Chuoi Chien TV
 
 on:
-  workflow_dispatch: # Giữ nút bấm chạy thủ công khi cần
   schedule:
-    # Tự động chạy mỗi 2 tiếng 1 lần
-    - cron: '0 */2 * * *'
+    # Tự động chạy mỗi 1 tiếng một lần (Cron theo giờ UTC)
+    - cron: '0 * * * *'
+  workflow_dispatch: # Giữ lại nút bấm thủ công khi muốn test ngay
+
+permissions:
+  contents: write
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
-      - name: Cài đặt Python
-        uses: actions/setup-python@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Cài đặt thư viện Playwright
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install playwright
           playwright install chromium
+          playwright install-deps
 
-      - name: Chạy file scraper.py
-        run: python scraper.py
-
-      - name: Lưu và Đăng file playlist.m3u lên GitHub
+      - name: Run Scraper Script
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add playlist.m3u
-          git commit -m "Auto update playlist [skip ci]" || exit 0
-          git push
+          python scraper.py
+
+      - name: Commit and Push Playlist
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto update playlist.m3u"
+          file_pattern: "playlist.m3u"
           
