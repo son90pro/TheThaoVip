@@ -16,31 +16,33 @@ FILTER_KEYWORDS = [
 ]
 
 def get_team_logo_url(team_name: str) -> str:
-    """Tạo đường dẫn logo cờ quốc gia hoặc đội bóng chuẩn dựa theo tên"""
+    """Tra cứu link logo PNG chuẩn quốc kỳ để hiển thị tốt trên TiviMate"""
     t_lower = team_name.lower().strip()
-    # Danh sách tra cứu nhanh các đội tuyển quốc gia phổ biến
     logos = {
-        "laos": "https://upload.wikimedia.org/wikipedia/commons/5/56/Flag_of_Laos.svg",
-        "brunei": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Brunei.svg",
-        "palestine": "https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Palestine.svg",
-        "new zealand": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Flag_of_New_Zealand.svg",
-        "japan": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg",
-        "uruguay": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Uruguay.svg",
-        "south korea": "https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg",
-        "ecuador": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Flag_of_Ecuador.svg",
-        "china": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Flag_of_the_People%27s_Republic_of_China.svg",
-        "maldives": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Maldives.svg",
-        "myanmar": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Flag_of_Myanmar.svg",
-        "timor leste": "https://upload.wikimedia.org/wikipedia/commons/2/26/Flag_of_East_Timor.svg",
+        "laos": "https://flagcdn.com/w320/la.png",
+        "brunei": "https://flagcdn.com/w320/bn.png",
+        "palestine": "https://flagcdn.com/w320/ps.png",
+        "new zealand": "https://flagcdn.com/w320/nz.png",
+        "japan": "https://flagcdn.com/w320/jp.png",
+        "uruguay": "https://flagcdn.com/w320/uy.png",
+        "south korea": "https://flagcdn.com/w320/kr.png",
+        "ecuador": "https://flagcdn.com/w320/ec.png",
+        "china": "https://flagcdn.com/w320/cn.png",
+        "maldives": "https://flagcdn.com/w320/mv.png",
+        "myanmar": "https://flagcdn.com/w320/mm.png",
+        "timor leste": "https://flagcdn.com/w320/tl.png",
+        "vietnam": "https://flagcdn.com/w320/vn.png",
+        "thailand": "https://flagcdn.com/w320/th.png",
+        "indonesia": "https://flagcdn.com/w320/id.png",
+        "malaysia": "https://flagcdn.com/w320/my.png"
     }
     for key, url in logos.items():
         if key in t_lower:
             return url
-    # Logo mặc định nếu không khớp
-    return "https://gavang33.me/logo.png"
+    return "https://flagcdn.com/w320/fk.png"
 
 def parse_teams_from_url(url: str) -> tuple:
-    """Trích xuất tên 2 đội và trả về (tên đầy đủ, tên đội 1 để lấy logo)"""
+    """Trích xuất tên 2 đội và tên đội 1 để gán logo"""
     try:
         match = re.search(r'/(?:truc-tiep|match|live)/([^/?#]+)', url)
         if not match:
@@ -188,7 +190,7 @@ def run_scraper():
 
                 details = get_match_details(context, url)
 
-                # 1. Xử lý Giờ và Ngày (Cố định ngày 24/09 chuẩn theo hình mẫu)
+                # Thời gian trận đấu
                 raw_time_text = details['time_str'] if details['time_str'] else text
                 time_match = re.search(r'\b(\d{1,2}[:h]\d{2})\b', raw_time_text, re.I)
                 
@@ -198,7 +200,7 @@ def run_scraper():
                 else:
                     time_str = "16:30 24/09"
 
-                # 2. Tên BLV
+                # Tên BLV
                 blv_name = ""
                 blv_match = re.search(r'((?:Gà|BLV)\s+[A-Za-zÀ-ỹ0-9\s\+]+)', text, re.IGNORECASE)
                 if blv_match:
@@ -208,7 +210,7 @@ def run_scraper():
 
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
 
-                # 3. Tên 2 đội và Lấy Logo chuẩn
+                # Tên 2 đội và Logo
                 teams_str, team1_name = parse_teams_from_url(url)
                 if not teams_str:
                     teams_str = "Trận đấu Trực Tiếp"
@@ -216,7 +218,7 @@ def run_scraper():
 
                 logo = get_team_logo_url(team1_name)
 
-                # 4. Phân loại luồng [flv] hoặc [hls]
+                # Phân loại luồng
                 stream_type = "[flv]" if "flv" in url.lower() or "stream2" in url.lower() else "[hls]"
 
                 blv_suffix = ""
@@ -225,7 +227,6 @@ def run_scraper():
                         clean_blv = f"Gà {clean_blv}"
                     blv_suffix = f" ({clean_blv.title()})"
 
-                # Định dạng chuẩn tuyệt đối: 16:30 24/09 ⚽ Laos vs Brunei Darussalam (Gà Siêu Bệu) [hls]
                 full_title = f"{time_str} ⚽ {teams_str}{blv_suffix} {stream_type}".strip()
 
                 parsed_items.append({
@@ -235,7 +236,6 @@ def run_scraper():
                     "m3u8_url": details['m3u8_url']
                 })
 
-            # Lọc trùng lặp URL
             unique_dict = {}
             for p_item in parsed_items:
                 if p_item['url'] not in unique_dict:
