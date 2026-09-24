@@ -96,31 +96,17 @@ def get_match_details(context, match_url):
     match_info = {"time_str": "", "m3u8_url": ""}
 
     try:
-        page.goto(match_url, timeout=15000, wait_until="domcontentloaded")
+        page.goto(match_url, timeout=8000, wait_until="domcontentloaded")
         
-        # Click ép player tải luồng video
         try:
-            page.click('.play-btn, .btn-play, #player, iframe, video', timeout=2000)
+            page.click('.play-btn, .btn-play, #player, iframe, video', timeout=1000)
         except Exception:
             pass
 
-        # Chờ tối đa 5 giây để bắt request m3u8
-        for _ in range(10):
+        for _ in range(5):
             if m3u8_found:
                 break
             time.sleep(0.5)
-
-        # Trích xuất m3u8 từ iframe nếu network chưa chộp kịp
-        if not m3u8_found:
-            for frame in page.frames:
-                try:
-                    content = frame.content()
-                    urls = re.findall(r'https?://[^\s"\'<>]+\.m3u8[^\s"\'<>]*', content)
-                    for u in urls:
-                        if "blob:" not in u and u not in m3u8_found:
-                            m3u8_found.append(u)
-                except Exception:
-                    pass
 
         match_info["m3u8_url"] = m3u8_found[0] if m3u8_found else ""
 
@@ -205,7 +191,7 @@ def run_scraper():
             }''')
             page.close()
 
-            print(f"[*] Tìm thấy {len(raw_matches)} trận đấu trên web. Đang kiểm tra luồng phát m3u8...")
+            print(f"[*] Đã cào được {len(raw_matches)} trận đấu. Đang quét chi tiết...")
 
             parsed_items = []
             for item in raw_matches:
@@ -215,10 +201,6 @@ def run_scraper():
                     continue
 
                 details = get_match_details(context, url)
-
-                # CHỈ LẤY CÁC TRẬN ĐÃ CÓ LUỒNG M3U8 THỰC TẾ (ĐẢM BẢO TIVIMATE PHÁT ĐƯỢC 100%)
-                if not details['m3u8_url']:
-                    continue
 
                 # 1. Thời gian
                 raw_time_text = details['time_str'] if details['time_str'] else text
@@ -238,7 +220,7 @@ def run_scraper():
 
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
 
-                # 3. Tên trận & Logo chuẩn
+                # 3. Tên trận & Logo Cờ Chuẩn
                 teams_str = parse_teams_from_url(url)
                 if not teams_str:
                     teams_str = "Trận đấu Trực Tiếp"
@@ -247,7 +229,7 @@ def run_scraper():
                 stream_type = "[flv]" if "flv" in url.lower() or "stream2" in url.lower() else "[hls]"
 
                 blv_suffix = f" ({clean_blv.title()})" if clean_blv else ""
-                status_icon = "🟢 " if any(k in text.lower() for k in ["hiệp", "phút", "live", "đang diễn ra"]) else "🟡 "
+                status_icon = "🟢 " if details['m3u8_url'] or any(k in text.lower() for k in ["hiệp", "phút", "live", "đang diễn ra"]) else "🟡 "
 
                 full_title = f"{status_icon}{time_str} ⚽ {teams_str}{blv_suffix} {stream_type}".strip()
 
@@ -258,16 +240,15 @@ def run_scraper():
                     "m3u8_url": details['m3u8_url']
                 })
 
-            # Lọc trùng & Đánh dấu Server
-            seen_m3u8 = set()
+            # Lọc trùng link & Đánh dấu Server
+            seen_urls = set()
             title_tracker = {}
             final_matches = []
 
             for p_item in parsed_items:
-                m_url = p_item['m3u8_url']
-                if m_url in seen_m3u8:
+                if p_item['url'] in seen_urls:
                     continue
-                seen_m3u8.add(m_url)
+                seen_urls.add(p_item['url'])
 
                 raw_title = p_item['title']
                 if raw_title in title_tracker:
@@ -283,20 +264,25 @@ def run_scraper():
         finally:
             browser.close()
 
-    # Ghi file Playlist M3U chuẩn
+    # Ghi file Playlist M3U Đầy Đủ
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n\n")
 
         for item in final_matches:
             logo_attr = f'tvg-logo="{item["logo"]}"' if item["logo"] else ''
-            stream_url = f"https://{WORKER_DOMAIN}/proxy?url={quote(item['m3u8_url'], safe='')}"
+            
+            # Ưu tiên link proxy trực tiếp nếu cào được m3u8, nếu chưa tới giờ đá sẽ quay về route /live
+            if item.get('m3u8_url'):
+                stream_url = f"https://{WORKER_DOMAIN}/proxy?url={quote(item['m3u8_url'], safe='')}"
+            else:
+                stream_url = f"https://{WORKER_DOMAIN}/live?url={quote(item['url'], safe='')}"
             
             f.write(f'#EXTINF:-1 {logo_attr} group-title="{GROUP_NAME}",{item["title"]}\n')
             f.write(f'#EXTVLCOPT:http-referrer={BASE_URL}/\n')
             f.write(f'#EXTHTTP:{{"urls":["(.*)"],"headers":{{"Referer":"{BASE_URL}/"}}}}\n')
             f.write(f'{stream_url}\n\n')
 
-    print(f"[*] Đã xuất {len(final_matches)} kênh phát mượt 100% vào {OUTPUT_FILE}")
+    print(f"[*] Đã xuất thành công ĐẦY ĐỦ {len(final_matches)} trận đấu vào file {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     run_scraper()
