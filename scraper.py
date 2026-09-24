@@ -3,27 +3,32 @@ import re
 from urllib.parse import quote
 from playwright.sync_api import sync_playwright
 
-# Domain Cloudflare Worker proxy
 WORKER_DOMAIN = "chuoi-chien-iptv.sonnguyen90pro.workers.dev"
-
 BASE_URL = "https://gavang33.me"
 OUTPUT_FILE = "playlist.m3u"
 GROUP_NAME = "Gà Vàng 33 TV"
 
-# Bộ lọc từ khóa giải đấu & trạng thái rác
 FILTER_KEYWORDS = [
     "cup", "cúp", "league", "championship", "asian games", "emperor's cup", 
     "v-league", "premier", "champions", "euro", "copa", "afc", "oca", "fifa", 
     "uefa", "serie", "liga", "bundesliga", "k-league", "j-league", "lfp", "giải",
-    "live", "trực tiếp", "hls", "flv", "xem ngay", "sắp diễn ra", "phút",
-    "categoría", "primera", "hiệp 1", "hiệp 2", "hết giờ", "ht", "ft", "fulltime", "halftime"
+    "xem ngay", "sắp diễn ra", "phút", "categoría", "primera", "hiệp 1", "hiệp 2"
 ]
 
+def clean_time_and_date_trash(text: str) -> str:
+    """Lọc sạch các chuỗi ngày giờ lặp rác như Luc 1705 Ngay 24 09 2026"""
+    if not text:
+        return ""
+    cleaned = re.sub(r'\b(?:luc|lúc)?\s*\d{3,4}\s*(?:ngay|ngày)?\s*\d{1,2}\s*[/_\s]?\s*\d{1,2}\s*[/_\s]?\s*(?:\d{2,4})?\b', '', text, flags=re.IGNORECASE)
+    cleaned = re.sub(r'\b(?:luc|lúc)\s*\d{3,4}\b', '', cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r'\b(?:ngay|ngày)\s*\d{1,2}\s*[/_\s]?\s*\d{1,2}\s*[/_\s]?\s*(?:\d{2,4})?\b', '', cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r'\b\d{1,2}[:h]\d{2}\b', '', cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r'\b\d{1,2}/\d{1,2}(?:/\d{2,4})?\b', '', cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+    return cleaned
+
 def parse_teams_from_url(url: str) -> str:
-    """
-    Bóc tách chính xác tên 2 đội bóng từ URL slug, loại bỏ hoàn toàn nhiễu DOM.
-    Ví dụ: /truc-tiep/america-de-cali-vs-deportivo-pereira-abc1234 -> America De Cali vs Deportivo Pereira
-    """
+    """Trích xuất tên 2 đội từ URL slug"""
     try:
         match = re.search(r'/(?:truc-tiep|match|live)/([^/?#]+)', url)
         if not match:
@@ -35,6 +40,13 @@ def parse_teams_from_url(url: str) -> str:
             return ""
         
         team1_slug, team2_slug = parts[0], parts[1]
+        
+        # Lọc bỏ tên BLV dính ở đầu team 1 (VD: ga-sieu-gay-japan -> japan)
+        team1_slug = re.sub(r'^(?:blv-)?ga-(?:sieu-)?[a-z0-9]+-', '', team1_slug, flags=re.IGNORECASE)
+        
+        # Lọc bỏ chuỗi Luc... Ngay... dính ở đuôi team 2
+        team2_slug = re.sub(r'-luc-\d+.*$', '', team2_slug, flags=re.IGNORECASE)
+        team2_slug = re.sub(r'-ngay-\d+.*$', '', team2_slug, flags=re.IGNORECASE)
         team2_slug = re.sub(r'-[a-z0-9]{8,35}$', '', team2_slug, flags=re.IGNORECASE)
         
         def clean_word(w):
@@ -47,6 +59,9 @@ def parse_teams_from_url(url: str) -> str:
 
         t1 = " ".join([clean_word(w) for w in team1_slug.split('-')])
         t2 = " ".join([clean_word(w) for w in team2_slug.split('-')])
+        
+        t1 = clean_time_and_date_trash(t1)
+        t2 = clean_time_and_date_trash(t2)
         
         if t1 and t2 and len(t1) > 1 and len(t2) > 1:
             return f"{t1} vs {t2}"
@@ -86,7 +101,6 @@ def run_scraper():
             headless=True,
             args=["--disable-blink-features=AutomationControlled", "--no-sandbox"]
         )
-        # Thiết lập múi giờ Việt Nam
         context = browser.new_context(
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
             viewport={"width": 1280, "height": 720},
@@ -97,7 +111,7 @@ def run_scraper():
 
         final_matches = []
         try:
-            print(f"[*] Đang tải trang chủ Gà Vàng TV: {BASE_URL}")
+            print(f"[*] Đang tải trang Gà Vàng 33 TV: {BASE_URL}")
             page.goto(BASE_URL, timeout=60000, wait_until="domcontentloaded")
             page.wait_for_timeout(3000)
 
@@ -108,33 +122,34 @@ def run_scraper():
 
                 targets.forEach(card => {
                     const links = Array.from(card.querySelectorAll('a[href*="/truc-tiep/"], a[href*="/match/"], a[href*="/live/"]'));
-                    const primaryLink = links[0] || (card.tagName === 'A' ? card : null);
-                    if (!primaryLink) return;
-                    
-                    const href = primaryLink.getAttribute('href');
-                    if (!href) return;
+                    if (links.length === 0) return;
 
-                    let logo = '';
-                    const teamImgs = Array.from(card.querySelectorAll('[class*="team"] img, [class*="club"] img, .logo img'));
-                    if (teamImgs.length > 0) {
-                        let src = teamImgs[0].getAttribute('src') || teamImgs[0].getAttribute('data-src') || '';
-                        if (src) logo = src.startsWith('http') ? src : window.location.origin + src;
-                    }
-                    if (!logo) {
-                        const allImgs = Array.from(card.querySelectorAll('img'));
-                        for (let img of allImgs) {
-                            let src = img.getAttribute('src') || img.getAttribute('data-src') || '';
-                            if (src && !src.includes('avatar') && !src.includes('favicon')) {
-                                logo = src.startsWith('http') ? src : window.location.origin + src;
-                                break;
+                    links.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (!href) return;
+
+                        let logo = '';
+                        const teamImgs = Array.from(card.querySelectorAll('[class*="team"] img, [class*="club"] img, .logo img'));
+                        if (teamImgs.length > 0) {
+                            let src = teamImgs[0].getAttribute('src') || teamImgs[0].getAttribute('data-src') || '';
+                            if (src) logo = src.startsWith('http') ? src : window.location.origin + src;
+                        }
+                        if (!logo) {
+                            const allImgs = Array.from(card.querySelectorAll('img'));
+                            for (let img of allImgs) {
+                                let src = img.getAttribute('src') || img.getAttribute('data-src') || '';
+                                if (src && !src.includes('avatar') && !src.includes('favicon')) {
+                                    logo = src.startsWith('http') ? src : window.location.origin + src;
+                                    break;
+                                }
                             }
                         }
-                    }
 
-                    matches.push({
-                        url: href.startsWith('http') ? href : window.location.origin + href,
-                        fullText: card.innerText || '',
-                        logo: logo
+                        matches.push({
+                            url: href.startsWith('http') ? href : window.location.origin + href,
+                            fullText: card.innerText || '',
+                            logo: logo
+                        });
                     });
                 });
 
@@ -148,45 +163,38 @@ def run_scraper():
                 if not text:
                     continue
 
-                # 1. Trích xuất thời gian
+                # 1. Trích xuất Thời gian
                 time_match = re.search(r'(\d{1,2}:\d{2})', text)
                 date_match = re.search(r'(\d{1,2}/\d{1,2})', text)
-                m_time = time_match.group(1) if time_match else "LIVE"
+                m_time = time_match.group(1) if time_match else ""
                 m_date = date_match.group(1) if date_match else ""
-                time_str = f"{m_time} {m_date}".strip()
+                time_str = f"{m_time} {m_date}".strip() if m_time else "LIVE"
 
                 # 2. Trích xuất tên BLV
                 blv_name = ""
                 blv_match = re.search(r'((?:Gà|BLV)\s+[A-Za-zÀ-ỹ0-9\s\+]+)', text, re.IGNORECASE)
                 if blv_match:
                     raw_blv = blv_match.group(1).strip()
-                    raw_blv = re.split(r'(?:hls|flv|live|trực tiếp|\d{1,2}:\d{2}|hiệp|cúp|league)', raw_blv, flags=re.IGNORECASE)[0].strip()
+                    raw_blv = re.split(r'(?:hls|flv|live|trực tiếp|\d{1,2}:\d{2}|hiệp|cúp|league|luc|lúc|ngay|ngày)', raw_blv, flags=re.IGNORECASE)[0].strip()
                     blv_name = raw_blv
 
                 clean_blv = re.sub(r'^(BLV|Caster)\s*[:\-]?\s*', '', blv_name, flags=re.IGNORECASE).strip()
 
-                # 3. Trích xuất tên 2 đội (Ưu tiên 1: Lấy từ URL Slug)
+                # 3. Trích xuất Tên 2 Đội
                 teams_str = parse_teams_from_url(url)
-
-                # Ưu tiên 2: Trích xuất từ DOM text nếu URL không có slug vs
                 if not teams_str:
-                    clean_text_no_time = re.sub(r'\d{1,2}:\d{2}', '', text)
-                    clean_text_no_time = re.sub(r'\d{1,2}/\d{1,2}', '', clean_text_no_time)
-
-                    lines = [l.strip() for l in clean_text_no_time.split('\n') if l.strip()]
+                    clean_text = clean_time_and_date_trash(text)
+                    lines = [l.strip() for l in clean_text.split('\n') if l.strip()]
                     valid_lines = []
                     for line in lines:
                         l_lower = line.lower()
-                        if any(kw in l_lower for kw in FILTER_KEYWORDS):
-                            continue
-                        if blv_name and l_lower in blv_name.lower():
-                            continue
-                        if re.search(r'^(gà|blv)\s+', l_lower):
-                            continue
+                        if any(kw in l_lower for kw in FILTER_KEYWORDS): continue
+                        if blv_name and l_lower in blv_name.lower(): continue
+                        if re.search(r'^(gà|blv)\s+', l_lower): continue
                         if len(line) >= 2 and re.search(r'[A-Za-zÀ-ỹ0-9]', line):
                             valid_lines.append(line)
 
-                    vs_match = re.search(r'([A-Za-zÀ-ỹ0-9\s\.\-]+)\s+(?:vs|-)\s+([A-Za-zÀ-ỹ0-9\s\.\-]+)', clean_text_no_time, re.IGNORECASE)
+                    vs_match = re.search(r'([A-Za-zÀ-ỹ0-9\s\.\-]+)\s+(?:vs|-)\s+([A-Za-zÀ-ỹ0-9\s\.\-]+)', clean_text, re.IGNORECASE)
                     if vs_match:
                         t1 = vs_match.group(1).split('\n')[-1].strip()
                         t2 = vs_match.group(2).split('\n')[0].strip()
@@ -195,25 +203,25 @@ def run_scraper():
                                 teams_str = f"{t1} vs {t2}"
 
                     if not teams_str:
-                        if len(valid_lines) >= 2:
-                            teams_str = f"{valid_lines[0]} vs {valid_lines[1]}"
-                        elif len(valid_lines) == 1:
-                            teams_str = valid_lines[0]
+                        if len(valid_lines) >= 2: teams_str = f"{valid_lines[0]} vs {valid_lines[1]}"
+                        elif len(valid_lines) == 1: teams_str = valid_lines[0]
 
-                # Lọc kiểm tra trùng lặp giữa tên BLV và tiêu đề trận đấu
-                if teams_str:
-                    if re.search(r'^(gà|blv)\b', teams_str, re.IGNORECASE) or (blv_name and blv_name.lower() in teams_str.lower()):
-                        teams_str = "Trận đấu Trực Tiếp"
-                else:
+                teams_str = clean_time_and_date_trash(teams_str)
+                if not teams_str or re.search(r'^(gà|blv)\b', teams_str, re.IGNORECASE):
                     teams_str = "Trận đấu Trực Tiếp"
 
-                # 4. Định dạng BLV in hoa ở cuối tiêu đề
+                # 4. Xác định luồng [hls] hoặc [flv] dựa trên URL
+                stream_type = "[flv]" if "flv" in url.lower() or "stream2" in url.lower() else "[hls]"
+
+                # 5. Ghép tên BLV chuẩn mẫu: (Gà Siêu Bệu)
                 blv_suffix = ""
                 if clean_blv:
-                    if clean_blv.lower() not in teams_str.lower():
-                        blv_suffix = f" ({clean_blv.upper()})"
+                    if not clean_blv.lower().startswith('gà'):
+                        clean_blv = f"Gà {clean_blv}"
+                    blv_suffix = f" ({clean_blv.title()})"
 
-                full_title = f"{time_str} ⚽ {teams_str}{blv_suffix}"
+                # Ghép tiêu đề đúng 100% mẫu ảnh: 08:40 24/09 ⚽ Seattle Sounders vs Real Salt Lake (Gà Siêu Bệu) [hls]
+                full_title = f"{time_str} ⚽ {teams_str}{blv_suffix} {stream_type}".strip()
 
                 parsed_items.append({
                     "title": full_title,
@@ -221,30 +229,27 @@ def run_scraper():
                     "url": item['url']
                 })
 
-            # 5. Lọc trùng lặp theo duy nhất URL trận đấu (Khắc phục hoàn toàn lặp trận)
+            # Lọc trùng lặp theo đúng URL
             unique_dict = {}
             for p_item in parsed_items:
-                url_key = p_item['url']
-                if url_key not in unique_dict:
-                    unique_dict[url_key] = p_item
+                if p_item['url'] not in unique_dict:
+                    unique_dict[p_item['url']] = p_item
 
             final_matches = list(unique_dict.values())
-            print(f"[*] Tìm thấy tổng cộng {len(final_matches)} luồng trận đấu.")
+            print(f"[*] Tìm thấy {len(final_matches)} luồng trận đấu.")
 
             page.close()
 
-            # Bóc tách luồng m3u8 cho các trận
             for idx, match in enumerate(final_matches):
-                print(f"[{idx+1}/{len(final_matches)}] Kiểm tra luồng: {match['title']}")
+                print(f"[{idx+1}/{len(final_matches)}] Lấy stream: {match['title']}")
                 m3u8_url = get_m3u8_for_match(context, match['url'])
                 match['m3u8_url'] = m3u8_url
 
         except Exception as e:
-            print(f"Lỗi hệ thống: {e}")
+            print(f"[!] Lỗi: {e}")
         finally:
             browser.close()
 
-    # Xuất tất cả trận đấu vào file playlist.m3u
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         f.write("#EXTM3U\n\n")
 
@@ -259,7 +264,7 @@ def run_scraper():
             f.write(f'#EXTINF:-1 {logo_attr} group-title="{GROUP_NAME}",{item["title"]}\n')
             f.write(f'{stream_url}\n\n')
 
-    print(f"[*] Đã xuất toàn bộ {len(final_matches)} trận đấu vào file {OUTPUT_FILE}")
+    print(f"[*] Đã xuất xong vào file {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     run_scraper()
