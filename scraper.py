@@ -15,8 +15,33 @@ FILTER_KEYWORDS = [
     "xem ngay", "sắp diễn ra", "phút", "categoría", "primera", "hiệp 1", "hiệp 2"
 ]
 
+def extract_match_time(text: str) -> str:
+    """Trích xuất chính xác ngày giờ 08:40 24/09"""
+    if not text:
+        return "LIVE"
+        
+    # 1. Tìm dạng HH:MM DD/MM hoặc HH:MM
+    time_match = re.search(r'\b(\d{1,2}[:h]\d{2})\b', text, re.I)
+    date_match = re.search(r'\b(\d{1,2}/\d{1,2})\b', text, re.I)
+    
+    if time_match:
+        m_time = time_match.group(1).replace('h', ':')
+        m_date = date_match.group(1) if date_match else ""
+        return f"{m_time} {m_date}".strip()
+        
+    # 2. Bắt dạng Luc HHMM Ngay DD MM (Luc 0840 Ngay 24 09)
+    luc_match = re.search(r'\b(?:luc|lúc)\s*(\d{2})(\d{2})\s*(?:ngay|ngày)?\s*(\d{1,2})\s*(\d{1,2})?\b', text, re.I)
+    if luc_match:
+        hh, mm = luc_match.group(1), luc_match.group(2)
+        dd, m_m = luc_match.group(3), luc_match.group(4)
+        m_time = f"{int(hh):02d}:{mm}"
+        m_date = f"{int(dd):02d}/{int(m_m):02d}" if m_m else ""
+        return f"{m_time} {m_date}".strip()
+
+    return "LIVE"
+
 def clean_time_and_date_trash(text: str) -> str:
-    """Lọc sạch các chuỗi ngày giờ lặp rác như Luc 1705 Ngay 24 09 2026"""
+    """Lọc sạch các chuỗi ngày giờ lặp rác đằng sau tên trận"""
     if not text:
         return ""
     cleaned = re.sub(r'\b(?:luc|lúc)?\s*\d{3,4}\s*(?:ngay|ngày)?\s*\d{1,2}\s*[/_\s]?\s*\d{1,2}\s*[/_\s]?\s*(?:\d{2,4})?\b', '', text, flags=re.IGNORECASE)
@@ -28,7 +53,7 @@ def clean_time_and_date_trash(text: str) -> str:
     return cleaned
 
 def parse_teams_from_url(url: str) -> str:
-    """Trích xuất tên 2 đội từ URL slug"""
+    """Trích xuất tên 2 đội bóng từ URL slug"""
     try:
         match = re.search(r'/(?:truc-tiep|match|live)/([^/?#]+)', url)
         if not match:
@@ -41,10 +66,10 @@ def parse_teams_from_url(url: str) -> str:
         
         team1_slug, team2_slug = parts[0], parts[1]
         
-        # Lọc bỏ tên BLV dính ở đầu team 1
+        # Lọc tên BLV dính ở team 1
         team1_slug = re.sub(r'^(?:blv-)?ga-(?:sieu-)?[a-z0-9]+-', '', team1_slug, flags=re.IGNORECASE)
         
-        # Lọc bỏ chuỗi Luc... Ngay... dính ở đuôi team 2
+        # Lọc Luc... Ngay... dính ở team 2
         team2_slug = re.sub(r'-luc-\d+.*$', '', team2_slug, flags=re.IGNORECASE)
         team2_slug = re.sub(r'-ngay-\d+.*$', '', team2_slug, flags=re.IGNORECASE)
         team2_slug = re.sub(r'-[a-z0-9]{8,35}$', '', team2_slug, flags=re.IGNORECASE)
@@ -128,7 +153,6 @@ def run_scraper():
                     if (seenUrls.has(fullUrl)) return;
                     seenUrls.add(fullUrl);
 
-                    // Thu hẹp phạm vi card chỉ vừa đủ chứa 1 trận duy nhất
                     let card = link;
                     let parent = link.parentElement;
                     while (parent && parent.tagName !== 'BODY') {
@@ -142,13 +166,14 @@ def run_scraper():
 
                     const fullText = card ? card.innerText || '' : link.innerText || '';
 
-                    // Tìm logo duy nhất của đúng card này
+                    // Lọc logo: Bỏ hẳn ảnh Avatar BLV (chứa avatar, blv, ga-sieu) để lấy Logo Đội bóng/Quốc kỳ
                     let logo = '';
                     if (card) {
                         const imgs = Array.from(card.querySelectorAll('img'));
                         for (let img of imgs) {
-                            let src = img.getAttribute('src') || img.getAttribute('data-src') || '';
-                            if (src && !src.includes('avatar') && !src.includes('favicon') && !src.includes('logo-')) {
+                            let src = img.getAttribute('src') || img.getAttribute('data-src') || img.getAttribute('srcset') || '';
+                            const lowSrc = src.toLowerCase();
+                            if (src && !lowSrc.includes('favicon') && !lowSrc.includes('avatar') && !lowSrc.includes('blv') && !lowSrc.includes('ga-sieu') && !lowSrc.includes('logo-gavang')) {
                                 logo = src.startsWith('http') ? src : window.location.origin + src;
                                 break;
                             }
@@ -172,12 +197,8 @@ def run_scraper():
                 if not text:
                     continue
 
-                # 1. Trích xuất Thời gian
-                time_match = re.search(r'(\d{1,2}:\d{2})', text)
-                date_match = re.search(r'(\d{1,2}/\d{1,2})', text)
-                m_time = time_match.group(1) if time_match else ""
-                m_date = date_match.group(1) if date_match else ""
-                time_str = f"{m_time} {m_date}".strip() if m_time else "LIVE"
+                # 1. Trích xuất Ngày Giờ CHUẨN TRƯỚC
+                time_str = extract_match_time(text)
 
                 # 2. Trích xuất tên BLV
                 blv_name = ""
@@ -219,10 +240,10 @@ def run_scraper():
                 if not teams_str or re.search(r'^(gà|blv)\b', teams_str, re.IGNORECASE):
                     teams_str = "Trận đấu Trực Tiếp"
 
-                # 4. Xác định luồng [hls] hoặc [flv]
+                # 4. Luồng stream [flv] hay [hls]
                 stream_type = "[flv]" if "flv" in url.lower() or "stream2" in url.lower() else "[hls]"
 
-                # 5. Ghép tên BLV
+                # 5. Ghép tên BLV dạng (Gà Siêu Bệu)
                 blv_suffix = ""
                 if clean_blv:
                     if not clean_blv.lower().startswith('gà'):
@@ -237,14 +258,14 @@ def run_scraper():
                     "url": item['url']
                 })
 
-            # Lọc trùng theo đúng URL độc lập
+            # Lọc trùng theo URL
             unique_dict = {}
             for p_item in parsed_items:
                 if p_item['url'] not in unique_dict:
                     unique_dict[p_item['url']] = p_item
 
             final_matches = list(unique_dict.values())
-            print(f"[*] Tìm thấy {len(final_matches)} luồng trận đấu độc lập.")
+            print(f"[*] Tìm thấy {len(final_matches)} luồng trận đấu.")
 
             page.close()
 
