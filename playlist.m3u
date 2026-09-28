@@ -1,132 +1,132 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 08:00 27/09 ⚽ Trinidad And Tobago vs Dominican (Gà Siêu Kiêu) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.me/
-#EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Ftrinidad-and-tobago-vs-dominican-republic-luc-0800-ngay-28-09-2026-pxwrxlhyd4jvryk%3FanchorId%3D6a955bd5c8262fd0d7ecee7a
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 10:10 27/09 ⚽ Necaxa vs Club America (Gà Siêu Tồ) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 10:10 28/09 ⚽ Necaxa vs Club America (Gà Siêu Tồ) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fnecaxa-vs-club-america-luc-1010-ngay-28-09-2026-3glrw7hnepwyqdy%3FanchorId%3D6aa14fd12a33b8ed65eea01c
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 16:00 27/09 ⚽ Singapore vs Bangladesh (Gà Siêu Bệu) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 16:00 28/09 ⚽ Singapore vs Bangladesh (Gà Siêu Bệu) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fsingapore-vs-bangladesh-luc-1600-ngay-28-09-2026-dj2ryohl8pj2q1z%3FanchorId%3D69fc585e696b57b6f1dae26b
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/jp.png" group-title="Gà Vàng 33 TV",🟢 17:25 27/09 ⚽ Japan vs Venezuela (Gà Siêu Gáy) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/jp.png" group-title="Gà Vàng 33 TV",🟢 17:25 28/09 ⚽ Japan vs Venezuela (Gà Siêu Gáy) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fjapan-vs-venezuela-luc-1725-ngay-28-09-2026-vjxm8ghe1159r6o%3FanchorId%3D6a68b4c60f5c6246168b1fa1
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/kr.png" group-title="Gà Vàng 33 TV",🟢 18:00 27/09 ⚽ South Korea vs Uruguay (Gà Siêu Péo) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/kr.png" group-title="Gà Vàng 33 TV",🟢 18:00 28/09 ⚽ South Korea vs Uruguay (Gà Siêu Péo) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fsouth-korea-vs-uruguay-luc-1800-ngay-28-09-2026-x7lm7phxgn4ym2w%3FanchorId%3D6a78aab67e077ab7a1f9af59
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 19:00 27/09 ⚽ Tajikistan vs Palestine (Gà Siêu Nhí) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 19:00 28/09 ⚽ Tajikistan vs Palestine (Gà Siêu Nhí) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Ftajikistan-vs-palestine-luc-1900-ngay-28-09-2026-ednm9whwjnd6ryo%3FanchorId%3D6aa14ecd419a47d5e57cb691
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/id.png" group-title="Gà Vàng 33 TV",🟢 19:30 27/09 ⚽ Malaysia vs Indonesia (Gà Ô Long) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/id.png" group-title="Gà Vàng 33 TV",🟢 19:30 28/09 ⚽ Malaysia vs Indonesia (Gà Ô Long) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fmalaysia-vs-indonesia-luc-1930-ngay-28-09-2026-2y8m4zh5l7g4ql0%3FanchorId%3D6a31da2f9a2eb0e4aaedf62e
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 20:00 27/09 ⚽ Fk Graficar Beograd vs Teleoptik (Gà Siêu Tồ) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 20:00 28/09 ⚽ Fk Graficar Beograd vs Teleoptik (Gà Siêu Tồ) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Ffk-graficar-beograd-vs-teleoptik-luc-2000-ngay-28-09-2026-4wyrn4h6kz8eq86%3FanchorId%3D6aa14fd12a33b8ed65eea01c
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 22:00 27/09 ⚽ Al Kharaitiyat vs Al Wakrah Sports Club (Gà Siêu Tốc) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 22:00 28/09 ⚽ Al Kharaitiyat vs Al Wakrah Sports Club (Gà Siêu Tốc) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fal-kharaitiyat-vs-al-wakrah-sports-club-luc-2200-ngay-28-09-2026-l5ergphk054wr8k%3FanchorId%3D69fcb2b17f55d5be198f16aa
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 23:00 27/09 ⚽ Georgia vs Ukraine (Gà Siêu Ngố) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 23:00 28/09 ⚽ Georgia vs Ukraine (Gà Siêu Ngố) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fgeorgia-vs-ukraine-luc-2300-ngay-28-09-2026-23xmvkh6y1l0qg8%3FanchorId%3D6aa136bffcdef77bf7fcc812
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 23:00 27/09 ⚽ Armenia vs Montenegro (Gà Siêu Péo) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 23:00 28/09 ⚽ Armenia vs Montenegro (Gà Siêu Péo) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Farmenia-vs-montenegro-luc-2300-ngay-28-09-2026-ednm9whw5yp5ryo%3FanchorId%3D6a78aab67e077ab7a1f9af59
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 23:00 27/09 ⚽ Latvia vs Cyprus (Gà Siêu Kiêu) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 23:00 28/09 ⚽ Latvia vs Cyprus (Gà Siêu Kiêu) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Flatvia-vs-cyprus-luc-2300-ngay-28-09-2026-965mkyhk8d0wr1g%3FanchorId%3D6a955bd5c8262fd0d7ecee7a
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/fr.png" group-title="Gà Vàng 33 TV",🟢 01:45 27/09 ⚽ Belgium vs France (Gà Siêu Gáy) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/fr.png" group-title="Gà Vàng 33 TV",🟢 01:45 28/09 ⚽ Belgium vs France (Gà Siêu Gáy) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fbelgium-vs-france-luc-0145-ngay-29-09-2026-y0or5jh89ywjqwz%3FanchorId%3D6a68b4c60f5c6246168b1fa1
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/fr.png" group-title="Gà Vàng 33 TV",🟢 01:45 27/09 ⚽ Belgium vs France (Gà Siêu Bệu) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/fr.png" group-title="Gà Vàng 33 TV",🟢 01:45 28/09 ⚽ Belgium vs France (Gà Siêu Bệu) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fbelgium-vs-france-luc-0145-ngay-29-09-2026-y0or5jh89ywjqwz%3FanchorId%3D69fc585e696b57b6f1dae26b
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/it.png" group-title="Gà Vàng 33 TV",🟢 01:45 27/09 ⚽ Turkiye vs Italy (Gà Ô Long) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/it.png" group-title="Gà Vàng 33 TV",🟢 01:45 28/09 ⚽ Turkiye vs Italy (Gà Ô Long) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fturkiye-vs-italy-luc-0145-ngay-29-09-2026-n54qllhn4gw1qvy%3FanchorId%3D6a31da2f9a2eb0e4aaedf62e
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 01:45 27/09 ⚽ Northern Ireland vs Hungary (Gà Siêu Ngố) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 01:45 28/09 ⚽ Northern Ireland vs Hungary (Gà Siêu Ngố) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fnorthern-ireland-vs-hungary-luc-0145-ngay-29-09-2026-zp5rzghg3vd6q82%3FanchorId%3D6aa136bffcdef77bf7fcc812
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 01:45 27/09 ⚽ Romania vs Bosnia And (Gà Siêu Kiêu) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 01:45 28/09 ⚽ Romania vs Bosnia And (Gà Siêu Kiêu) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fromania-vs-bosnia-and-herzegovina-luc-0145-ngay-29-09-2026-1l4rjnh9nod4m7v%3FanchorId%3D6a955bd5c8262fd0d7ecee7a
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 01:45 27/09 ⚽ Sweden vs Poland (Gà Siêu Tốc) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 01:45 28/09 ⚽ Sweden vs Poland (Gà Siêu Tốc) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fsweden-vs-poland-luc-0145-ngay-29-09-2026-4jwq2ghngy5nm0v%3FanchorId%3D69fcb2b17f55d5be198f16aa
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 07:00 27/09 ⚽ Saint Kitts And Nevis vs Grenada (Gà Siêu Nhí) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 07:00 28/09 ⚽ Saint Kitts And Nevis vs Grenada (Gà Siêu Nhí) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fsaint-kitts-and-nevis-vs-grenada-luc-0700-ngay-29-09-2026-2y8m4zh5lojgql0%3FanchorId%3D6aa14ecd419a47d5e57cb691
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 07:00 27/09 ⚽ Jamaica vs Honduras (Gà Siêu Tồ) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 07:00 28/09 ⚽ Jamaica vs Honduras (Gà Siêu Tồ) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fjamaica-vs-honduras-luc-0700-ngay-29-09-2026-vjxm8ghey1j9r6o%3FanchorId%3D6aa14fd12a33b8ed65eea01c
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 09:00 27/09 ⚽ Guatemala vs El (Gà Siêu Péo) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 09:00 28/09 ⚽ Guatemala vs El (Gà Siêu Péo) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fguatemala-vs-el-salvador-luc-0900-ngay-29-09-2026-n54qllhnv0xpqvy%3FanchorId%3D6a78aab67e077ab7a1f9af59
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 16:00 27/09 ⚽ Philippines vs Pakistan (Gà Siêu Bệu) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 16:00 28/09 ⚽ Philippines vs Pakistan (Gà Siêu Bệu) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fphilippines-vs-pakistan-luc-1600-ngay-29-09-2026-8yomo4h1n829q0j%3FanchorId%3D69fc585e696b57b6f1dae26b
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/br.png" group-title="Gà Vàng 33 TV",🟢 17:00 27/09 ⚽ Australia vs Brazil (Gà Ô Long) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/br.png" group-title="Gà Vàng 33 TV",🟢 17:00 28/09 ⚽ Australia vs Brazil (Gà Ô Long) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Faustralia-vs-brazil-luc-1700-ngay-29-09-2026-zp5rzghg9x6gq82%3FanchorId%3D6a31da2f9a2eb0e4aaedf62e
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/br.png" group-title="Gà Vàng 33 TV",🟢 17:00 27/09 ⚽ Australia vs Brazil (Gà Siêu Ngố) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/br.png" group-title="Gà Vàng 33 TV",🟢 17:00 28/09 ⚽ Australia vs Brazil (Gà Siêu Ngố) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Faustralia-vs-brazil-luc-1700-ngay-29-09-2026-zp5rzghg9x6gq82%3FanchorId%3D6aa136bffcdef77bf7fcc812
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 17:00 27/09 ⚽ Montedio Yamagata vs Yokohama F Marinos (Gà Siêu Kiêu) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 17:00 28/09 ⚽ Montedio Yamagata vs Yokohama F Marinos (Gà Siêu Kiêu) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fmontedio-yamagata-vs-yokohama-f-marinos-luc-1700-ngay-29-09-2026-23xmvkhyvdd5qg8%3FanchorId%3D6a955bd5c8262fd0d7ecee7a
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 17:00 27/09 ⚽ Kataller Toyama vs Urawa Red (Gà Siêu Tồ) [hls]
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 17:00 28/09 ⚽ Kataller Toyama vs Urawa Red (Gà Siêu Tồ) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
 https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fkataller-toyama-vs-urawa-red-diamonds-luc-1700-ngay-29-09-2026-zp5rzgh3yzzlq82%3FanchorId%3D6aa14fd12a33b8ed65eea01c
+
+#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 17:00 28/09 ⚽ Ehime Fc vs Fc Tokyo (Gà Siêu Nhí) [hls]
+#EXTVLCOPT:http-referrer=https://gavang33.me/
+#EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
+https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/live?url=https%3A%2F%2Fgavang33.me%2Ftruc-tiep%2Fehime-fc-vs-fc-tokyo-luc-1700-ngay-29-09-2026-8yomo4hye2v3q0j%3FanchorId%3D6aa14ecd419a47d5e57cb691
 
