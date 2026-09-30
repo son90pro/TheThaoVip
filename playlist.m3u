@@ -1,15 +1,5 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 01:45 30/09 ⚽ Brighton Hove Albion Women vs Tottenham Hotspur Women (Gà Siêu Nhí) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.me/
-#EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/proxy?url=https%3A%2F%2Flive2.zktsva.app%2Flive%2F301263.m3u8
-
-#EXTINF:-1 tvg-logo="https://flagcdn.com/w320/un.png" group-title="Gà Vàng 33 TV",🟢 02:00 30/09 ⚽ Sl Benfica Women vs Bayern Munchen Women (Gà Siêu Kiêu) [hls]
-#EXTVLCOPT:http-referrer=https://gavang33.me/
-#EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
-https://chuoi-chien-iptv.sonnguyen90pro.workers.dev/proxy?url=https%3A%2F%2Flive2.zktsva.app%2Flive%2F741294.m3u8
-
 #EXTINF:-1 tvg-logo="https://flagcdn.com/w320/ar.png" group-title="Gà Vàng 33 TV",🟢 07:00 30/09 ⚽ Argentina vs Bolivia (Gà Siêu Quỷ) [hls]
 #EXTVLCOPT:http-referrer=https://gavang33.me/
 #EXTHTTP:{"urls":["(.*)"],"headers":{"Referer":"https://gavang33.me/"}}
