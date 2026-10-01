@@ -53,7 +53,7 @@ def get_sport_info(sport_str, league_name="", title=""):
     elif any(k in text for k in ["ufc", "mma", "boxing", "võ thuật", "one championship"]):
         return ("🥊", "Võ Thuật")
     elif any(k in text for k in ["f1", "motogp", "đua xe", "racing"]):
-        return ("🏎️", "Đua Xe")
+        return ("🏎️️", "Đua Xe")
     
     return ("⚽", "Bóng Đá")
 
@@ -253,11 +253,11 @@ def parse_v1_article(item, now_vn):
         return []
 
     clean_title = re.split(r'[:–\-]', title)[0].strip()
-    match_teams = re.search(r'([A-Za-z0-9\s\.\p{L}]+?\s+vs\s+[A-Za-z0-9\s\.\p{L}]+)', title, re.IGNORECASE)
+    match_teams = re.search(r'(.+?\s+vs\s+.+)', title, re.IGNORECASE)
     teams_str = match_teams.group(1).strip() if match_teams else clean_title
 
     blv_name = "Chuối TV"
-    blv_match = re.search(r'BLV\s+([A-ZÀ-Ỹ][a-zà-ỹ0-9_]+)', content)
+    blv_match = re.search(r'BLV\s+([A-Za-z0-9_\u00C0-\u1EF9]+)', content)
     if blv_match:
         blv_name = f"Chuối {blv_match.group(1)}"
 
