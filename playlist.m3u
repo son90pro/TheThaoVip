@@ -1,148 +1,85 @@
-#EXTM3U x-tvg-url=""
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134316_7ff7b895.png" group-title="Bóng Đá",🟢 21:00 01/10 ⚽ Uzbekistan vs Syria (Chuối Lá) [HD1]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoila/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134316_7ff7b895.png" group-title="Bóng Đá",🟢 21:00 01/10 ⚽ Uzbekistan vs Syria (Chuối Lá) [HD2]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoilahd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134316_7ff7b895.png" group-title="Bóng Đá",🟢 21:00 01/10 ⚽ Uzbekistan vs Syria (Chuối Lá) [FHD]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoilahd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1640512/uzbekistan-vs-syria&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_4cc808b5.png" group-title="Bóng Đá",🟢 23:00 01/10 ⚽ Azerbaijan vs Liechtenstein (Chuối Trốc Tru) [HD1]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/troctru/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_4cc808b5.png" group-title="Bóng Đá",🟢 23:00 01/10 ⚽ Azerbaijan vs Liechtenstein (Chuối Trốc Tru) [HD2]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/troctruhd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_4cc808b5.png" group-title="Bóng Đá",🟢 23:00 01/10 ⚽ Azerbaijan vs Liechtenstein (Chuối Trốc Tru) [FHD]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/troctruhd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528916/azerbaijan-vs-liechtenstein&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134306_f1a5fd10.png" group-title="Bóng Đá",🟢 23:00 01/10 ⚽ Guinea vs Kenya (Chuối Kem) [HD1]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134306_f1a5fd10.png" group-title="Bóng Đá",🟢 23:00 01/10 ⚽ Guinea vs Kenya (Chuối Kem) [HD2]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134306_f1a5fd10.png" group-title="Bóng Đá",🟢 23:00 01/10 ⚽ Guinea vs Kenya (Chuối Kem) [FHD]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1545851/guinea-vs-kenya&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_140334_e7d9f1a5.png" group-title="Bóng Đá",🟢 23:45 01/10 ⚽ Austria Wien W vs Inter Milano W (Chuối Tây) [HD1]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_140334_e7d9f1a5.png" group-title="Bóng Đá",🟢 23:45 01/10 ⚽ Austria Wien W vs Inter Milano W (Chuối Tây) [HD2]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_140334_e7d9f1a5.png" group-title="Bóng Đá",🟢 23:45 01/10 ⚽ Austria Wien W vs Inter Milano W (Chuối Tây) [FHD]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1638293/austria-wien-w-vs-inter-milano-w&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125455_9f31cc8f.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Germany vs Serbia (Chuối Chao) [HD1]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528917/germany-vs-serbia", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125455_9f31cc8f.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Germany vs Serbia (Chuối Chao) [HD2]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528917/germany-vs-serbia", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125455_9f31cc8f.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Germany vs Serbia (Chuối Chao) [FHD]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528917/germany-vs-serbia", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528917/germany-vs-serbia&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134302_98ea6afc.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Greece vs Netherlands (Chuối Nhỏ) [HD1]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoinho/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134302_98ea6afc.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Greece vs Netherlands (Chuối Nhỏ) [HD2]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134302_98ea6afc.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Greece vs Netherlands (Chuối Nhỏ) [FHD]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528918/greece-vs-netherlands&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134251_66ec2f9b.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Wales vs Norway (Chuối Sấy) [HD1]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528920/wales-vs-norway", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134251_66ec2f9b.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Wales vs Norway (Chuối Sấy) [HD2]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528920/wales-vs-norway", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway&Origin=https://live08.chuoichientv.me
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134251_66ec2f9b.png" group-title="Bóng Đá",🟢 01:45 02/10 ⚽ Wales vs Norway (Chuối Sấy) [FHD]
-#EXTHTTP:{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36", "Referer": "https://live08.chuoichientv.me/live/1528920/wales-vs-norway", "Origin": "https://live08.chuoichientv.me"}
-#KODPROP:inputstream.adaptive.stream_headers=User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway&Origin=https://live08.chuoichientv.me
-#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
-#EXTVLCOPT:http-referrer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway
-#EXTVLCOPT:http-origin=https://live08.chuoichientv.me
-https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8|User-Agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36&Referer=https://live08.chuoichientv.me/live/1528920/wales-vs-norway&Origin=https://live08.chuoichientv.me
+#EXTM3U
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134316_7ff7b895.png" group-title="Bóng Đá" , 🟢 21:00 01/10 ⚽ Uzbekistan vs Syria (Chuối Lá) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoila/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134316_7ff7b895.png" group-title="Bóng Đá" , 🟢 21:00 01/10 ⚽ Uzbekistan vs Syria (Chuối Lá) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoilahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134316_7ff7b895.png" group-title="Bóng Đá" , 🟢 21:00 01/10 ⚽ Uzbekistan vs Syria (Chuối Lá) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoilahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_4cc808b5.png" group-title="Bóng Đá" , 🟡 23:00 01/10 ⚽ Azerbaijan vs Liechtenstein (Chuối Trốc Tru) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/troctru/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_4cc808b5.png" group-title="Bóng Đá" , 🟡 23:00 01/10 ⚽ Azerbaijan vs Liechtenstein (Chuối Trốc Tru) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/troctruhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_4cc808b5.png" group-title="Bóng Đá" , 🟡 23:00 01/10 ⚽ Azerbaijan vs Liechtenstein (Chuối Trốc Tru) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/troctruhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134306_f1a5fd10.png" group-title="Bóng Đá" , 🟡 23:00 01/10 ⚽ Guinea vs Kenya (Chuối Kem) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134306_f1a5fd10.png" group-title="Bóng Đá" , 🟡 23:00 01/10 ⚽ Guinea vs Kenya (Chuối Kem) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134306_f1a5fd10.png" group-title="Bóng Đá" , 🟡 23:00 01/10 ⚽ Guinea vs Kenya (Chuối Kem) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_140334_e7d9f1a5.png" group-title="Bóng Đá" , 🟡 23:45 01/10 ⚽ Austria Wien W vs Inter Milano W (Chuối Tây) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_140334_e7d9f1a5.png" group-title="Bóng Đá" , 🟡 23:45 01/10 ⚽ Austria Wien W vs Inter Milano W (Chuối Tây) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_140334_e7d9f1a5.png" group-title="Bóng Đá" , 🟡 23:45 01/10 ⚽ Austria Wien W vs Inter Milano W (Chuối Tây) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125455_9f31cc8f.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Germany vs Serbia (Chuối Chao) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125455_9f31cc8f.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Germany vs Serbia (Chuối Chao) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125455_9f31cc8f.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Germany vs Serbia (Chuối Chao) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134302_98ea6afc.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Greece vs Netherlands (Chuối Nhỏ) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoinho/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134302_98ea6afc.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Greece vs Netherlands (Chuối Nhỏ) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134302_98ea6afc.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Greece vs Netherlands (Chuối Nhỏ) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134251_66ec2f9b.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Wales vs Norway (Chuối Sấy) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134251_66ec2f9b.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Wales vs Norway (Chuối Sấy) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134251_66ec2f9b.png" group-title="Bóng Đá" , 🟡 01:45 02/10 ⚽ Wales vs Norway (Chuối Sấy) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
