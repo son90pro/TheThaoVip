@@ -6,9 +6,10 @@ from datetime import datetime, timezone, timedelta
 # Múi giờ Việt Nam (UTC+7)
 VN_TZ = timezone(timedelta(hours=7))
 
-# Headers chuẩn bắt buộc truyền cho trình phát IPTV để bypass lỗi 403 Forbidden
-USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+# Headers chuẩn bắt buộc truyền cho trình phát IPTV để bypass chống leech CDN
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 REFERER = "https://live08.chuoichientv.me/"
+ORIGIN = "https://live08.chuoichientv.me"
 
 # Thứ tự ưu tiên hiển thị Tab nhóm thể thao trên ứng dụng IPTV
 GROUP_PRIORITY = [
@@ -66,7 +67,8 @@ def fetch_v2_matches():
     headers = {
         'User-Agent': USER_AGENT,
         'Accept': 'application/json, text/plain, */*',
-        'Referer': REFERER
+        'Referer': REFERER,
+        'Origin': ORIGIN
     }
     
     matches_list = []
@@ -118,7 +120,7 @@ def parse_v2_match(match, now_vn):
     today_vn = now_vn.date()
     tomorrow_vn = today_vn + timedelta(days=1)
 
-    # Lọc chỉ lấy các trận Đang Live hoặc diễn ra trong Hôm Nay & Ngày Mai
+    # Lọc chỉ lấy các trận Đang Live hoặc sắp diễn ra trong Hôm Nay & Ngày Mai
     if status != 'live':
         if not match_datetime:
             return []
@@ -190,7 +192,8 @@ def fetch_v1_articles():
     headers = {
         'User-Agent': USER_AGENT,
         'Accept': 'application/json, text/plain, */*',
-        'Referer': REFERER
+        'Referer': REFERER,
+        'Origin': ORIGIN
     }
     
     articles = []
@@ -314,7 +317,7 @@ def generate_m3u():
                 seen_urls.add(item['stream_url'])
                 all_streams.append(item)
 
-    # SẮP XẾP THỨ TỰ NHÓM TAB (Bóng Đá -> Bóng Chuyền -> Bóng Rổ -> ...)
+    # SẮP XẾP THỨ TỰ NHÓM TAB
     def get_group_order(item):
         group_name = item['group']
         if group_name in GROUP_PRIORITY:
@@ -323,18 +326,21 @@ def generate_m3u():
 
     all_streams.sort(key=get_group_order)
 
-    # Xuất dữ liệu ra file playlist.m3u kèm theo Headers
+    # Xuất dữ liệu ra file playlist.m3u kèm theo Headers đa tầng
     m3u_lines = ['#EXTM3U x-tvg-url=""']
     for s in all_streams:
         display_name = f"🟢 {s['time']} {s['date']} {s['emoji']} {s['teams']} ({s['blv']}) [{s['quality']}]"
         
-        # Thêm Header Pipe vào cuối URL cho TiviMate / OTT Navigator
-        stream_with_headers = f"{s['stream_url']}|User-Agent={USER_AGENT}&Referer={REFERER}"
+        # Định dạng Pipe chuẩn truyền tham số cho TiviMate / OTT Navigator
+        stream_with_headers = f"{s['stream_url']}|User-Agent={USER_AGENT}&Referer={REFERER}&Origin={ORIGIN}"
         
         m3u_lines.append(f'#EXTINF:-1 tvg-logo="{s["logo"]}" group-title="{s["group"]}",{display_name}')
-        # Bổ sung EXTVLCOPT cho VLC Player / IPTV Smarters Pro
+        # Header dành riêng cho TiviMate & OTT Navigator
+        m3u_lines.append(f'#EXTHTTP:{{"User-Agent":"{USER_AGENT}","Referer":"{REFERER}","Origin":"{ORIGIN}"}}')
+        # Header dành cho VLC Player & IPTV Smarters Pro
         m3u_lines.append(f'#EXTVLCOPT:http-user-agent={USER_AGENT}')
         m3u_lines.append(f'#EXTVLCOPT:http-referrer={REFERER}')
+        m3u_lines.append(f'#EXTVLCOPT:http-origin={ORIGIN}')
         m3u_lines.append(stream_with_headers)
 
     with open("playlist.m3u", "w", encoding="utf-8") as f:
