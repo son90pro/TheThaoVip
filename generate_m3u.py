@@ -6,6 +6,10 @@ from datetime import datetime, timezone, timedelta
 # Múi giờ Việt Nam (UTC+7)
 VN_TZ = timezone(timedelta(hours=7))
 
+# Headers chuẩn bắt buộc truyền cho trình phát IPTV để bypass lỗi 403 Forbidden
+USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+REFERER = "https://live08.chuoichientv.me/"
+
 # Thứ tự ưu tiên hiển thị Tab nhóm thể thao trên ứng dụng IPTV
 GROUP_PRIORITY = [
     "Bóng Đá",
@@ -53,16 +57,16 @@ def get_sport_info(sport_str, league_name="", title=""):
     elif any(k in text for k in ["ufc", "mma", "boxing", "võ thuật", "one championship"]):
         return ("🥊", "Võ Thuật")
     elif any(k in text for k in ["f1", "motogp", "đua xe", "racing"]):
-        return ("🏎️️", "Đua Xe")
+        return ("🏎️", "Đua Xe")
     
     return ("⚽", "Bóng Đá")
 
 def fetch_v2_matches():
     """Lấy danh sách tất cả các trận đấu từ API V2"""
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'User-Agent': USER_AGENT,
         'Accept': 'application/json, text/plain, */*',
-        'Referer': 'https://live08.chuoichientv.me/'
+        'Referer': REFERER
     }
     
     matches_list = []
@@ -184,9 +188,9 @@ def parse_v2_match(match, now_vn):
 def fetch_v1_articles():
     """Lấy danh sách bài viết từ API V1 bổ sung"""
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+        'User-Agent': USER_AGENT,
         'Accept': 'application/json, text/plain, */*',
-        'Referer': 'https://live08.chuoichientv.me/'
+        'Referer': REFERER
     }
     
     articles = []
@@ -319,13 +323,19 @@ def generate_m3u():
 
     all_streams.sort(key=get_group_order)
 
-    # Xuất dữ liệu ra file playlist.m3u
+    # Xuất dữ liệu ra file playlist.m3u kèm theo Headers
     m3u_lines = ['#EXTM3U x-tvg-url=""']
     for s in all_streams:
-        display_name = f"🟢 {s['time']} {s['date']} {s['emoji']} {s['teams']} ({s['blv']}) [{s['quality']}] [hls]"
-        m3u_lines.append(
-            f'#EXTINF:-1 tvg-logo="{s["logo"]}" group-title="{s["group"]}",{display_name}\n{s["stream_url"]}'
-        )
+        display_name = f"🟢 {s['time']} {s['date']} {s['emoji']} {s['teams']} ({s['blv']}) [{s['quality']}]"
+        
+        # Thêm Header Pipe vào cuối URL cho TiviMate / OTT Navigator
+        stream_with_headers = f"{s['stream_url']}|User-Agent={USER_AGENT}&Referer={REFERER}"
+        
+        m3u_lines.append(f'#EXTINF:-1 tvg-logo="{s["logo"]}" group-title="{s["group"]}",{display_name}')
+        # Bổ sung EXTVLCOPT cho VLC Player / IPTV Smarters Pro
+        m3u_lines.append(f'#EXTVLCOPT:http-user-agent={USER_AGENT}')
+        m3u_lines.append(f'#EXTVLCOPT:http-referrer={REFERER}')
+        m3u_lines.append(stream_with_headers)
 
     with open("playlist.m3u", "w", encoding="utf-8") as f:
         f.write("\n".join(m3u_lines))
