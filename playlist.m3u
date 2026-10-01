@@ -1,5 +1,5 @@
 #EXTM3U x-tvg-url=""
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_140334_e7d9f1a5.png" group-title="Đua Xe",🟢 23:45 01/10 🏎️ Austria Wien W vs Inter Milano W (Chuối TV) [FHD] [hls]
-https://live08.chuoichientv.me/austria-wien-w-vs-inter-milano-w-lua-vienna-gap-dang-cap-nerazzurri
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132645_dead805a.png" group-title="Bóng Đá",🟢 02:00 01/10 ⚽ Lyon W vs Chelsea W (Chuối TV) [FHD] [hls]
 https://live08.chuoichientv.me/lyon-w-vs-chelsea-w-dai-chien-nu-hoang-chau-au-nhan-dinh-01102026
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_140334_e7d9f1a5.png" group-title="Đua Xe",🟢 23:45 01/10 🏎️ Austria Wien W vs Inter Milano W (Chuối TV) [FHD] [hls]
+https://live08.chuoichientv.me/austria-wien-w-vs-inter-milano-w-lua-vienna-gap-dang-cap-nerazzurri
