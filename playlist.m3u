@@ -1,14 +1,14 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134337_d547f1b2.png" group-title="Bóng Đá" , 🟡 13:00 03/10 ⚽ China PR U23 vs Uzbekistan U23 (Chuối Chao) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134337_d547f1b2.png" group-title="Bóng Đá" , 🟢 13:00 03/10 ⚽ China PR U23 vs Uzbekistan U23 (Chuối Chao) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134337_d547f1b2.png" group-title="Bóng Đá" , 🟡 13:00 03/10 ⚽ China PR U23 vs Uzbekistan U23 (Chuối Chao) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134337_d547f1b2.png" group-title="Bóng Đá" , 🟢 13:00 03/10 ⚽ China PR U23 vs Uzbekistan U23 (Chuối Chao) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134337_d547f1b2.png" group-title="Bóng Đá" , 🟡 13:00 03/10 ⚽ China PR U23 vs Uzbekistan U23 (Chuối Chao) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134337_d547f1b2.png" group-title="Bóng Đá" , 🟢 13:00 03/10 ⚽ China PR U23 vs Uzbekistan U23 (Chuối Chao) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
 
