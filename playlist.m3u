@@ -1,49 +1,37 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134320_9577df1f.png" group-title="Bóng Đá" , 🟢 04:00 03/10 ⚽ St. Kitts and Nevis vs Cuba (Chuối Trốc Tru) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/troctru/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134320_9577df1f.png" group-title="Bóng Đá" , 🟢 04:00 03/10 ⚽ St. Kitts and Nevis vs Cuba (Chuối Trốc Tru) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/troctruhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134320_9577df1f.png" group-title="Bóng Đá" , 🟢 04:00 03/10 ⚽ St. Kitts and Nevis vs Cuba (Chuối Trốc Tru) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/troctruhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125536_698c7d26.png" group-title="Bóng Đá" , 🟡 06:00 03/10 ⚽ Sao Paulo vs Santos (Chuối Tây) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125536_698c7d26.png" group-title="Bóng Đá" , 🟢 06:00 03/10 ⚽ Sao Paulo vs Santos (Chuối Tây) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125536_698c7d26.png" group-title="Bóng Đá" , 🟡 06:00 03/10 ⚽ Sao Paulo vs Santos (Chuối Tây) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125536_698c7d26.png" group-title="Bóng Đá" , 🟢 06:00 03/10 ⚽ Sao Paulo vs Santos (Chuối Tây) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125536_698c7d26.png" group-title="Bóng Đá" , 🟡 06:00 03/10 ⚽ Sao Paulo vs Santos (Chuối Tây) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125536_698c7d26.png" group-title="Bóng Đá" , 🟢 06:00 03/10 ⚽ Sao Paulo vs Santos (Chuối Tây) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132807_7f305cf9.png" group-title="Bóng Đá" , 🟡 07:00 03/10 ⚽ Colombia vs Paraguay (Chuối Kem) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132807_7f305cf9.png" group-title="Bóng Đá" , 🟡 07:00 03/10 ⚽ Colombia vs Paraguay (Chuối Kem) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132807_7f305cf9.png" group-title="Bóng Đá" , 🟡 07:00 03/10 ⚽ Colombia vs Paraguay (Chuối Kem) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132741_d7b2cf85.png" group-title="Bóng Đá" , 🟡 09:00 03/10 ⚽ El Salvador vs Jamaica (Chuối Sấy) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132807_7f305cf9.png" group-title="Bóng Đá" , 🟢 07:00 03/10 ⚽ Colombia vs Paraguay (Chuối Sấy) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132741_d7b2cf85.png" group-title="Bóng Đá" , 🟡 09:00 03/10 ⚽ El Salvador vs Jamaica (Chuối Sấy) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132807_7f305cf9.png" group-title="Bóng Đá" , 🟢 07:00 03/10 ⚽ Colombia vs Paraguay (Chuối Sấy) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132741_d7b2cf85.png" group-title="Bóng Đá" , 🟡 09:00 03/10 ⚽ El Salvador vs Jamaica (Chuối Sấy) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132807_7f305cf9.png" group-title="Bóng Đá" , 🟢 07:00 03/10 ⚽ Colombia vs Paraguay (Chuối Sấy) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20260927_010537_85b5c41a.png" group-title="Bóng Chuyền" , 🟡 08:00 03/10 🏐 Qatar vs South Korea (Chuối Kem) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20260927_010537_85b5c41a.png" group-title="Bóng Chuyền" , 🟡 08:00 03/10 🏐 Qatar vs South Korea (Chuối Kem) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20260927_010537_85b5c41a.png" group-title="Bóng Chuyền" , 🟡 08:00 03/10 🏐 Qatar vs South Korea (Chuối Kem) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8
