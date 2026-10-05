@@ -1,38 +1,14 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132742_655e51b0.png" group-title="Bóng Đá" , 🟢 05:00 05/10 ⚽ Trinidad and Tobago vs Curaçao (Chuối Chao) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132742_655e51b0.png" group-title="Bóng Đá" , 🟢 05:00 05/10 ⚽ Trinidad and Tobago vs Curaçao (Chuối Chao) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132742_655e51b0.png" group-title="Bóng Đá" , 🟢 05:00 05/10 ⚽ Trinidad and Tobago vs Curaçao (Chuối Chao) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132739_80ee8c4e.png" group-title="Bóng Đá" , 🟡 07:00 05/10 ⚽ Costa Rica vs Haiti (Chuối Sấy) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132739_80ee8c4e.png" group-title="Bóng Đá" , 🟡 07:00 05/10 ⚽ Costa Rica vs Haiti (Chuối Sấy) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132739_80ee8c4e.png" group-title="Bóng Đá" , 🟡 07:00 05/10 ⚽ Costa Rica vs Haiti (Chuối Sấy) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134318_ac29542c.png" group-title="Bóng Đá" , 🟡 09:00 05/10 ⚽ Nicaragua vs Dominican Republic (Chuối Kem) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134318_ac29542c.png" group-title="Bóng Đá" , 🟢 09:00 05/10 ⚽ Nicaragua vs Dominican Republic (Chuối Kem) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134318_ac29542c.png" group-title="Bóng Đá" , 🟡 09:00 05/10 ⚽ Nicaragua vs Dominican Republic (Chuối Kem) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134318_ac29542c.png" group-title="Bóng Đá" , 🟢 09:00 05/10 ⚽ Nicaragua vs Dominican Republic (Chuối Kem) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134318_ac29542c.png" group-title="Bóng Đá" , 🟡 09:00 05/10 ⚽ Nicaragua vs Dominican Republic (Chuối Kem) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134318_ac29542c.png" group-title="Bóng Đá" , 🟢 09:00 05/10 ⚽ Nicaragua vs Dominican Republic (Chuối Kem) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8
 
@@ -71,6 +47,30 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoingao/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20250902_193521_ec2f00c2.png" group-title="Bóng Đá" , 🟡 16:00 05/10 ⚽ Malaysia vs Việt Nam (Chuối Ngao) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoingaohd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134249_f7c8e720.png" group-title="Bóng Đá" , 🟡 17:30 05/10 ⚽ Japan vs New Zealand (Chuối Sấy) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134249_f7c8e720.png" group-title="Bóng Đá" , 🟡 17:30 05/10 ⚽ Japan vs New Zealand (Chuối Sấy) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134249_f7c8e720.png" group-title="Bóng Đá" , 🟡 17:30 05/10 ⚽ Japan vs New Zealand (Chuối Sấy) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20250829_080231_89f500ea.gif" group-title="Bóng Đá" , 🟡 20:00 05/10 ⚽ Indonesia vs Thailand (Chuối Chao) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20250829_080231_89f500ea.gif" group-title="Bóng Đá" , 🟡 20:00 05/10 ⚽ Indonesia vs Thailand (Chuối Chao) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20250829_080231_89f500ea.gif" group-title="Bóng Đá" , 🟡 20:00 05/10 ⚽ Indonesia vs Thailand (Chuối Chao) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134258_7f759e07.png" group-title="Bóng Đá" , 🟡 23:00 05/10 ⚽ Cyprus vs Latvia (Chuối Trốc Tru) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
