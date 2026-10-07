@@ -1,38 +1,26 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132737_1cfe2b5b.png" group-title="Bóng Đá" , 🟢 09:30 07/10 ⚽ Mexico vs Chile (Chuối Sấy) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132737_1cfe2b5b.png" group-title="Bóng Đá" , 🟢 09:30 07/10 ⚽ Mexico vs Chile (Chuối Sấy) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132737_1cfe2b5b.png" group-title="Bóng Đá" , 🟢 09:30 07/10 ⚽ Mexico vs Chile (Chuối Sấy) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_131431_dcdeb466.png" group-title="Bóng Đá" , 🟡 16:00 07/10 ⚽ Urawa vs Omiya Ardija (Chuối Chao) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_131431_dcdeb466.png" group-title="Bóng Đá" , 🟢 16:00 07/10 ⚽ Urawa vs Omiya Ardija (Chuối Chao) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_131431_dcdeb466.png" group-title="Bóng Đá" , 🟡 16:00 07/10 ⚽ Urawa vs Omiya Ardija (Chuối Chao) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_131431_dcdeb466.png" group-title="Bóng Đá" , 🟢 16:00 07/10 ⚽ Urawa vs Omiya Ardija (Chuối Chao) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_131431_dcdeb466.png" group-title="Bóng Đá" , 🟡 16:00 07/10 ⚽ Urawa vs Omiya Ardija (Chuối Chao) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_131431_dcdeb466.png" group-title="Bóng Đá" , 🟢 16:00 07/10 ⚽ Urawa vs Omiya Ardija (Chuối Chao) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132411_05a7d523.png" group-title="Bóng Đá" , 🟡 16:30 07/10 ⚽ Cerezo Osaka vs Kagoshima United (Chuối Tây) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132411_05a7d523.png" group-title="Bóng Đá" , 🟢 16:30 07/10 ⚽ Cerezo Osaka vs Kagoshima United (Chuối Tây) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132411_05a7d523.png" group-title="Bóng Đá" , 🟡 16:30 07/10 ⚽ Cerezo Osaka vs Kagoshima United (Chuối Tây) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132411_05a7d523.png" group-title="Bóng Đá" , 🟢 16:30 07/10 ⚽ Cerezo Osaka vs Kagoshima United (Chuối Tây) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132411_05a7d523.png" group-title="Bóng Đá" , 🟡 16:30 07/10 ⚽ Cerezo Osaka vs Kagoshima United (Chuối Tây) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132411_05a7d523.png" group-title="Bóng Đá" , 🟢 16:30 07/10 ⚽ Cerezo Osaka vs Kagoshima United (Chuối Tây) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
 
@@ -95,3 +83,15 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/troctruhd/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130129_9aae3cbc.png" group-title="Bóng Đá" , 🟡 00:00 08/10 ⚽ Ceramica Cleopatra vs AL Masry (Chuối Trốc Tru) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/troctruhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125539_21b1f972.png" group-title="Bóng Đá" , 🟡 07:30 08/10 ⚽ Cruzeiro vs Sao Paulo (Chuối Sấy) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125539_21b1f972.png" group-title="Bóng Đá" , 🟡 07:30 08/10 ⚽ Cruzeiro vs Sao Paulo (Chuối Sấy) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125539_21b1f972.png" group-title="Bóng Đá" , 🟡 07:30 08/10 ⚽ Cruzeiro vs Sao Paulo (Chuối Sấy) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
