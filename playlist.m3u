@@ -1,52 +1,40 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125559_6c094200.png" group-title="Bóng Đá" , 🟢 23:30 16/10 ⚽ Holstein Kiel vs Hertha BSC (Chuối Nhỏ) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoinho/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125559_6c094200.png" group-title="Bóng Đá" , 🟢 23:30 16/10 ⚽ Holstein Kiel vs Hertha BSC (Chuối Nhỏ) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125559_6c094200.png" group-title="Bóng Đá" , 🟢 23:30 16/10 ⚽ Holstein Kiel vs Hertha BSC (Chuối Nhỏ) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125556_bdd9ff42.png" group-title="Bóng Đá" , 🟡 01:30 17/10 ⚽ Eintracht Frankfurt vs 1.FC Köln (Chuối Chao) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125556_bdd9ff42.png" group-title="Bóng Đá" , 🟡 01:30 17/10 ⚽ Eintracht Frankfurt vs 1.FC Köln (Chuối Chao) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125556_bdd9ff42.png" group-title="Bóng Đá" , 🟡 01:30 17/10 ⚽ Eintracht Frankfurt vs 1.FC Köln (Chuối Chao) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133427_2c58ddc2.png" group-title="Bóng Đá" , 🟡 01:45 17/10 ⚽ Frosinone vs Sassuolo (Chuối Lá) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoila/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133427_2c58ddc2.png" group-title="Bóng Đá" , 🟡 01:45 17/10 ⚽ Frosinone vs Sassuolo (Chuối Lá) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoilahd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133427_2c58ddc2.png" group-title="Bóng Đá" , 🟡 01:45 17/10 ⚽ Frosinone vs Sassuolo (Chuối Lá) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoilahd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133417_d0c889f0.png" group-title="Bóng Đá" , 🟡 02:00 17/10 ⚽ Deportivo La Coruna vs Levante (Chuối Trốc Tru) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125556_bdd9ff42.png" group-title="Bóng Đá" , 🟢 01:30 17/10 ⚽ Eintracht Frankfurt vs 1.FC Köln (Chuối Trốc Tru) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/troctru/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133417_d0c889f0.png" group-title="Bóng Đá" , 🟡 02:00 17/10 ⚽ Deportivo La Coruna vs Levante (Chuối Trốc Tru) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125556_bdd9ff42.png" group-title="Bóng Đá" , 🟢 01:30 17/10 ⚽ Eintracht Frankfurt vs 1.FC Köln (Chuối Trốc Tru) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/troctruhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133417_d0c889f0.png" group-title="Bóng Đá" , 🟡 02:00 17/10 ⚽ Deportivo La Coruna vs Levante (Chuối Trốc Tru) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125556_bdd9ff42.png" group-title="Bóng Đá" , 🟢 01:30 17/10 ⚽ Eintracht Frankfurt vs 1.FC Köln (Chuối Trốc Tru) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/troctruhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133427_2c58ddc2.png" group-title="Bóng Đá" , 🟢 01:45 17/10 ⚽ Frosinone vs Sassuolo (Chuối Lá) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoila/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133427_2c58ddc2.png" group-title="Bóng Đá" , 🟢 01:45 17/10 ⚽ Frosinone vs Sassuolo (Chuối Lá) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoilahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133427_2c58ddc2.png" group-title="Bóng Đá" , 🟢 01:45 17/10 ⚽ Frosinone vs Sassuolo (Chuối Lá) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoilahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130848_b02bcef0.png" group-title="Bóng Đá" , 🟢 02:00 17/10 ⚽ Burnley vs Wolves (Chuối Nhỏ) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoinho/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130848_b02bcef0.png" group-title="Bóng Đá" , 🟢 02:00 17/10 ⚽ Burnley vs Wolves (Chuối Nhỏ) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130848_b02bcef0.png" group-title="Bóng Đá" , 🟢 02:00 17/10 ⚽ Burnley vs Wolves (Chuối Nhỏ) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20250920_011102_024ecd13.png" group-title="Bóng Đá" , 🟡 08:00 17/10 ⚽ Necaxa vs Atlas (Chuối To) [HD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
@@ -67,6 +55,18 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133843_6c2369a8.png" group-title="Bóng Đá" , 🟡 10:00 17/10 ⚽ Atlante FC vs U.N.A.M. - Pumas (Chuối Sấy) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132407_6e839522.png" group-title="Bóng Đá" , 🟡 18:00 17/10 ⚽ Da Nang vs Hai Phong (Chuối Chao) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132407_6e839522.png" group-title="Bóng Đá" , 🟡 18:00 17/10 ⚽ Da Nang vs Hai Phong (Chuối Chao) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132407_6e839522.png" group-title="Bóng Đá" , 🟡 18:00 17/10 ⚽ Da Nang vs Hai Phong (Chuối Chao) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20260102_193355_5b8801ab.png" group-title="Bóng Chuyền" , 🟡 12:05 17/10 🏐 Hitachi W vs Gunma Bank Green Wings W (Chuối Kem) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
