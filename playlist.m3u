@@ -1,50 +1,26 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134617_73ab7535.png" group-title="Bóng Đá" , 🟡 15:30 21/10 ⚽ Bali United vs Garudayaksa (Chuối Tây) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134617_73ab7535.png" group-title="Bóng Đá" , 🟡 15:30 21/10 ⚽ Bali United vs Garudayaksa (Chuối Tây) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134617_73ab7535.png" group-title="Bóng Đá" , 🟡 15:30 21/10 ⚽ Bali United vs Garudayaksa (Chuối Tây) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132409_e59d2efe.png" group-title="Bóng Đá" , 🟡 17:00 21/10 ⚽ Shimizu S-pulse vs Machida Zelvia (Chuối Kem) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132409_e59d2efe.png" group-title="Bóng Đá" , 🟡 17:00 21/10 ⚽ Shimizu S-pulse vs Machida Zelvia (Chuối Kem) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132409_e59d2efe.png" group-title="Bóng Đá" , 🟡 17:00 21/10 ⚽ Shimizu S-pulse vs Machida Zelvia (Chuối Kem) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143950_6df9c0b7.png" group-title="Bóng Đá" , 🟡 18:00 21/10 ⚽ Como U19 vs Manchester United U19 (Chuối Nhỏ) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143950_6df9c0b7.png" group-title="Bóng Đá" , 🟢 18:00 21/10 ⚽ Como U19 vs Manchester United U19 (Chuối Nhỏ) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoinho/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143950_6df9c0b7.png" group-title="Bóng Đá" , 🟡 18:00 21/10 ⚽ Como U19 vs Manchester United U19 (Chuối Nhỏ) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143950_6df9c0b7.png" group-title="Bóng Đá" , 🟢 18:00 21/10 ⚽ Como U19 vs Manchester United U19 (Chuối Nhỏ) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143950_6df9c0b7.png" group-title="Bóng Đá" , 🟡 18:00 21/10 ⚽ Como U19 vs Manchester United U19 (Chuối Nhỏ) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143950_6df9c0b7.png" group-title="Bóng Đá" , 🟢 18:00 21/10 ⚽ Como U19 vs Manchester United U19 (Chuối Nhỏ) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134621_7ed44b9b.png" group-title="Bóng Đá" , 🟡 19:00 21/10 ⚽ Persija vs Arema FC (Chuối Chao) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134621_7ed44b9b.png" group-title="Bóng Đá" , 🟢 19:00 21/10 ⚽ Persija vs Arema FC (Chuối Chao) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134621_7ed44b9b.png" group-title="Bóng Đá" , 🟡 19:00 21/10 ⚽ Persija vs Arema FC (Chuối Chao) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134621_7ed44b9b.png" group-title="Bóng Đá" , 🟢 19:00 21/10 ⚽ Persija vs Arema FC (Chuối Chao) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134621_7ed44b9b.png" group-title="Bóng Đá" , 🟡 19:00 21/10 ⚽ Persija vs Arema FC (Chuối Chao) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134621_7ed44b9b.png" group-title="Bóng Đá" , 🟢 19:00 21/10 ⚽ Persija vs Arema FC (Chuối Chao) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
 
@@ -83,6 +59,30 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/troctruhd/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125607_2784433a.png" group-title="Bóng Đá" , 🟡 23:45 21/10 ⚽ Como vs Manchester United (Chuối Trốc Tru) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/troctruhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125509_02157926.png" group-title="Bóng Đá" , 🟡 23:45 21/10 ⚽ Lille vs Galatasaray (Chuối Kem) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125509_02157926.png" group-title="Bóng Đá" , 🟡 23:45 21/10 ⚽ Lille vs Galatasaray (Chuối Kem) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125509_02157926.png" group-title="Bóng Đá" , 🟡 23:45 21/10 ⚽ Lille vs Galatasaray (Chuối Kem) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125552_15f20ce5.png" group-title="Bóng Đá" , 🟡 02:00 22/10 ⚽ Aston Villa vs Viking (Chuối Tây) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125552_15f20ce5.png" group-title="Bóng Đá" , 🟡 02:00 22/10 ⚽ Aston Villa vs Viking (Chuối Tây) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125552_15f20ce5.png" group-title="Bóng Đá" , 🟡 02:00 22/10 ⚽ Aston Villa vs Viking (Chuối Tây) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125626_d7a3c828.png" group-title="Bóng Đá" , 🟡 02:00 22/10 ⚽ Real Betis vs Feyenoord (Chuối Sấy) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
