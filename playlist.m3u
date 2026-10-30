@@ -1,40 +1,16 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125537_d4d52169.png" group-title="Bóng Đá" , 🟢 07:30 30/10 ⚽ Gremio vs Atletico Paranaense (Chuối Chao) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261020_043338_a9e747f0.png" group-title="Bóng Đá" , 🟡 15:30 30/10 ⚽ Malut United vs Bhayangkara FC (Chuối Chao) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125537_d4d52169.png" group-title="Bóng Đá" , 🟢 07:30 30/10 ⚽ Gremio vs Atletico Paranaense (Chuối Chao) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261020_043338_a9e747f0.png" group-title="Bóng Đá" , 🟡 15:30 30/10 ⚽ Malut United vs Bhayangkara FC (Chuối Chao) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125537_d4d52169.png" group-title="Bóng Đá" , 🟢 07:30 30/10 ⚽ Gremio vs Atletico Paranaense (Chuối Chao) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261020_043338_a9e747f0.png" group-title="Bóng Đá" , 🟡 15:30 30/10 ⚽ Malut United vs Bhayangkara FC (Chuối Chao) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133535_bc746ccd.png" group-title="Bóng Đá" , 🟢 08:30 30/10 ⚽ Atletico Nacional vs Santa Fe (Chuối Già) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoigia/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133535_bc746ccd.png" group-title="Bóng Đá" , 🟢 08:30 30/10 ⚽ Atletico Nacional vs Santa Fe (Chuối Già) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoigiahd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133535_bc746ccd.png" group-title="Bóng Đá" , 🟢 08:30 30/10 ⚽ Atletico Nacional vs Santa Fe (Chuối Già) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoigiahd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133405_df45c88a.png" group-title="Bóng Đá" , 🟡 09:00 30/10 ⚽ LD Alajuelense vs CD Motagua (Chuối Nhỏ) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoinho/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133405_df45c88a.png" group-title="Bóng Đá" , 🟡 09:00 30/10 ⚽ LD Alajuelense vs CD Motagua (Chuối Nhỏ) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133405_df45c88a.png" group-title="Bóng Đá" , 🟡 09:00 30/10 ⚽ LD Alajuelense vs CD Motagua (Chuối Nhỏ) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130442_411732ef.png" group-title="Bóng Đá" , 🟡 16:00 30/10 ⚽ Brisbane Roar vs Auckland (Chuối Lá) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
@@ -59,6 +35,30 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20250817_040540_cdc05b23.png" group-title="Bóng Đá" , 🟡 17:00 30/10 ⚽ Thanh Hóa vs Hồng Lĩnh Hà Tĩnh (Chuối Sấy) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.api-sports.io/football/teams/26601.png" group-title="Bóng Đá" , 🟡 18:00 30/10 ⚽ Bắc Ninh vs Hoang Anh Gia Lai (Chuối Già) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoigia/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.api-sports.io/football/teams/26601.png" group-title="Bóng Đá" , 🟡 18:00 30/10 ⚽ Bắc Ninh vs Hoang Anh Gia Lai (Chuối Già) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoigiahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.api-sports.io/football/teams/26601.png" group-title="Bóng Đá" , 🟡 18:00 30/10 ⚽ Bắc Ninh vs Hoang Anh Gia Lai (Chuối Già) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoigiahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134617_39c4ce6c.png" group-title="Bóng Đá" , 🟡 19:00 30/10 ⚽ Persebaya Surabaya vs Persijap (Chuối Nhỏ) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoinho/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134617_39c4ce6c.png" group-title="Bóng Đá" , 🟡 19:00 30/10 ⚽ Persebaya Surabaya vs Persijap (Chuối Nhỏ) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134617_39c4ce6c.png" group-title="Bóng Đá" , 🟡 19:00 30/10 ⚽ Persebaya Surabaya vs Persijap (Chuối Nhỏ) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="https://media.api-sports.io/football/teams/26738.png" group-title="Bóng Đá" , 🟡 21:50 30/10 ⚽ Al Diriyah vs Al Neom (Chuối Tây) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
