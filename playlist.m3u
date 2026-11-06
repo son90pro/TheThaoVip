@@ -1,62 +1,50 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134218_f10a5445.png" group-title="Bóng Đá" , 🟢 22:00 06/11 ⚽ Septemvri Sofia vs Lokomotiv Sofia (Chuối Nhỏ) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130301_4997c01a.png" group-title="Bóng Đá" , 🟢 02:30 07/11 ⚽ Hamburger SV vs Borussia Mönchengladbach (Chuối Nhỏ) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoinho/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134218_f10a5445.png" group-title="Bóng Đá" , 🟢 22:00 06/11 ⚽ Septemvri Sofia vs Lokomotiv Sofia (Chuối Nhỏ) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130301_4997c01a.png" group-title="Bóng Đá" , 🟢 02:30 07/11 ⚽ Hamburger SV vs Borussia Mönchengladbach (Chuối Nhỏ) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134218_f10a5445.png" group-title="Bóng Đá" , 🟢 22:00 06/11 ⚽ Septemvri Sofia vs Lokomotiv Sofia (Chuối Nhỏ) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130301_4997c01a.png" group-title="Bóng Đá" , 🟢 02:30 07/11 ⚽ Hamburger SV vs Borussia Mönchengladbach (Chuối Nhỏ) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133526_93f92456.png" group-title="Bóng Đá" , 🟡 23:30 06/11 ⚽ Lokomotiv vs Rubin (Chuối Sấy) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125606_728d64e5.png" group-title="Bóng Đá" , 🟢 02:45 07/11 ⚽ Venezia vs Udinese (Chuối Sấy) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133526_93f92456.png" group-title="Bóng Đá" , 🟡 23:30 06/11 ⚽ Lokomotiv vs Rubin (Chuối Sấy) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125606_728d64e5.png" group-title="Bóng Đá" , 🟢 02:45 07/11 ⚽ Venezia vs Udinese (Chuối Sấy) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133526_93f92456.png" group-title="Bóng Đá" , 🟡 23:30 06/11 ⚽ Lokomotiv vs Rubin (Chuối Sấy) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125606_728d64e5.png" group-title="Bóng Đá" , 🟢 02:45 07/11 ⚽ Venezia vs Udinese (Chuối Sấy) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130303_c6ba388a.png" group-title="Bóng Đá" , 🟡 00:30 07/11 ⚽ Eintracht Braunschweig vs Energie Cottbus (Chuối Chao) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130303_c6ba388a.png" group-title="Bóng Đá" , 🟡 00:30 07/11 ⚽ Eintracht Braunschweig vs Energie Cottbus (Chuối Chao) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_130303_c6ba388a.png" group-title="Bóng Đá" , 🟡 00:30 07/11 ⚽ Eintracht Braunschweig vs Energie Cottbus (Chuối Chao) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125548_7d798d13.png" group-title="Bóng Đá" , 🟡 03:00 07/11 ⚽ Everton vs Coventry (Chuối Trốc Tru) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125548_7d798d13.png" group-title="Bóng Đá" , 🟢 03:00 07/11 ⚽ Everton vs Coventry (Chuối Trốc Tru) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/troctru/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125548_7d798d13.png" group-title="Bóng Đá" , 🟡 03:00 07/11 ⚽ Everton vs Coventry (Chuối Trốc Tru) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125548_7d798d13.png" group-title="Bóng Đá" , 🟢 03:00 07/11 ⚽ Everton vs Coventry (Chuối Trốc Tru) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/troctruhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125548_7d798d13.png" group-title="Bóng Đá" , 🟡 03:00 07/11 ⚽ Everton vs Coventry (Chuối Trốc Tru) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125548_7d798d13.png" group-title="Bóng Đá" , 🟢 03:00 07/11 ⚽ Everton vs Coventry (Chuối Trốc Tru) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/troctruhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125623_bcacccf3.png" group-title="Bóng Đá" , 🟡 03:00 07/11 ⚽ Sevilla vs Alaves (Chuối Tây) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125623_bcacccf3.png" group-title="Bóng Đá" , 🟢 03:00 07/11 ⚽ Sevilla vs Alaves (Chuối Tây) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125623_bcacccf3.png" group-title="Bóng Đá" , 🟡 03:00 07/11 ⚽ Sevilla vs Alaves (Chuối Tây) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125623_bcacccf3.png" group-title="Bóng Đá" , 🟢 03:00 07/11 ⚽ Sevilla vs Alaves (Chuối Tây) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125623_bcacccf3.png" group-title="Bóng Đá" , 🟡 03:00 07/11 ⚽ Sevilla vs Alaves (Chuối Tây) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125623_bcacccf3.png" group-title="Bóng Đá" , 🟢 03:00 07/11 ⚽ Sevilla vs Alaves (Chuối Tây) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
 
