@@ -1,62 +1,14 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261113_010321_8e04f517.png" group-title="Bóng Đá" , 🟢 09:00 13/11 ⚽ Atlético Morelia vs Leones Negros (Chuối Kem) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261113_010321_8e04f517.png" group-title="Bóng Đá" , 🟢 09:00 13/11 ⚽ Atlético Morelia vs Leones Negros (Chuối Kem) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261113_010321_8e04f517.png" group-title="Bóng Đá" , 🟢 09:00 13/11 ⚽ Atlético Morelia vs Leones Negros (Chuối Kem) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_142517_93a5577b.png" group-title="Bóng Đá" , 🟡 12:00 13/11 ⚽ Ulaanbaatar vs Hunters (Chuối Chao) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_142517_93a5577b.png" group-title="Bóng Đá" , 🟡 12:00 13/11 ⚽ Ulaanbaatar vs Hunters (Chuối Chao) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_142517_93a5577b.png" group-title="Bóng Đá" , 🟡 12:00 13/11 ⚽ Ulaanbaatar vs Hunters (Chuối Chao) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_141355_fc3fb07a.png" group-title="Bóng Đá" , 🟡 15:30 13/11 ⚽ Oakleigh Cannons vs Marconi Stallions (Chuối Già) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoigia/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_141355_fc3fb07a.png" group-title="Bóng Đá" , 🟡 15:30 13/11 ⚽ Oakleigh Cannons vs Marconi Stallions (Chuối Già) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoigiahd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_141355_fc3fb07a.png" group-title="Bóng Đá" , 🟡 15:30 13/11 ⚽ Oakleigh Cannons vs Marconi Stallions (Chuối Già) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoigiahd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_141357_619109fb.png" group-title="Bóng Đá" , 🟡 15:30 13/11 ⚽ Preston Lions vs Lions (Chuối Lửa) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoilua/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_141357_619109fb.png" group-title="Bóng Đá" , 🟡 15:30 13/11 ⚽ Preston Lions vs Lions (Chuối Lửa) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoilua/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_141357_619109fb.png" group-title="Bóng Đá" , 🟡 15:30 13/11 ⚽ Preston Lions vs Lions (Chuối Lửa) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoiluahd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132714_c2b04cf4.png" group-title="Bóng Đá" , 🟡 19:00 13/11 ⚽ Singapore vs Paraguay (Chuối Sấy) [HD1] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132714_c2b04cf4.png" group-title="Bóng Đá" , 🟢 19:00 13/11 ⚽ Singapore vs Paraguay (Chuối Sấy) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132714_c2b04cf4.png" group-title="Bóng Đá" , 🟡 19:00 13/11 ⚽ Singapore vs Paraguay (Chuối Sấy) [HD2] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132714_c2b04cf4.png" group-title="Bóng Đá" , 🟢 19:00 13/11 ⚽ Singapore vs Paraguay (Chuối Sấy) [HD2] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132714_c2b04cf4.png" group-title="Bóng Đá" , 🟡 19:00 13/11 ⚽ Singapore vs Paraguay (Chuối Sấy) [FHD] [hls]
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132714_c2b04cf4.png" group-title="Bóng Đá" , 🟢 19:00 13/11 ⚽ Singapore vs Paraguay (Chuối Sấy) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
 
@@ -72,6 +24,18 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoilahd/playlist.m3u8
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoilahd/playlist.m3u8
 
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132801_e98e556c.png" group-title="Bóng Đá" , 🟡 20:00 13/11 ⚽ Mozambique vs Ethiopia (Chuối Kem) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132801_e98e556c.png" group-title="Bóng Đá" , 🟡 20:00 13/11 ⚽ Mozambique vs Ethiopia (Chuối Kem) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoikemhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132801_e98e556c.png" group-title="Bóng Đá" , 🟡 20:00 13/11 ⚽ Mozambique vs Ethiopia (Chuối Kem) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoikemhd/playlist.m3u8
+
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133416_9fa94ca3.png" group-title="Bóng Đá" , 🟡 21:00 13/11 ⚽ Kuwait vs Syria (Chuối Trốc Tru) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/troctru/playlist.m3u8
@@ -84,6 +48,30 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/troctruhd/playlist.m3u8
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/troctruhd/playlist.m3u8
 
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132738_952f6da3.png" group-title="Bóng Đá" , 🟡 21:30 13/11 ⚽ Saudi Arabia vs South Korea (Chuối Già) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoigia/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132738_952f6da3.png" group-title="Bóng Đá" , 🟡 21:30 13/11 ⚽ Saudi Arabia vs South Korea (Chuối Già) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoigiahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132738_952f6da3.png" group-title="Bóng Đá" , 🟡 21:30 13/11 ⚽ Saudi Arabia vs South Korea (Chuối Già) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoigiahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133416_04ec5812.png" group-title="Bóng Đá" , 🟡 21:45 13/11 ⚽ Qatar vs Australia (Chuối Chao) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoichao/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133416_04ec5812.png" group-title="Bóng Đá" , 🟡 21:45 13/11 ⚽ Qatar vs Australia (Chuối Chao) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoichaohd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_133416_04ec5812.png" group-title="Bóng Đá" , 🟡 21:45 13/11 ⚽ Qatar vs Australia (Chuối Chao) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoichaohd/playlist.m3u8
+
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134309_5c16d26e.png" group-title="Bóng Đá" , 🟡 23:00 13/11 ⚽ Cape Verde Islands vs Liberia (Chuối Tây) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
@@ -95,6 +83,18 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134309_5c16d26e.png" group-title="Bóng Đá" , 🟡 23:00 13/11 ⚽ Cape Verde Islands vs Liberia (Chuối Tây) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132805_2c5424f2.png" group-title="Bóng Đá" , 🟡 23:00 13/11 ⚽ South Africa vs Kenya (Chuối Lửa) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoilua/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132805_2c5424f2.png" group-title="Bóng Đá" , 🟡 23:00 13/11 ⚽ South Africa vs Kenya (Chuối Lửa) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoilua/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_132805_2c5424f2.png" group-title="Bóng Đá" , 🟡 23:00 13/11 ⚽ South Africa vs Kenya (Chuối Lửa) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoiluahd/playlist.m3u8
 
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_125507_424d6db0.png" group-title="Bóng Đá" , 🟡 02:45 14/11 ⚽ Netherlands vs Greece (Chuối Nhỏ) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
