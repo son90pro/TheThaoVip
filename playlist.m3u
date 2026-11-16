@@ -1,29 +1,5 @@
 #EXTM3U
 
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143656_1a6867bd.png" group-title="Bóng Đá" , 🟢 08:00 16/11 ⚽ Monterrey W vs Pachuca W (Chuối Tây) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143656_1a6867bd.png" group-title="Bóng Đá" , 🟢 08:00 16/11 ⚽ Monterrey W vs Pachuca W (Chuối Tây) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_143656_1a6867bd.png" group-title="Bóng Đá" , 🟢 08:00 16/11 ⚽ Monterrey W vs Pachuca W (Chuối Tây) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261106_011319_f53708fb.png" group-title="Bóng Đá" , 🟡 10:10 16/11 ⚽ Piratas FC vs América W (Chuối Sấy) [HD1] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261106_011319_f53708fb.png" group-title="Bóng Đá" , 🟡 10:10 16/11 ⚽ Piratas FC vs América W (Chuối Sấy) [HD2] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
-
-#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/20261106_011319_f53708fb.png" group-title="Bóng Đá" , 🟡 10:10 16/11 ⚽ Piratas FC vs América W (Chuối Sấy) [FHD] [hls]
-#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
-https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
-
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_144958_7bd3d526.png" group-title="Bóng Đá" , 🟡 18:00 16/11 ⚽ Uzbekistan U20 vs Venezuela U20 (Chuối Già) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoigia/playlist.m3u8
@@ -84,6 +60,18 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoinho/playlist.m3u8
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoinhohd/playlist.m3u8
 
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_66f3bf83.png" group-title="Bóng Đá" , 🟡 22:00 16/11 ⚽ Faroe Islands vs Moldova (Chuối Tây) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoitay/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_66f3bf83.png" group-title="Bóng Đá" , 🟡 22:00 16/11 ⚽ Faroe Islands vs Moldova (Chuối Tây) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoitayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134255_66f3bf83.png" group-title="Bóng Đá" , 🟡 22:00 16/11 ⚽ Faroe Islands vs Moldova (Chuối Tây) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoitayhd/playlist.m3u8
+
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_144327_b1e8b10d.png" group-title="Bóng Đá" , 🟡 22:00 16/11 ⚽ Somalia vs Ghana (Chuối Kem) [HD1] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoikem/playlist.m3u8
@@ -107,3 +95,15 @@ https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoilahd/playlist.m3u8
 #EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_134308_41a76964.png" group-title="Bóng Đá" , 🟡 23:00 16/11 ⚽ Central African Republic vs Benin (Chuối Lá) [FHD] [hls]
 #EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
 https://gckc0525.edgemaxcdn.org/live/chuoilahd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_145302_b6e32570.png" group-title="Bóng Đá" , 🟡 23:00 16/11 ⚽ Eritrea vs Guinea (Chuối Sấy) [HD1] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoisay/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_145302_b6e32570.png" group-title="Bóng Đá" , 🟡 23:00 16/11 ⚽ Eritrea vs Guinea (Chuối Sấy) [HD2] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://stm9ee346727718.stream.hdplaylink.com/cctvlive/chuoisayhd/playlist.m3u8
+
+#EXTINF:-1 tvg-logo="https://media.chuoichientv.net/media/uploads/20250623_145302_b6e32570.png" group-title="Bóng Đá" , 🟡 23:00 16/11 ⚽ Eritrea vs Guinea (Chuối Sấy) [FHD] [hls]
+#EXTVLCOPT:http-referrer=https://live.chuoichien.tv/
+https://gckc0525.edgemaxcdn.org/live/chuoisayhd/playlist.m3u8
